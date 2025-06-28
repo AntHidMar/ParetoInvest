@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "generadordatosalgoritmosevolutivos"
+version = "0.1.0"
+description = "Multi-objective portfolio optimization with real-time financial data"
+authors = ["Antonio J. Hidalgo <anthidmar@uma.es>"]
+readme = "README.md"
+license = "MIT"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.9"
+dash = "^3.0.4"
+pandas = "^2.2.3"
+numpy = "^1.26.0"
+matplotlib = "3.7.1"
+jmetalpy = "^1.7.0"
+ibapi = "^9.81.1.post1"
+pyqt5 = { version = "^5.15.9", optional = true }
+ib-insync = "^0.9.86"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

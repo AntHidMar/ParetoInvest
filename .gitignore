@@ -1,0 +1,45 @@
+# 🐍 Python files and folders
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+
+# 📓 Jupyter notebooks and checkpoints
+*.ipynb_checkpoints
+
+# 🧪 Temporary or local database files
+*.sqlite
+*.db
+
+# 📂 Development environments (VSCode, PyCharm, etc.)
+.vscode/
+.idea/
+
+# 🗂️ OS-specific files
+.DS_Store
+
+# 📦 Distribution files (if packaging the project)
+dist/
+build/
+
+# 📊 Generated result and log files
+**/*.csv
+**/*.log
+*.csv
+*.log
+
+# 🔒 Project-specific folders that should not be uploaded
+LOG/
+financial_data/IB_Day/
+# File with the project structure
+/Project Structure.txt       
+
+# Personal config (do not track)
+config/personal_config.json
+
+# File with Alpaca API credentials
+config/personal_Lib_Alpaca.json
+
+# JMetal results and individual files
+resources/JMetal_Files/Results/Individuals/**/*.txt
