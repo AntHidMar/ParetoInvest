@@ -1,21 +1,21 @@
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel,
     QLineEdit, QComboBox, QDateEdit, QPushButton, QWidget, QFrame, QProgressBar, QFileDialog,
-    QTextEdit, QMessageBox
+    QTextEdit, QMessageBox, QCheckBox
 )
 from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer, QDate
 import models.Assets as Assets
 import models.IB_data_loader as IB_data_loader
 import models.GenerarArchivosEstadisticos_JMetal as genArch_JMetal
 import models.JMetal_Worker as JMetalWorker
+import ui.ui_components as ui_components
 import libraries.Lib_Logger as lib_Logger
 from datetime import datetime, date
 import pandas as pd
 import sys
 import os
 import glob
-
-
+import ui.ui_event_handlers as ui_event_handlers
 
 
 # MainWindow class for the ParetoInvest application
@@ -45,221 +45,12 @@ class MainWindow(QMainWindow):
         self.end_pydate = None
 
         # Set up the UI
-        self.init_ui()
+        ui_components.init_ui(self, self.log)
+    
 
-    # Definition UI components
-    def init_ui(self):
+    ### Functions linked to the buttons in the UI ###
 
-        self.log.printAndLogger("Initializing UI components")
-
-        # Create a central widget
-        central_widget = QWidget(self)
-        self.setCentralWidget(central_widget)
-
-        # Create a main layout
-        main_layout = QVBoxLayout()
-        central_widget.setLayout(main_layout)
-
-        # Create a panel (QFrame) for the top controls
-        controls_panel = QFrame()
-        controls_panel.setFrameShape(QFrame.StyledPanel)
-        controls_layout = QHBoxLayout(controls_panel)
-
-        # ---- Layouts inside the panel ----
-        self.log.printAndLogger("Creating internal layouts")
-        left_grid = QGridLayout()
-        left_layout = QVBoxLayout()
-        left2_layout = QVBoxLayout()
-        center_layout = QVBoxLayout()
-        right_layout = QVBoxLayout()
-
-        # ---- Left: TextBoxes ----
-        self.log.printAndLogger("Initializing left panel textboxes")
-        labels_textboxes = [
-            (["Population Size", 100], "population_size"),
-            (["NumEvals", 5000], "Num_Evaluations"),
-            (["Studied", 5], "num_studied"),
-            (["Total", 10], "total_num"),
-            (["increase", 1], "increase"),
-            #(["window", 1], "window"),
-            (["Duration", "1 Y"], "duration"),
-            
-        ]
-
-        self.textboxes = {}
-        row1 = 0
-        for label_text, key in labels_textboxes:
-            label = QLabel(label_text[0])
-            textbox = QLineEdit(str(label_text[1]))
-            textbox.setFixedWidth(100)
-            left_grid.addWidget(label, row1, 0)
-            left_grid.addWidget(textbox, row1, 1)
-            self.textboxes[key] = textbox
-            row1 += 1
-
-        labels_textboxes2 = [
-            (["cr", 1], "cr"),
-            (["f", 0.5], "f"),            
-            (["Crossover Probability", 0.9], "crossoverProbability"),
-            (["Crossover Distribution Index", 20], "crossoverDistributionIndex"),
-            (["Mutation Distribution Index", 20], "mutationDistributionIndex"),
-        ]
-
-        row2 = 0
-        for label_text, key in labels_textboxes2:
-            label = QLabel(label_text[0])
-            textbox = QLineEdit(str(label_text[1]))
-            textbox.setFixedWidth(100)
-            left_grid.addWidget(label, row2, 2)
-            left_grid.addWidget(textbox, row2, 3)
-            self.textboxes[key] = textbox
-            row2 += 1
-
-        # ---- Select directory ----
-        """self.log.printAndLogger("Setting up directory selector")
-        dir_layout = QHBoxLayout()
-        dir_label = QLabel("Download File Directory")
-        self.dir_textbox = QLineEdit()
-        dir_button = QPushButton("Select...")
-        dir_button.clicked.connect(self.select_directory)
-        dir_layout.addWidget(self.dir_textbox)
-        dir_layout.addWidget(dir_button)
-        left_grid.addWidget(dir_label, row1, 0)
-        left_grid.addLayout(dir_layout, row1, 1)"""
-
-        # ---- Centro: Combos ----
-        # Logging the initialization of dropdown elements
-        self.log.printAndLogger("Setting up dropdowns")
-
-        # Create label and dropdown for algorithm selection
-        alg_label = QLabel("Algorithms")
-        self.alg_combo = QComboBox()
-        self.alg_combo.addItems(["MOEAD", "MOEADDE", "NSGAII", "SMPSO", "SMSEMOA"])  # Available optimization algorithms
-        self.alg_combo.setFixedWidth(200)  # Set fixed width for consistency in UI
-        center_layout.addWidget(alg_label)  # Add label to layout
-        center_layout.addWidget(self.alg_combo)  # Add combo box to layout
-
-        # Create label and dropdown for market selection
-        markets_label = QLabel("Markets")
-        self.markets_combo = QComboBox()
-        self.markets_combo.addItems(["ALL", "AMEX", "ARCA", "BATS", "NASDAQ", "NYSE", "OTC"])  # List of market sources
-        self.markets_combo.setFixedWidth(200)
-        center_layout.addWidget(markets_label)
-        center_layout.addWidget(self.markets_combo)
-
-        # Create label and dropdown for frequency selection
-        freq_label = QLabel("Frequencies")
-        self.freq_combo = QComboBox()
-        self.freq_combo.addItems(["Year", "Month", "Day"])  # Granularity of data frequency
-        self.freq_combo.setCurrentText("Day")  # Default selection
-        self.freq_combo.setFixedWidth(200)
-        center_layout.addWidget(freq_label)
-        center_layout.addWidget(self.freq_combo)
-
-        # Create label and dropdown for window selection
-        window_label = QLabel("window")
-        self.window_combo = QComboBox()
-        self.window_combo.addItems(["Year", "Month", "Day"])  # Time window for analysis
-        self.window_combo.setFixedWidth(200)
-        center_layout.addWidget(window_label)
-        center_layout.addWidget(self.window_combo)
-        # ---- Right Panel: Date pickers and Control Buttons ----
-
-        self.log.printAndLogger("Configuring date pickers and control buttons")
-        current_date = QDate.currentDate()
-
-        # Label and date picker for the start date
-        start_date_label = QLabel("Start")
-        self.start_date = QDateEdit()
-        self.start_date.setCalendarPopup(True)  # Enables calendar widget
-        self.start_date.setFixedWidth(200)
-        self.start_date.dateChanged.connect(self.on_date_start_changed)  # Connects change signal to handler
-        self.start_date.setDate(current_date.addYears(-1))  # Default start date = one year ago
-        self.start_pydate = self.start_date.date().toPyDate()  # Store as Python date
-
-        # Label and date picker for the end date
-        end_date_label = QLabel("End")
-        self.end_date = QDateEdit()
-        self.end_date.setCalendarPopup(True)
-        self.end_date.setFixedWidth(200)
-        self.end_date.setDate(current_date)  # Default end date = today
-        self.end_pydate = self.end_date.date().toPyDate()
-        self.end_date.dateChanged.connect(self.on_date_end_changed)  # Connect change signal
-
-        # Button to update the list of assets
-        self.assets_button = QPushButton("Update Assets List")
-        self.assets_button.setFixedWidth(200)
-        self.assets_button.setFixedHeight(40)
-
-        # Button to download financial data
-        self.download_button = QPushButton("Download Data")
-        self.download_button.setFixedWidth(200)
-        self.download_button.setFixedHeight(40)
-
-        # Button to generate configuration files for JMetal algorithms
-        self.JMetal_files_button = QPushButton("Generate JMetal Files")
-        self.JMetal_files_button.setFixedWidth(200)
-        self.JMetal_files_button.setFixedHeight(40)
-
-        # Button to execute the selected optimization algorithm
-        self.execAlg_button = QPushButton("Execute Algorithm")
-        self.execAlg_button.setFixedWidth(200)
-        self.execAlg_button.setFixedHeight(40)
-
-        # Add all right-side widgets to the layout
-        right_layout.addWidget(start_date_label)
-        right_layout.addWidget(self.start_date)
-        right_layout.addWidget(end_date_label)
-        right_layout.addWidget(self.end_date)
-        right_layout.addWidget(self.assets_button)
-        right_layout.addWidget(self.download_button)        
-        right_layout.addWidget(self.JMetal_files_button)
-        right_layout.addWidget(self.execAlg_button)
-
-        # ---- Add All Sub-Layouts to the Main Layout ----
-        self.log.printAndLogger("Finalizing layout")
-        controls_layout.addLayout(left_grid)
-        controls_layout.addLayout(center_layout)
-        controls_layout.addLayout(right_layout)
-        main_layout.addWidget(controls_panel, stretch=1)
-
-        # ---- Output Text Area ----
-        self.text_area = QTextEdit(self)
-        self.text_area.setReadOnly(True)  # Read-only log console
-        main_layout.addWidget(self.text_area, stretch=7)
-
-        # ---- Horizontal Separator ----
-        separator = QFrame()
-        separator.setFrameShape(QFrame.HLine)
-        separator.setFrameShadow(QFrame.Sunken)
-        main_layout.addWidget(separator)
-
-        # ---- Progress Bar ----
-        self.progress_bar = QProgressBar(self)
-        self.progress_bar.setValue(0)
-        self.progress_bar.setTextVisible(True)
-        self.progress_bar.setFixedHeight(25)
-        self.progress_bar.setHidden(True)
-        self.progress_bar.setFormat("%v/%m")
-        main_layout.addWidget(self.progress_bar)
-
-        # ---- Initialization of Default Values and Signal Connections ----
-        self.total_num = int(self.textboxes['total_num'].text())  # Total number of assets to process
-        self.frequency = self.freq_combo.currentText()  # Selected data frequency
-        self.window = self.window_combo.currentText()  # Window type (e.g., day, month)
-        self.duration = self.textboxes['duration'].text()  # Paquete de datos descargados en cada consulta a través de IB
-        self.default_download_dir = f"data\\financial_data\\IB_{self.frequency}"
-        #self.dir_textbox.setText(self.default_download_dir)  # Show default path
-
-        # Connect buttons to their respective handlers
-        self.download_button.clicked.connect(self.download_data)
-        self.assets_button.clicked.connect(self.update_assets)
-        self.JMetal_files_button.clicked.connect(self.generate_JMetal_files)        
-        self.execAlg_button.clicked.connect(self.execute_algorithm)
-
-        self.log.printAndLogger("UI components initialized successfully")
-
-
+    # -- button execute algorithm --
     # Asociated function to the event of executing the evolutionary algorithm. execAlg_button
     def execute_algorithm(self):
 
@@ -372,50 +163,14 @@ class MainWindow(QMainWindow):
         # Re-enable the buttons
         self.activate_buttons()
 
-    # Function that extracts the result file after the execution of the evolutionary algorithm if it exists.
-    def existeArchivoResultado(self, directorio, start__date, fecha_fin):
-
-        print( directorio, start__date, fecha_fin)
-
-
-        # Buscar archivos con prefijo 'result'
-        archivos = glob.glob(os.path.join(directorio, 'results_*'))
-        # Comprobación
-        encontrado = False
-        for archivo in archivos:
-            nombre = os.path.basename(archivo)
-            
-            # Obtener el timestamp de creación
-            timestamp = os.path.getctime(archivo)
-
-            # Convertir a formato legible
-            fecha_archivo = datetime.fromtimestamp(timestamp)
-
-            if start__date <= fecha_archivo <= fecha_fin:
-                
-                encontrado = True
-                return archivo                
-                break
-            
-        if not encontrado:
-            print("File not found in the specified date range.")
-        return None
-
-    # Function to handle date changes in the start date picker
-    def select_directory(self):
-        """
-        Open a dialog to select a directory and set the text in the directory textbox.
-        This function allows the user to choose a directory for downloading files.
-        """
-        directory = QFileDialog.getExistingDirectory(self, "Select Download Directory")
-        if directory:
-            self.dir_textbox.setText(directory)
-
+    # -- button update assets --
     # Function to update the list of assets
     def update_assets(self):
+
         """
             Update the list of assets by saving it to a CSV file, througt broker connection.
         """
+
         try:
 
             # Disable buttons and set styles button JMetal to orange
@@ -429,18 +184,34 @@ class MainWindow(QMainWindow):
             self.download_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
             QApplication.processEvents()  # Asegura que la UI se actualice
 
-            
-            control, self.df_Assets = self.assets_manager.save_assets_to_csv()
-        
-            if control:
-                # Show a message box indicating success
-                self.show_sms("Process OK", "¡Assets list correct updated!")
-            else:
-                self.show_sms("Incompleted Process", "¡ Assets list not updated! Check the log file for more details.")
+            # Update the assets list
+            control, self.df_assets = self.assets_manager.save_assets_to_csv()        
+
+            # Filter the DataFrame for assets containing "str" in the symbol
+            df_tmp = self.df_assets[self.df_assets["symbol"].str.contains("", na=False)].copy()
+
+            # Log the number of assets found
+            if self.checkbox_types_state:
+                
+                # Log the call to classify_asset_type
+                df_tmp = self.assets_manager.classify_asset_type(df_tmp)
+                
+
         except Exception as e:
             # Show a message box indicating an error
             self.show_sms("Error", f"¡Error updating assets list! {str(e)}. \n Check {self.dir_data}Lib_Alpaca.json file is correctly configured.")
-        
+        finally:
+            # Re-enable the buttons
+            self.activate_buttons()
+            #ui_event_handlers.activate_buttons(self)
+            # Clear the text area
+            self.text_area.clear()
+            # Show a message box indicating the process is complete
+            self.show_sms("Process OK", "Assets list updated successfully.")
+            # Log the completion of the update
+            self.log.printAndLogger("Assets list updated successfully.")
+    
+    # -- button generate JMetal files --
     # Function that connects to the JMetal Library and generates the JMetal files in a separate thread
     def generate_JMetal_files(self):
 
@@ -455,8 +226,13 @@ class MainWindow(QMainWindow):
         self.download_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
         QApplication.processEvents()  # Asegura que la UI se actualice
 
+        # Start the JMetal worker
         self.worker_JMetal = JMetalWorker.JMetalWorker(self)
-        self.worker_JMetal.finished.connect(self.on_finished)
+        # Connect the show_sms signal to the show_sms method
+        self.worker_JMetal.show_sms.connect(self.show_sms)
+        # Connect finished signal to the on_finished method
+        self.worker_JMetal.finished.connect(lambda: ui_event_handlers.on_finished(self))        
+        # Start the worker thread
         self.worker_JMetal.start()
 
     # Function that connects to the JMetal Library and generates the JMetal files
@@ -506,24 +282,124 @@ class MainWindow(QMainWindow):
         else:
             
             self.activate_buttons()
-
-    # Function to be called when the worker thread finishes
-    def on_finished(self):
-        # Re-enable the buttons
-        self.activate_buttons()
+            #ui_event_handlers.activate_buttons(self)
     
-    # Re-enable the buttons
-    def activate_buttons(self):
-        # Re-enable the buttons
-        self.JMetal_files_button.setEnabled(True)
-        self.JMetal_files_button.setStyleSheet("")  # <- This clears the style and returns to the default system appearance
-        self.execAlg_button.setEnabled(True)
-        self.execAlg_button.setStyleSheet("")  # <- This clears the style and returns to the default system appearance
-        self.assets_button.setEnabled(True)
-        self.assets_button.setStyleSheet("")  # <- This clears the style and returns to the default system appearance
-        self.download_button.setEnabled(True)
-        self.download_button.setStyleSheet("")  # <- This clears the style and returns to the default system appearance
+    # -- button download data --
+    # Function to download data from the broker
+    def download_data(self):
+        
+        """
+        Function that connects to the broker and downloads financial data for the asset list.
+        """
+
+        # Disable buttons and set styles button download to orange
+        self.JMetal_files_button.setEnabled(False)
+        self.JMetal_files_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
+        self.execAlg_button.setEnabled(False)
+        self.execAlg_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
+        self.assets_button.setEnabled(False)
+        self.assets_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
+        self.download_button.setEnabled(False)
+        self.download_button.setStyleSheet("background-color: orange; color: white; font-weight: bold;")
+
+
+        # Check if the directory is set
+        if not self.dir_data is None or self.dir_data != "":
+            # Load the asset list from the CSV file
+            self.df_Assets = self.assets_manager.load_assets_from_csv()
+
+        # Check if the asset list is loaded and has data
+        if not self.df_Assets is None and len(self.df_Assets) > 0:
+
+            # Select assets based on the current configuration
+            self.selectAssets()
+
+            # If there are assets to process
+            if len(self.df_Assets) > 0:
+
+                # Set maximum value for progress bar
+                self.progress_bar.setMaximum(len(self.df_Assets))
+                # Make progress bar visible
+                self.progress_bar.setHidden(False)
+
+                cont = 0
+                self.progress_bar.setValue(cont)
+
+                # Background process to download data without blocking the UI
+                self.worker_IB = IB_data_loader.HistoricalDataWorker(self.df_Assets, self.duration, self.end_pydate, self.frequency, self.log)
+                self.worker_IB.data_ready.connect(lambda data: ui_event_handlers.display_data(self, data) )
+                self.worker_IB.error_signal.connect(self.show_error)
+                self.worker_IB.update_progress.connect(lambda: ui_event_handlers.update_progress(self))
+                self.worker_IB.finished.connect(lambda: ui_event_handlers.on_finished(self))
+                self.worker_IB.start()
+
+                cont += 1
+
+            # Capture values from QLineEdit
+            textbox_values = {key: textbox.text() for key, textbox in self.textboxes.items()}
+
+            # Capture selected dates from QDateEdit
+            start_date_value = self.start_date.date().toString("yyyy-MM-dd")
+            end_date_value = self.end_date.date().toString("yyyy-MM-dd")
+
+            # Show captured values in the console (or perform another action with them)
+            self.log.printAndLogger("Selected values:")
+            self.log.printAndLogger(f" Market: {self.selected_market}")
+            self.log.printAndLogger(f" Frequency: {self.frequency}")
+            self.log.printAndLogger(f" Window: {self.window}")
+            self.log.printAndLogger(f" Dates: Start = {start_date_value}, End = {end_date_value}")
+            self.log.printAndLogger(f" TextBox values:", textbox_values)
+            self.log.printAndLogger(f" total_num: {self.total_num}")
+            self.log.printAndLogger(f" duration: {self.duration}")
+
+            # Simulate long process using a QTimer (optional)
+            """
+            self.timer = QTimer(self)
+            self.timer.timeout.connect(self.update_progress)
+            self.timer.start(100)  # Call every 100 ms
+            """
+        else:
+            self.show_sms("No asset list found to download.", "You must select the directory containing the asset list file.")
    
+
+    ### Functions to handle operations ###
+
+    # Function that extracts the result file after the execution of the evolutionary algorithm if it exists.
+    def existeArchivoResultado(self, directorio, start__date, fecha_fin):
+
+        # Buscar archivos con prefijo 'result'
+        archivos = glob.glob(os.path.join(directorio, 'results_*'))
+        # Comprobación
+        encontrado = False
+        for archivo in archivos:
+            nombre = os.path.basename(archivo)
+            
+            # Obtener el timestamp de creación
+            timestamp = os.path.getctime(archivo)
+
+            # Convertir a formato legible
+            fecha_archivo = datetime.fromtimestamp(timestamp)
+
+            if start__date <= fecha_archivo <= fecha_fin:
+                
+                encontrado = True
+                return archivo                
+                break
+            
+        if not encontrado:
+            self.log.printAndLogger("File not found in the specified date range.")
+        return None
+
+    # Function to handle date changes in the start date picker
+    def select_directory(self):
+        """
+        Open a dialog to select a directory and set the text in the directory textbox.
+        This function allows the user to choose a directory for downloading files.
+        """
+        directory = QFileDialog.getExistingDirectory(self, "Select Download Directory")
+        if directory:
+            self.dir_textbox.setText(directory)
+        
     # Select the assets to be studied.
     def selectAssets(self, considerSizes=False):
         
@@ -618,131 +494,35 @@ class MainWindow(QMainWindow):
             if os.path.isfile(ruta_completa):
                 rutas[nombre_archivo] = ruta_completa
         return rutas
-
-    # Function to download data from the broker
-    def download_data(self):
-        
-        """
-        Function that connects to the broker and downloads financial data for the asset list.
-        """
-
-        # Disable buttons and set styles button download to orange
-        self.JMetal_files_button.setEnabled(False)
-        self.JMetal_files_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
-        self.execAlg_button.setEnabled(False)
-        self.execAlg_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
-        self.assets_button.setEnabled(False)
-        self.assets_button.setStyleSheet("background-color: silver; color: black; font-weight: bold;")
-        self.download_button.setEnabled(False)
-        self.download_button.setStyleSheet("background-color: orange; color: white; font-weight: bold;")
-
-
-        # Check if the directory is set
-        if not self.dir_data is None or self.dir_data != "":
-            # Load the asset list from the CSV file
-            self.df_Assets = self.assets_manager.load_assets_from_csv()
-
-        # Check if the asset list is loaded and has data
-        if not self.df_Assets is None and len(self.df_Assets) > 0:
-
-            # Select assets based on the current configuration
-            self.selectAssets()
-
-            # If there are assets to process
-            if len(self.df_Assets) > 0:
-
-                # Set maximum value for progress bar
-                self.progress_bar.setMaximum(len(self.df_Assets))
-                # Make progress bar visible
-                self.progress_bar.setHidden(False)
-
-                cont = 0
-                self.progress_bar.setValue(cont)
-
-                # Background process to download data without blocking the UI
-                self.worker_IB = IB_data_loader.HistoricalDataWorker(self.df_Assets, self.duration, self.end_pydate, self.frequency, self.log)
-                self.worker_IB.data_ready.connect(self.display_data)
-                self.worker_IB.error_signal.connect(self.show_error)
-                self.worker_IB.update_progress.connect(self.update_progress)
-                self.worker_IB.finished.connect(self.on_finished)
-                self.worker_IB.start()
-
-                cont += 1
-
-            # Capture values from QLineEdit
-            textbox_values = {key: textbox.text() for key, textbox in self.textboxes.items()}
-
-            # Capture selected dates from QDateEdit
-            start_date_value = self.start_date.date().toString("yyyy-MM-dd")
-            end_date_value = self.end_date.date().toString("yyyy-MM-dd")
-
-            # Show captured values in the console (or perform another action with them)
-            self.log.printAndLogger("Selected values:")
-            self.log.printAndLogger(f" Market: {self.selected_market}")
-            self.log.printAndLogger(f" Frequency: {self.frequency}")
-            self.log.printAndLogger(f" Window: {self.window}")
-            self.log.printAndLogger(f" Dates: Start = {start_date_value}, End = {end_date_value}")
-            self.log.printAndLogger(f" TextBox values:", textbox_values)
-            self.log.printAndLogger(f" total_num: {self.total_num}")
-            self.log.printAndLogger(f" duration: {self.duration}")
-
-            # Simulate long process using a QTimer (optional)
-            """
-            self.timer = QTimer(self)
-            self.timer.timeout.connect(self.update_progress)
-            self.timer.start(100)  # Call every 100 ms
-            """
-        else:
-            self.show_sms("No asset list found to download.", "You must select the directory containing the asset list file.")
-
-    # Function to update the progress bar
-    def update_progress(self):
-        """
-        This function updates the progress bar.
-        """
-        # Get the current value of the progress bar and increment it
-        current_value = self.progress_bar.value()
-        # Increment the progress bar value by 1
-        self.progress_bar.setValue(current_value + 1)
-        
-    # Function to show messages in a message box
-    def show_sms(self, titulo, mensaje):
-        msg_box = QMessageBox()
-        msg_box.setWindowTitle(titulo)
-        msg_box.setText(mensaje)
-        msg_box.setIcon(QMessageBox.Information if "Process OK" in titulo else QMessageBox.Critical)
-        msg_box.exec_()
-
-        self.activate_buttons()
-
-    # Function to handle date changes in the end date picker
-    def on_date_end_changed(self):
-        # self.end_pydate = self.date_edit.dateTime().toString("yyyy-MM-dd HH:mm:ss")
-        self.end_pydate = self.end_date.date().toPyDate()
-        # self.label.setText(f"Selected date: {fecha}")
-        print("Selected end_date:", self.end_pydate)
-
-    # Function to handle date changes in the start date picker
-    def on_date_start_changed(self):
-        # self.end_pydate = self.date_edit.dateTime().toString("yyyy-MM-dd HH:mm:ss")
-        self.start_pydate = self.start_date.date().toPyDate()
-        # self.label.setText(f"Selected date: {fecha}")
-        print("Selected start_date:", self.start_pydate)
-
-    # Function to display data in the text area after downloading
-    def display_data(self, data):
-        print("Finish")
-        print(data)
-
+         
     # Function to show error messages in a message box
     def show_error(self, error_msg):
-        # self.label.setText(f"Error: {error_msg}")
-        # print(f"Error: {error_msg}")
         self.log.printAndLogger(error_msg)
         msg_box = QMessageBox()
         msg_box.setWindowTitle("Error")
         msg_box.setText(error_msg + "\n Check Gateway IB is running and connected.")
         msg_box.setIcon(QMessageBox.Information if "Correct" in error_msg else QMessageBox.Critical)
+        msg_box.exec_()
+    
+    # Re-enable the buttons
+    def activate_buttons(self):
+        # Re-enable the buttons
+        self.JMetal_files_button.setEnabled(True)
+        self.JMetal_files_button.setStyleSheet("")  # This clears the style and returns to the default system appearance
+        self.execAlg_button.setEnabled(True)
+        self.execAlg_button.setStyleSheet("")       # This clears the style and returns to the default system appearance
+        self.assets_button.setEnabled(True)
+        self.assets_button.setStyleSheet("")        # This clears the style and returns to the default system appearance
+        self.download_button.setEnabled(True)
+        self.download_button.setStyleSheet("")      # This clears the style and returns to the default system appearance
+
+    # Function to show messages in a message box
+    def show_sms(self, titulo, mensaje):
+
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle(titulo)
+        msg_box.setText(mensaje)
+        msg_box.setIcon(QMessageBox.Information if "Process OK" in titulo else QMessageBox.Critical)
         msg_box.exec_()
 
 #   Main function to run the application

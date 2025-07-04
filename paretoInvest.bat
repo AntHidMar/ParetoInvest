@@ -19,7 +19,7 @@ if exist "config\personal_config.json" (
         for /f "tokens=1,* delims=:" %%A in ('findstr /r /c:"\"SCRIPT_NAME\"" config\config.json') do set "SCRIPT_NAME=%%~B"
     )   
 )
-
+echo -- Conda environment 1 : %ENV_NAME%
 REM === Clean up values (quotes, commas, spaces) ===
 for %%V in (ANACONDA_ROOT ENV_NAME SCRIPT_NAME) do (
     set "val=!%%V!"
