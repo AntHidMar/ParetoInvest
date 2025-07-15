@@ -519,7 +519,10 @@ Below is an example of the Pareto front obtained by running the `NSGAII` algorit
 - **crossoverDistributionIndex**: 20  
 - **mutationDistributionIndex**: 20  
 
-![Pareto Front NSGAII](resources/images/pareto_front_nsgaii_50000_ALL_10_100.png)
+<p align="center">
+  <img src="resources/images/pareto_front_nsgaii_50000_ALL_10_100.png" alt="Pareto Front NSGAII" style="width:80%;">
+</p>
+
 
 ## 📊 Expected Results
 
