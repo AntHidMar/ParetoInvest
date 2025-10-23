@@ -31,6 +31,11 @@ jobs:
         run: |
           poetry install
 
+
+      - name: Run smoke tests
+        run: |
+          poetry run pytest tests
+
       - name: Build package (if pyproject.toml exists)
         run: |
           if [ -f pyproject.toml ]; then poetry build; fi
