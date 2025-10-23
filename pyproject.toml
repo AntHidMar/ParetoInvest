@@ -18,7 +18,7 @@ numpy = "^1.26.0"
 matplotlib = "3.7.1"
 jmetalpy = "^1.7.0"
 ibapi = "^9.81.1.post1"
-pyqt5 = { version = "^5.15.9", optional = true }
+pyqt5 = "^5.15.9"
 ib-insync = "^0.9.86"
 yfinance = "^0.2.37"
 
