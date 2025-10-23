@@ -107,8 +107,8 @@ poetry install
 # 4. Activate the virtual environment
 poetry shell
 
-# 5. Run the application (you can customize the script path in the config file)
-python main.py
+# 5. Run the application 
+poetry run python -m paretoinvest.main
 ```
 
 To exit the virtual environment:
@@ -135,13 +135,13 @@ The application includes a `config/` folder with the file `config.json`, used to
 {
   "ANACONDA_ROOT": "C:/Path/To/Anaconda3",
   "ENV_NAME": "ParetoInvest",
-  "SCRIPT_NAME": "main.py"
+  "SCRIPT_NAME": "paretoinvest/main.py"
 }
 ```
 
 - `ANACONDA_ROOT`: Path to your local Anaconda installation.
 - `ENV_NAME`: Name of the Conda environment to activate.
-- `SCRIPT_NAME`: Python script to launch (usually `main.py`).
+- `SCRIPT_NAME`: Python script to launch (ahora `paretoinvest/main.py`).
 
 
 ## 🔗 Broker Integrations
@@ -278,7 +278,8 @@ Together, they enable both experimentation and production-grade portfolio optimi
 ```
 paretoinvest/
 ├── __init__.py
-├── main.py (o app.py)
+├── paretoinvest/
+│   └── main.py
 ├── data/               # Sample financial datasets
 ├── gui                 # user interfaz files
 ├── jar                 # JMetal compilation files
