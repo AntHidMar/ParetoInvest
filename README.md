@@ -1,3 +1,6 @@
+# [![Build Status - main](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml?query=branch%3Amain)
+# [![Build Status - develop](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml?query=branch%3Adevelop)
+
 # ParetoInvest
 
 **ParetoInvest** is an advanced tool designed to facilitate portfolio optimization using bio-inspired algorithms. Developed in Python and integrated with the jMetal library, this application enables researchers and financial professionals to model and solve complex asset allocation problems, taking into account multiple conflicting objectives such as expected return, risk, and diversification. Its modular design and intuitive graphical interface simplify the configuration of advanced evolutionary algorithms, making this technology accessible even to users with no prior experience in metaheuristics.
