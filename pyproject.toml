@@ -1,11 +1,13 @@
 [tool.poetry]
-name = "generadordatosalgoritmosevolutivos"
+name = "paretoinvest"
 version = "0.1.0"
 description = "Multi-objective portfolio optimization with real-time financial data"
 authors = ["Antonio J. Hidalgo <anthidmar@uma.es>"]
 readme = "README.md"
 license = "MIT"
-package-mode = false
+package-mode = true
+[tool.poetry.packages]
+include = "paretoinvest"
 
 [tool.poetry.dependencies]
 python = "^3.9"
