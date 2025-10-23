@@ -6,8 +6,7 @@ authors = ["Antonio J. Hidalgo <anthidmar@uma.es>"]
 readme = "README.md"
 license = "MIT"
 package-mode = true
-[tool.poetry.packages]
-include = "paretoinvest"
+packages = [{ include = "paretoinvest" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
