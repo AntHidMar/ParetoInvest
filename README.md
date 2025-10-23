@@ -1,5 +1,7 @@
-# [![Build Status - main](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml?query=branch%3Amain)
-# [![Build Status - develop](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml?query=branch%3Adevelop)
+
+[![Build Status - main](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml?query=branch%3Amain)
+[![Build Status - develop](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml?query=branch%3Adevelop)
+[![Smoke Tests](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml/badge.svg?label=Smoke%20Tests)](https://github.com/AntHidMar/ParetoInvest/actions/workflows/build.yml)
 
 # ParetoInvest
 

@@ -1,3 +1,5 @@
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
 [tool.poetry]
 name = "paretoinvest"
 version = "0.1.0"
