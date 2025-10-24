@@ -31,7 +31,6 @@ jobs:
         run: |
           poetry install
 
-
       - name: Run smoke tests
         run: |
           poetry run pytest tests
