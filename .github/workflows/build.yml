@@ -19,26 +19,24 @@ jobs:
           python-version: "3.11"
 
       - name: Install Poetry
-        run: |
-          pip install poetry
+        run: pip install poetry
 
       - name: Configure Poetry to create virtualenv inside project
-        run: |
-          poetry config virtualenvs.in-project true
+        run: poetry config virtualenvs.in-project true
 
       - name: Install dependencies with Poetry
         run: |
           poetry install
+          poetry run pip install pyinstaller
 
       - name: Test main script
-        run: |
-          poetry run python main.py
+        run: poetry run python main.py
         env:
           PYTHONUNBUFFERED: 1
 
       - name: Package app with PyInstaller
         run: |
-          poetry run pip install pyinstaller
+          poetry run pip install pyinstaller PyQt5
           poetry run pyinstaller --noconfirm --onefile --windowed main.py
 
       - name: Upload artifact
