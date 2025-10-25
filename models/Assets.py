@@ -111,7 +111,7 @@ class AssetManager:
         return True, df  # Return success flag and DataFrame
 
     def load_assets_from_csv(self):
-        
+
         file_name = os.path.join(self.dir_asset_file, "Assets.csv")  # Path to load CSV
 
         if os.path.exists(file_name):
@@ -123,7 +123,7 @@ class AssetManager:
 
         refined_types = []
         types = []
-        
+
         for row in  df.itertuples():
 
             symbol = getattr(row, 'symbol')
@@ -142,7 +142,6 @@ class AssetManager:
                 #long_name = data['quoteSummary']['result'][0].get('longName', '').lower() if 'result' in data['quoteSummary'] and len(data['quoteSummary']['result']) > 0 else ''
                 #short_name = data['quoteSummary']['result'][0].get('shortName', '').lower() if 'result' in data['quoteSummary'] and len(data['quoteSummary']['result']) > 0 else ''
 
-                
                 """ticker = yf.Ticker(symbol)
                 summary = ticker.get_info()  # mismo que .info pero menos problemático
                 quote_type = summary.get("quoteType") or "unknown"
