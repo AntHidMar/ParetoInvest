@@ -125,6 +125,51 @@ poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 ---
 
+## 🐳 Docker Support
+
+To facilitate installation and ensure a consistent environment across different systems, we have provided a **Docker setup** for ParetoInvest. This allows users to run the software without worrying about Python, library versions, or system dependencies.
+
+### Features
+
+- **Pre-configured environment**: Includes Python, all required packages, and Java (for jMetal integration).
+- **Isolation**: Runs in a container, avoiding conflicts with other software on your machine.
+- **Cross-platform**: Works on Windows without additional setup.
+- **Ease of use**: No need to manually install dependencies; the container provides everything required to run ParetoInvest.
+
+### Usage
+
+1. **Build the Docker image** (run this from the project root):
+    ```bash
+    docker build -t paretoinvest .
+    ```
+
+2. **Run the container**:
+    ```bash
+    docker run -it --rm -v $(pwd):/app paretoinvest
+    ```
+
+    - `-v $(pwd):/app` mounts the project directory into the container, so you can access your data and results outside the container.
+    - `--rm` removes the container after exit to keep your system clean.
+
+3. **Access the application**:
+    - Once inside the container, you can run ParetoInvest as usual:
+    ```bash
+    python main.py
+    ```
+
+### Notes
+
+- The Dockerfile is included in the root directory of the project.
+- Using Docker ensures that the software works with the exact versions of Python, libraries, and Java that were tested during development.
+- This setup is ideal for users who want a **quick, reliable, and reproducible installation** without modifying their local environment.
+
+---
+
+We recommend using Docker if you are setting up ParetoInvest for the first time or want to avoid dependency conflicts.
+
+
+---
+
 ### 🛠️ Configuration
 
 The application includes a `config/` folder with the file `config.json`, used to define the runtime environment when launching the application from the provided batch script (`ParetoInvest.bat` on Windows).
@@ -288,10 +333,11 @@ paretoinvest/
 ├── resources           # Files to feed integration JMetal algorhims
 ├── ui                  # Main app file
 ├── requirements.txt    # Python dependencies
-├── LICENSE             # MIT license
+├── LICENSE             # GNU GPL license
 ├── README.md           # Project documentation
 ├── pyproject.toml      # Build system configuration for Python (PEP 518)
 ├── poetry.lock         # Exact versions of installed packages (Poetry)
+├── Dockerfile          # File to install App completely.
 └── .gitignore          # Excluded files
 ```
 
@@ -655,21 +701,41 @@ You can cite the software and refer to the exact version using a DOI (to be assi
 
 ## 📝 License
 
-
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license.
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
 You are free to:
 
-- Share — copy and redistribute the material in any medium or format
-- Adapt — remix, transform, and build upon the material
+- Use, copy, modify, and distribute the software.
+- Distribute modified versions under the same license.
 
 Under the following terms:
 
-- **Attribution** — You must give appropriate credit.
-- **NonCommercial** — You may not use the material for commercial purposes.
+- **Source Code:** The complete source code must be made available when distributing the software.
+- **Copyleft:** Any derivative work must also be licensed under GPL-3.0.
+- **No Warranty:** The software is provided “as is”, without warranty of any kind.
 
-More details: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+More details: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)
 
+---
+
+## Documentation
+
+The project documentation is available in the `docs/` directory.  
+To consult the generated materials, simply navigate to that folder.
+
+---
+
+## Data Sources and Licensing
+
+- **Data Providers / APIs:** The software uses external data from various brokers and financial APIs (e.g., Interactive Brokers, Alpaca).
+
+- **Authentication and Rate Limits:** Users need their own API keys where applicable. Please consult the provider documentation for authentication details and rate-limit policies.
+
+- **Redistribution Constraints:** The software itself is licensed under GPL-3.0, but this license does not cover the data obtained from external sources. Users must comply with the terms of service of each provider.
+
+- **Caching / Backoff:** The software implements caching and retry mechanisms to respect rate limits and reduce API requests.
+
+- **Offline Reproduction:** For full reproducibility without live feeds, we provide a historical CSV bundle in the data/ directory.
 
 ---
 

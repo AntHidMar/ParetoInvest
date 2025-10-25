@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>ParetoInvest.models.GenerarArchivosEstadisticos_JMetal API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ParetoInvest.models.GenerarArchivosEstadisticos_JMetal</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal"><code class="flex name class">
+<span>class <span class="ident">GenerateStatisticalFilesJMetal</span></span>
+<span>(</span><span>population_size,<br>num_est,<br>num_tot,<br>directory,<br>start_date,<br>end_date,<br>class_assets,<br>exchange,<br>increase_freq,<br>increase,<br>window_freq,<br>window,<br>frequency,<br>df_assets)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GenerateStatisticalFilesJMetal:
+    # Class to generate statistical files for JMetal optimization framework.
+    def __init__(self, population_size, num_est, num_tot, directory, start_date, end_date,
+                 class_assets, exchange, increase_freq, increase, window_freq,
+                 window, frequency, df_assets):
+
+        # Store initialization parameters
+        self.population_size = population_size
+        self.num_est = num_est                      # Number of assets to invest in
+        self.num_tot = num_tot                      # Total number of assets to consider
+        self.directory = directory
+        self.start_date = start_date
+        self.end_date = end_date
+        self.class_assets = class_assets
+        self.exchange = exchange
+        self.increase_freq = increase_freq
+        self.increase = increase                    # Step size for moving window
+        self.window_freq = window_freq
+        self.window = window
+        self.frequency = frequency
+        self.df_assets = df_assets
+        self.number_of_assets = num_est
+
+        # Generate filenames for each asset based on its symbol and frequency
+        df_assets[&#39;File_Name&#39;] = df_assets[&#39;symbol&#39;].astype(str).apply(
+            lambda x: f&#34;{frequency}_{x}_.csv&#34;)
+
+        # Obtain full paths for all files using the generated filenames
+        files = list(self.obtain_file_paths(df_assets, &#39;File_Name&#39;, self.directory).values())
+
+        # Sort files by file size in descending order and select top &#39;num_tot&#39;
+        files = sorted(files, key=lambda x: os.stat(x).st_size, reverse=True)
+        files = files[:num_tot]
+
+        # Error check: Ensure enough files are available
+        if len(files) &lt; num_tot:
+            print(&#34;ERROR 1. The number of available files/companies must not be less than the total desired.&#34;)
+            print(f&#34;len(files): {len(files)}&#34;)
+            print(f&#34;numTot: {num_tot}&#34;)
+            return
+
+        # Error check: Ensure total number of companies is not less than number to invest in
+        elif num_tot &lt; num_est:
+            print(&#34;ERROR 2. The total number of companies to analyze must not be less than the number to invest in.&#34;)
+            return
+
+        # Define file subsets for total and studied assets
+        files_total = files[:num_tot]      # Complete set
+        files_studied = files[:num_est]    # Subset to analyze
+
+        # Determine actual end date (use yesterday if none provided)
+        start = start_date
+        if end_date is None:
+            end = datetime.now() - timedelta(days=1)
+        else:
+            end = end_date
+
+        # Generate date intervals for analysis
+        cont = increase
+        date_list = [start]
+        start_tmp = start
+        end_tmp = self._get_next_date(increase_freq, start, cont)
+        print(f&#34;start: {start}  --  end: {end}  --  endTmp: {end_tmp}&#34;)
+        # Loop through date ranges until reaching end date
+        while end_tmp &lt;= end:
+            print(f&#34;startTmp: {start_tmp}  --  endTmp: {end_tmp}&#34;)
+
+            # Format dates as strings for file naming and reading
+            start_str = start_tmp.strftime(&#39;%Y-%m-%d&#39;)
+            end_str = end_tmp.strftime(&#39;%Y-%m-%d&#39;)
+
+            # Read historical data from files within date range
+            matrix_pct, mean_returns, total_assets = self.__read_from_file(
+                files, start_str, end_str, num_tot)
+
+            # Sort assets by mean returns in descending order
+            mean_returns = mean_returns.sort_values(ascending=False)
+            matrix_pct = matrix_pct[mean_returns.index]
+
+            print(len(matrix_pct), len(mean_returns), total_assets)
+
+            # Error check: Ensure enough assets are available
+            if total_assets &lt; num_est:
+                return &#34;ERROR 3. Total number of assets must not be less than number of assets to invest in.&#34;
+
+            # Store historical returns matrix and covariance matrix
+            self.hist_stock_returns = matrix_pct
+            self.cov_hist_return = matrix_pct.cov()
+
+            # Create directory to save statistical files
+            dir_csv = f&#34;resources/JMetal_Files/{exchange}_{num_est}_{num_tot}&#34;
+            os.makedirs(dir_csv, exist_ok=True)
+
+            # Save covariance matrix to CSV
+            self.cov_hist_return.to_csv(
+                f&#34;{dir_csv}/_cov_hist_return_{exchange}_{num_est}_{num_tot}_{start_tmp.strftime(&#39;%Y%m%d&#39;)}_{end_tmp.strftime(&#39;%Y%m%d&#39;)}_.csv&#34;)
+
+            # Save mean returns to CSV
+            mean_returns.to_csv(
+                f&#34;{dir_csv}/_mean_hist_return_{exchange}_{num_est}_{num_tot}_{start_tmp.strftime(&#39;%Y%m%d&#39;)}_{end_tmp.strftime(&#39;%Y%m%d&#39;)}_.csv&#34;)
+
+            # Store the mean returns for further use
+            self.mean_hist_return = mean_returns
+
+            # Move to the next date interval
+            date_list.append(end_tmp)
+            cont += increase
+            start_tmp = end_tmp
+            end_tmp = self._get_next_date(increase_freq, start, cont)
+
+    # Function to obtain file paths from a DataFrame column.
+    def obtain_file_paths(self, df, col_name, directory):
+        # Create dictionary mapping file names to full paths
+        return {row[col_name]: os.path.join(directory, row[col_name]) for _, row in df.iterrows()}
+   
+    # Returns a list of file paths that match the given prefix.
+    def listfilesWithPath(self, path, prefijo):         
+        
+        # Esta forma se bloquea cuando hay muchos archivos.
+        #return [obj.name for obj in scandir(path) if obj.is_file() and obj.name.startswith(prefijo) ]
+        #return [path+obj.name for obj in sorted(scandir(path), key=os.path.getmtime) if obj.is_file() and obj.name.startswith(prefijo) ]
+        #return [path+obj.name for obj in scandir(path) if obj.is_file() and obj.name.startswith(prefijo) ]
+
+        # Forma más eficiente de devolver archivos.
+        files = []
+        for dirpath, subdirs, files in os.walk(path):
+            files.extend(os.path.join(dirpath, x) for x in files if x.startswith(prefijo))
+        return files
+
+    # Function to obtain file paths based on names in a DataFrame column.
+    def get_files_paths(df, name, folder):
+        &#34;&#34;&#34;
+        Search for files in the specified folder based on names in a DataFrame column.
+
+        :param df:      DataFrame containing the file names
+        :param name:    Name of the column in the DataFrame that contains the file names
+        :param folder:  Folder path where to search for the files
+        :return:        Dictionary mapping {File_Name: full_path} for files that exist
+        &#34;&#34;&#34;
+        rutas = {}
+        for File_Name in df[name].dropna().unique():  # Remove NaN values and duplicated entries
+            full_path = os.path.join(folder, File_Name)  # Construct full path
+            if os.path.isfile(full_path):  # Check if the file exists at that path
+                rutas[File_Name] = full_path  # Add it to the dictionary
+        return rutas
+
+    # Function to calculate the next date based on the frequency and increment.
+    def _get_next_date(self, increaseFreq, start, cont):
+        &#34;&#34;&#34;
+        Calculate a new date by increasing the given start date by a certain amount of time.
+
+        :param increaseFreq: Frequency to increase (&#34;year&#34;, &#34;month&#34;, &#34;week&#34;, or &#34;day&#34;)
+        :param start:        Starting datetime object
+        :param cont:         Number of units to add
+        :return:             New datetime object with the increment applied
+        &#34;&#34;&#34;
+        endTmp = None
+
+        if increaseFreq == &#34;year&#34;:
+            endTmp = start + relativedelta(years=cont)
+        elif increaseFreq == &#34;month&#34;:
+            endTmp = start + relativedelta(months=cont)
+        elif increaseFreq == &#34;week&#34;:
+            endTmp = start + timedelta(weeks=cont)
+        elif increaseFreq == &#34;day&#34;:
+            endTmp = start + timedelta(days=cont)
+
+        return endTmp
+
+    # Function that reads the data to be studied and loads it into dataframes.
+    # It returns:
+    # - A dataframe with daily log returns of each asset (merged across all files).
+    # - A dataframe with total returns of each asset.
+    # - The number of files processed.
+    def __read_from_file(self, filesname: [str], startDate, endDate, numTot):
+        
+        if filesname is None:
+            raise FileNotFoundError(&#34;filesname can not be None&#34;)
+
+        df = pd.DataFrame()      # To store log returns for all assets.
+        dfR = pd.DataFrame()     # To store total return per asset.
+        retornos = []            # List to hold total return of each asset.
+        cols = []                # List of asset names (column names).
+        cont = 1                 # Counter to control number of files processed.
+
+        for file in filesname:
+            print(f&#34;cont:{cont} - file:{file}&#34;)
+
+            if cont &gt; numTot:
+                break
+
+            # Read the CSV file, parse the first column as datetime (removing timezone info if present)
+            dfTemp = pd.read_csv(file, header=0, encoding=&#39;utf-8&#39;, 
+                                parse_dates=[0], index_col=[0], 
+                                date_parser=lambda x: pd.to_datetime(x.rpartition(&#39;+&#39;)[0]))
+
+            dfTemp.index = pd.to_datetime(dfTemp.index)  # Ensure datetime index
+            dfTemp = dfTemp.loc[startDate:endDate]       # Filter by date range
+            print(&#34;len(dfTemp)&#34;, len(dfTemp))
+
+            # Remove duplicate timestamps, keeping only the first occurrence
+            dfTemp = dfTemp[~dfTemp.index.duplicated(keep=&#39;first&#39;)]
+
+            if len(dfTemp) &gt; 0:
+                dfTemp = dfTemp.sort_index()             # Ensure data is sorted chronologically
+                dfTemp = dfTemp.resample(&#39;d&#39;).last()     # Resample to daily frequency using last available value
+
+                # Extract the company name from the file name
+                newName = file.replace(&#39;_.csv&#39;,&#39;&#39;)\
+                                .replace(&#39;C:\\Datos\\EspacioTrabajoAnaconda\\SII\\Test\\Datos\\Historico\\alpaca_Dia\\renombrar\\&#39;,&#39;&#39;)\
+                                .replace(&#39;alpaca_Dia_&#39;,&#39;&#39;)
+
+                print(newName)
+                cols.append(newName)                     # Store asset name
+
+                # Rename &#39;close&#39; column to asset name
+                dfTemp.rename(columns={ &#39;close&#39;: newName }, inplace=True)
+                dfTemp = dfTemp[[newName]]               # Keep only the renamed column
+
+                # Convert data to numeric, log returns, clean NaNs and infinite values
+                dfTemp[newName] = dfTemp[newName].apply(pd.to_numeric, errors=&#39;coerce&#39;)
+                dfTemp[newName] = dfTemp.pct_change().apply(lambda x: np.log(1 + x))
+                dfTemp[newName].replace([np.inf, -np.inf], np.nan, inplace=True)
+                dfTemp[newName].dropna(inplace=True)
+
+                retornos.append(dfTemp[newName].sum())   # Calculate total log return for the asset
+
+                # Merge the asset&#39;s return data with the global dataframe
+                if len(df) &gt; 0:
+                    df = pd.concat([dfTemp, df], axis=1)
+                else:
+                    df = dfTemp
+            else:
+                print(&#34;   No data exists for the asset analyzed.&#34;)
+
+            cont += 1
+
+        # Fill any missing values in the merged dataframe using forward and backward fill
+        df = df.fillna(method=&#34;ffill&#34;)
+        df = df.fillna(method=&#34;bfill&#34;)
+        df = df.sort_index()
+
+        # Store the total returns for each asset in a single-row DataFrame
+        dfR.loc[0, cols] = retornos
+        dfR = dfR.sum()  # Optionally aggregate to a single series
+
+        return df, dfR, len(filesname)
+
+    # Function that reads the data to be studied and loads it into dataframes.
+    &#34;&#34;&#34;def __read_from_file(self, filesname: [str], startDate, endDate, numTot):
+        
+        if filesname is None:
+            raise FileNotFoundError(&#34;filesname can not be None&#34;)
+
+        df=pd.DataFrame()
+        dfR=pd.DataFrame()
+        retornos = []
+        cols = []
+        cont = 1
+        for file in filesname:
+            print(f&#34;cont:{cont} - file:{file}&#34;)
+
+            if cont &gt; numTot:
+                break 
+            # Leemos datos
+            dfTemp = pd.read_csv(file, header=0, encoding=&#39;utf-8&#39;, parse_dates=[0], index_col=[0], date_parser=lambda x: pd.to_datetime(x.rpartition(&#39;+&#39;)[0]))                
+            dfTemp.index = pd.to_datetime(dfTemp.index)     # Convert to indexdatetime  
+            
+            dfTemp = dfTemp.loc[startDate:endDate]          # Selected date to study.
+            print(&#34;len(dfTemp)&#34;, len(dfTemp))
+            dfTemp = dfTemp[~dfTemp.index.duplicated(keep=&#39;first&#39;)]     # Delete duplicates, keeping the first one.
+
+            if len(dfTemp) &gt; 0:
+
+                dfTemp = dfTemp.sort_index()
+                dfTemp = dfTemp.resample(&#39;d&#39;).last()    # Resample to daily frequency
+                # Get the company details from the data file.
+                newName = file.replace(&#39;_.csv&#39;,&#39;&#39;).replace(&#39;C:\\Datos\\EspacioTrabajoAnaconda\\SII\\Test\\Datos\\Historico\\alpaca_Dia\\renombrar\\&#39;,&#39;&#39;).replace(&#39;alpaca_Dia_&#39;,&#39;&#39;)
+                print(newName)
+                cols.append(newName)    # Añadimos el nombre de la empresa a la lista de nombres de empresas.
+                # Le damos a la columna close, para la empresa actual, el nombre de la empresa actual, así cuando estén todas 
+                # las empresas concatenadas podamos identificar los datos de cada una de ellas.
+                dfTemp.rename(columns={ &#39;close&#39;: newName }, inplace = True)
+                dfTemp = dfTemp[[newName]]  # Seleccionamos solo la columna con el nombre de la empresa, eliminando el resto.
+                dfTemp[newName] = dfTemp[newName].apply(pd.to_numeric, errors=&#39;coerce&#39;) # Convertimos datos a numérico.
+                dfTemp[newName] = dfTemp.pct_change().apply(lambda x: np.log(1+x))      # Calculamos los datos en variaciones de porcentaje en logaritmo mas uno.           
+                dfTemp[newName].replace([np.inf, -np.inf], np.nan, inplace=True)    # Evitamos infinitos.
+                dfTemp[newName].dropna(inplace=True)   
+                retornos.append(dfTemp[newName].sum())  # Sumamos todos las variaciones para calcular el retorno total.
+                #print(&#34;retornos&#34;)
+                #print(retornos)
+                #print(sum(retornos))
+                if len(df) &gt; 0:                
+                    #df = pd.merge(df, dfTemp, left_index=False, right_index=False)
+                    df = pd.concat([dfTemp, df], axis=1)  # Concatenamos retornos.               
+                else:
+                    df = dfTemp
+            else:
+                print(&#34;   No existen datos para el activo analizado.&#34;)        
+            
+            cont+=1
+            #print(df)
+        
+        df = df.fillna(method=&#34;ffill&#34;)  # Sustituimos valores nulos por valores posteriores.
+        df = df.fillna(method=&#34;bfill&#34;)  # Sustituimos valores nulos por valores anteriores.
+        df = df.sort_index()
+        
+        dfR.loc[0,cols] = retornos
+        #dfR = dfR.mean()
+        dfR = dfR.sum()
+
+        
+        return df, dfR, len(filesname)
+    &#34;&#34;&#34;
+    # Function that reads asset data and calculates total return for each one.
+    # The assets are sorted by their total return over a given time range.
+    def __SortedByReturn(self, df_Assets, startDate, endDate, numTot):
+        if df_Assets is None:
+            raise FileNotFoundError(&#34;df_Assets cannot be None&#34;)
+
+        retornos = []            # List to store individual asset returns
+        cols = []                # Column names for the returns
+        cont = 1                 # Counter for number of files processed
+        arrayReturn = []         # Final output: list of dictionaries with return values
+
+        for row in df_Assets.itertuples():
+
+            print(f&#34;cont:{cont} - {self.directory}&#34;)
+
+            if cont &gt; numTot:
+                break
+
+            # Construct full path to the file
+            file = self.directory + &#34;\\&#34; + row.File_Name
+
+            # Read CSV with date as index
+            dfTemp = pd.read_csv(file, index_col=0, header=0, encoding=&#39;utf-8&#39;)
+            dfTemp.index = pd.to_datetime(dfTemp.index)
+
+            # Convert startDate and endDate to pandas timestamps
+            startDate_ts = pd.Timestamp(startDate)
+            endDate_ts = pd.Timestamp(endDate)
+
+            # Get the time zone of the data (if any)
+            tz_df = dfTemp.index.tz
+
+            # Align start and end dates to the time zone of the data
+            if startDate_ts.tzinfo is not None:
+                startDate = startDate_ts.tz_convert(tz_df) if tz_df else startDate_ts
+            else:
+                startDate = startDate_ts.tz_localize(tz_df) if tz_df else startDate_ts
+
+            if endDate_ts.tzinfo is not None:
+                endDate = endDate_ts.tz_convert(tz_df) if tz_df else endDate_ts
+            else:
+                endDate = endDate_ts.tz_localize(tz_df) if tz_df else endDate_ts
+
+            # Filter rows between start and end date
+            dfTemp = dfTemp.loc[startDate:endDate]            
+            dfTemp = dfTemp[~dfTemp.index.duplicated(keep=&#39;first&#39;)]
+
+            if len(dfTemp) &gt; 0:  
+                dfTemp = dfTemp.sort_index()
+                dfTemp = dfTemp.resample(&#39;d&#39;).last()  # Resample to daily frequency
+
+                # Extract clean asset name from file name
+                newName = row.File_Name.replace(&#39;Day_&#39;,&#39;&#39;).replace(&#39;_.csv&#39;,&#39;&#39;)
+                cols.append(newName)
+                dfTemp.rename(columns={ &#39;close&#39;: newName }, inplace=True)
+                dfTemp = dfTemp[[newName]]
+
+                # Convert column to numeric and compute log returns
+                dfTemp[newName] = dfTemp[newName].apply(pd.to_numeric, errors=&#39;coerce&#39;)
+                dfTemp[newName] = dfTemp.pct_change().apply(lambda x: np.log(1 + x))
+                dfTemp[newName].replace([np.inf, -np.inf], np.nan, inplace=True)
+                dfTemp[newName].dropna(inplace=True)
+
+                # Compute cumulative return and store it
+                retornos.append(dfTemp[newName].sum())
+                arrayReturn.append({&#34;Id&#34;: str(cont), &#34;Return&#34;: sum(retornos)})
+            
+            else:    
+                print(&#34;   No data available for the asset analyzed.&#34;)   
+
+            cont += 1
+
+        return arrayReturn
+
+    &#34;&#34;&#34;# Función que lee los datos a estudiar y los carga en dataframes.
+    # def __SortedByReturn(self, filesname: [str], startDate, endDate, numTot):
+    def __SortedByReturn(self, df_Assets, startDate, endDate, numTot):
+        
+        print(startDate, endDate, numTot)
+        if df_Assets is None:
+            raise FileNotFoundError(&#34;filesname can not be None&#34;)
+
+        df=pd.DataFrame()
+        dfR=pd.DataFrame()
+        retornos = []
+        cols = []
+        cont = 1
+        diccReturn = {}
+        arrayReturn = []
+        for row in df_Assets.itertuples():
+
+            print(f&#34;cont:{cont} - {self.directory}&#34;)
+            #print(row)
+            
+            if cont &gt; numTot:
+                break
+            #temp=pd.read_csv(file)  
+            file = self.directory + &#34;\\&#34; + row.File_Name
+            dfTemp=pd.read_csv(file, index_col=0, header=0, encoding=&#39;utf-8&#39;)
+            
+            #dfTemp = pd.read_csv(file, header=0, encoding=&#39;utf-8&#39;, parse_dates=[0], index_col=[0], date_parser=lambda x: pd.to_datetime(x.rpartition(&#39;+&#39;)[0]))                
+            dfTemp.index = pd.to_datetime(dfTemp.index) 
+            
+            # Convertir startDate y endDate a Pandas Timestamp
+            startDate_ts = pd.Timestamp(startDate)
+            endDate_ts = pd.Timestamp(endDate)
+            
+            # Obtener la zona horaria del DataFrame (si tiene una)
+            tz_df = dfTemp.index.tz  
+
+            # Convertir startDate y endDate a la misma zona horaria
+            # Si startDate_ts ya tiene una zona horaria (tz-aware), usa tz_convert
+            if startDate_ts.tzinfo is not None:
+                startDate = startDate_ts.tz_convert(tz_df) if tz_df else startDate_ts
+            else:
+                startDate = startDate_ts.tz_localize(tz_df) if tz_df else startDate_ts
+            
+            if endDate_ts.tzinfo is not None:
+                endDate = endDate_ts.tz_convert(tz_df) if tz_df else endDate_ts
+            else:
+                endDate = endDate_ts.tz_localize(tz_df) if tz_df else endDate_ts
+            
+            dfTemp = dfTemp.loc[startDate:endDate]            
+            dfTemp = dfTemp[~dfTemp.index.duplicated(keep=&#39;first&#39;)]
+            
+            #print(dfTemp)
+            
+            if len(dfTemp) &gt; 0:  
+                #print(&#34;++++&#34;)
+                #print(len(dfTemp))
+                dfTemp = dfTemp.sort_index()
+                dfTemp = dfTemp.resample(&#39;d&#39;).last() #.dropna()
+
+                #newName = file.replace(&#39;_.csv&#39;,&#39;&#39;).replace(&#39;C:\\Datos\\EspacioTrabajoAnaconda\\SII\\Test\\Datos\\Historico\\alpaca_Dia\\renombrados\\&#39;,&#39;&#39;).replace(&#39;alpaca_Dia_&#39;,&#39;&#39;)
+                newName = row.File_Name.replace(&#39;Day_&#39;,&#39;&#39;).replace(&#39;_.csv&#39;,&#39;&#39;)
+                cols.append(newName)
+                dfTemp.rename(columns={ &#39;close&#39;: newName }, inplace = True)
+                dfTemp = dfTemp[[newName]]
+                
+                dfTemp[newName] = dfTemp[newName].apply(pd.to_numeric, errors=&#39;coerce&#39;) # Convert data to numeric.                
+                dfTemp[newName] = dfTemp.pct_change().apply(lambda x: np.log(1+x))      # Calculate returns in log scale                
+                dfTemp[newName].replace([np.inf, -np.inf], np.nan, inplace=True)        # Avoid division by zero or log of zero.
+                dfTemp[newName].dropna(inplace=True)                                    # Delete nulls.
+                retornos.append(dfTemp[newName].sum())                                  # Sum all variations to calculate total return.
+
+                arrayReturn.append({&#34;Id&#34;:str(cont),&#34;Return&#34;:sum(retornos)})             # Append the return to the array.
+                
+            else:    
+                print(&#34;   Does not exist data for the asset analyzed.&#34;)   
+            
+            cont+=1
+        
+        return arrayReturn
+    &#34;&#34;&#34;
+    # Function to calculate historical returns for specified months.
+    def hist_return(self, stocks, months: [int]):
+        &#39;&#39;&#39;
+        Calculates stock returns for various months and returns a DataFrame.
+        Input: List of months as integers.
+        Output: Historical returns as a DataFrame.
+        &#39;&#39;&#39;
+
+        idx = []  # To store labels for each calculated return (e.g., &#39;3_mon_return&#39;)
+        df = pd.DataFrame()  # Initialize an empty DataFrame to store the returns
+
+        for mon in months:
+            # Calculate the return as the percentage difference between the first month and the given month.
+            # Note: Assumes the first row (iloc[0]) corresponds to the most recent data.
+            temp = (stocks.iloc[0, 1:] - stocks.iloc[mon, 1:]) / (stocks.iloc[mon, 1:])
+
+            # Append the label for the current return period (e.g., &#39;3_mon_return&#39;)
+            idx.append(str(mon) + &#39;_mon_return&#39;)
+
+            # Convert the Series to a single-row DataFrame and concatenate it to the results
+            df = pd.concat([df, temp.to_frame().T], ignore_index=True)
+
+        # Assign the custom labels to the DataFrame index for clarity
+        df.index = idx
+
+        # Return the DataFrame containing historical returns for each specified month period
+        return df
+        
+    &#34;&#34;&#34;def hist_return(self, stocks, months: [int]):
+        &#39;&#39;&#39; It calculates Stock returns for various months and returns a dataframe.
+            Input: Months in the form of a list.
+            Output: Historical returns in the form of a DataFrame. &#39;&#39;&#39;
+        idx=[]
+        df=pd.DataFrame()
+        for mon in months:
+            # Diferencia entre el primer mes y cada uno de los meses indicados por el array de meses.
+                # Dividimos entre el último mes para convertirlo en porcentajes.
+            temp=(stocks.iloc[0,1:] - stocks.iloc[mon,1:])/(stocks.iloc[mon,1:])
+            # Vamos añadiendo cada uno de los registros del indice
+            # EJ: 3_mon_return, 6_mon_return, ...
+            idx.append(str(mon)+&#39;_mon_return&#39;)
+            # Concatenamos cada uno de los cálculos.
+            df=pd.concat([df, temp.to_frame().T], ignore_index=True)
+        # Añadimos los índices generados para cada uno de los registros.
+        df.index=idx
+        
+        # Devolveremos el retorno para cada uno de los meses indicados con respecto el primer mes.
+        return df    &#34;&#34;&#34;</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Methods</h3>
+<dl>
+<dt id="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.get_files_paths"><code class="name flex">
+<span>def <span class="ident">get_files_paths</span></span>(<span>df, name, folder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_files_paths(df, name, folder):
+    &#34;&#34;&#34;
+    Search for files in the specified folder based on names in a DataFrame column.
+
+    :param df:      DataFrame containing the file names
+    :param name:    Name of the column in the DataFrame that contains the file names
+    :param folder:  Folder path where to search for the files
+    :return:        Dictionary mapping {File_Name: full_path} for files that exist
+    &#34;&#34;&#34;
+    rutas = {}
+    for File_Name in df[name].dropna().unique():  # Remove NaN values and duplicated entries
+        full_path = os.path.join(folder, File_Name)  # Construct full path
+        if os.path.isfile(full_path):  # Check if the file exists at that path
+            rutas[File_Name] = full_path  # Add it to the dictionary
+    return rutas</code></pre>
+</details>
+<div class="desc"><p>Search for files in the specified folder based on names in a DataFrame column.</p>
+<p>:param df:
+DataFrame containing the file names
+:param name:
+Name of the column in the DataFrame that contains the file names
+:param folder:
+Folder path where to search for the files
+:return:
+Dictionary mapping {File_Name: full_path} for files that exist</p></div>
+</dd>
+<dt id="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.hist_return"><code class="name flex">
+<span>def <span class="ident">hist_return</span></span>(<span>self, stocks, months: [<class 'int'>])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hist_return(self, stocks, months: [int]):
+    &#39;&#39;&#39;
+    Calculates stock returns for various months and returns a DataFrame.
+    Input: List of months as integers.
+    Output: Historical returns as a DataFrame.
+    &#39;&#39;&#39;
+
+    idx = []  # To store labels for each calculated return (e.g., &#39;3_mon_return&#39;)
+    df = pd.DataFrame()  # Initialize an empty DataFrame to store the returns
+
+    for mon in months:
+        # Calculate the return as the percentage difference between the first month and the given month.
+        # Note: Assumes the first row (iloc[0]) corresponds to the most recent data.
+        temp = (stocks.iloc[0, 1:] - stocks.iloc[mon, 1:]) / (stocks.iloc[mon, 1:])
+
+        # Append the label for the current return period (e.g., &#39;3_mon_return&#39;)
+        idx.append(str(mon) + &#39;_mon_return&#39;)
+
+        # Convert the Series to a single-row DataFrame and concatenate it to the results
+        df = pd.concat([df, temp.to_frame().T], ignore_index=True)
+
+    # Assign the custom labels to the DataFrame index for clarity
+    df.index = idx
+
+    # Return the DataFrame containing historical returns for each specified month period
+    return df</code></pre>
+</details>
+<div class="desc"><p>Calculates stock returns for various months and returns a DataFrame.
+Input: List of months as integers.
+Output: Historical returns as a DataFrame.</p></div>
+</dd>
+<dt id="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.listfilesWithPath"><code class="name flex">
+<span>def <span class="ident">listfilesWithPath</span></span>(<span>self, path, prefijo)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listfilesWithPath(self, path, prefijo):         
+    
+    # Esta forma se bloquea cuando hay muchos archivos.
+    #return [obj.name for obj in scandir(path) if obj.is_file() and obj.name.startswith(prefijo) ]
+    #return [path+obj.name for obj in sorted(scandir(path), key=os.path.getmtime) if obj.is_file() and obj.name.startswith(prefijo) ]
+    #return [path+obj.name for obj in scandir(path) if obj.is_file() and obj.name.startswith(prefijo) ]
+
+    # Forma más eficiente de devolver archivos.
+    files = []
+    for dirpath, subdirs, files in os.walk(path):
+        files.extend(os.path.join(dirpath, x) for x in files if x.startswith(prefijo))
+    return files</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.obtain_file_paths"><code class="name flex">
+<span>def <span class="ident">obtain_file_paths</span></span>(<span>self, df, col_name, directory)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def obtain_file_paths(self, df, col_name, directory):
+    # Create dictionary mapping file names to full paths
+    return {row[col_name]: os.path.join(directory, row[col_name]) for _, row in df.iterrows()}</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ParetoInvest.models" href="index.html">ParetoInvest.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal" href="#ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal">GenerateStatisticalFilesJMetal</a></code></h4>
+<ul class="">
+<li><code><a title="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.get_files_paths" href="#ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.get_files_paths">get_files_paths</a></code></li>
+<li><code><a title="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.hist_return" href="#ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.hist_return">hist_return</a></code></li>
+<li><code><a title="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.listfilesWithPath" href="#ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.listfilesWithPath">listfilesWithPath</a></code></li>
+<li><code><a title="ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.obtain_file_paths" href="#ParetoInvest.models.GenerarArchivosEstadisticos_JMetal.GenerateStatisticalFilesJMetal.obtain_file_paths">obtain_file_paths</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+name: Build PyQt5 App (Windows)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: |
+          pip install poetry
+
+      - name: Configure Poetry to create virtualenv inside project
+        run: |
+          poetry config virtualenvs.in-project true
+
+      - name: Install dependencies with Poetry
+        run: |
+          poetry install
+
+      - name: Test main script
+        run: |
+          poetry run python main.py
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Package app with PyInstaller
+        run: |
+          poetry run pip install pyinstaller
+          poetry run pyinstaller --noconfirm --onefile --windowed main.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PyQt5App
+          path: dist/main.exe

@@ -9,6 +9,9 @@ class Alpaca:
 
     # Initialization of the Alpaca class
     def __init__(self, environment="test", alpaca_account_name="Paper"):
+        
+        print(f"Environment: {environment}")
+        print(f"Alpaca account name: {alpaca_account_name}")
 
         # Check for personal config file
         if os.path.exists("config/personal_Lib_Alpaca.json"):
@@ -29,8 +32,6 @@ class Alpaca:
             API_SECRET = config[alpaca_account_name]['API_SECRET']
             BASE_URL = config[alpaca_account_name]['BASE_URL']
 
-        print(f"Environment: {environment}")
-        print(f"Alpaca account name: {alpaca_account_name}")
         print(f"API_KEY: {API_KEY}")
         print(f"API_SECRET: {API_SECRET}")
         print(f"BASE_URL: {BASE_URL}")

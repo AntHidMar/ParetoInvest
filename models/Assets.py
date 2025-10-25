@@ -61,7 +61,7 @@ class AssetManager:
         return self._logger
 
     def save_assets_to_csv(self):
-        print("INICIO save_assets_to_csv    ")
+    
         # Start logging the process
         self._logger.info("Starting to fetch active assets from Alpaca and save to CSV.")
 
@@ -119,121 +119,6 @@ class AssetManager:
             return pd.read_csv(file_name, index_col=0, header=0, encoding='utf-8')
         return None  # Return None if file doesn't exist
 
-    # Function to detect the type of asset
-    """def detect_asset_type(self, df, symbol_column):
-
-        types = []
-        for symbol in df[symbol_column]:
-            print(f"symbol: {symbol}")
-            try:
-                info = yf.symbol(symbol).info                
-                type = info.get('quoteType', 'unknown')
-            except Exception as e:
-                print(f"Error al obtener info para {symbol}: {e}")
-                type = 'unknown'        
-            types.append(type)
-            time.sleep(0.5)  # to avoid being blocked by Yahoo
-        
-        # Add asset type
-        df['asset_type'] = types
-        
-        # Create name new file
-        file_name = os.path.join(self.dir_asset_file, "Assets_with_type.csv")  # Path to save CSV
-
-        # Save new file with asset type
-        #df.to_csv(file_name, index=False, encoding='utf-8')
-
-        return df"""
-
-
-    """def classify_asset_type(self, df):
-
-        refined_types = []
-        types = []
-        
-        for row in  df.itertuples():
-
-            symbol = getattr(row, 'symbol')
-            name = getattr(row, 'name').lower()
-            quote_type = 'unknown'
-            
-            print(f"    symbol: {symbol}")
-            print(f"    Alpaca name: {name}")
-
-            # Opción 1: "unit" rodeada por espacios o al inicio/final de texto
-            patron_unit = r'(^|\s)unit(\s|$)'
-            patron_fund = r'(^|\s)fund(\s|$)'
-            patron_reit = r'(^|\s)reit(\s|$)'
-
-            # Refined classification based on keywords
-            if 'etf' in name or 'valuefund' in name:
-                asset_type = 'ETF'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'ETF'
-            elif ('common stock' in name
-                or 'voting' in name):
-                asset_type = 'Stock'    
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif 'warrant' in name:
-                asset_type = 'Warrant'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif 'right' in name:
-                asset_type = 'Right'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif re.search(patron_unit, name, re.IGNORECASE):
-                asset_type = 'Unit'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif re.search(patron_reit, name, re.IGNORECASE):
-                asset_type = 'REIT'     # Real Estate Investment Trust
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif ('preferred' in name
-                or '.PR' in symbol.upper()):
-                asset_type = 'Preferred stock'      # Special Purpose Acquisition Company
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif ('adr' in name
-                or 'sponsored' in name
-                or 'depositary' in name
-                or 'depository' in name
-                ):                    
-                asset_type = 'ADR'      # American Depositary Receipt
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif 'acquisition' in name:                
-                asset_type = 'SPAC'      # Special Purpose Acquisition Company
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif 'subordinated debentures' in name:                
-                asset_type = 'bond'
-                if quote_type == 'unknown': quote_type = 'bond'
-            elif quote_type == 'equity':
-                asset_type = 'Stock'
-            elif symbol.upper().endswith('.A'):
-                asset_type = 'Stock'    
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif 'ordinary share' in name:
-                print(f"    Ordinary share: {name}")
-                asset_type = 'Stock'    
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
-            elif re.search(patron_fund, name, re.IGNORECASE):
-                asset_type = 'fund'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'FUND'
-            else:
-                asset_type = 'Stock 1'
-
-            refined_types.append(asset_type)
-            types.append(quote_type)
-            #time.sleep(0.5)  # Prevent rate-limiting by Yahoo
-
-        df['asset_type'] = types
-        df['refined_asset_type'] = refined_types
-        
-        # Create name new file
-        file_name = os.path.join(self.dir_asset_file, "Assets_with_type.csv")  # Path to save CSV
-
-        # Save new file with asset type
-        df.to_csv(file_name, index=False, encoding='utf-8')
-
-        return df"""
-
-
-
     def classify_asset_type(self, df):
 
         refined_types = []
@@ -289,17 +174,17 @@ class AssetManager:
             # Refined classification based on keywords
             if 'etf' in quote_type or 'etf' in long_name or 'etf' in short_name or 'etf' in name:
                 asset_type = 'ETF'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'ETF'
+                if quote_type == 'unknown' or quote_type == '' or quote_type == 'none': quote_type = 'ETF'
             elif ('common stock' in long_name or 'common stock' in short_name or 'common stock' in name
                 or 'voting' in long_name or 'voting' in short_name or 'voting' in name):
                 asset_type = 'Stock'    
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
+                if quote_type == 'unknown' or quote_type == '' or quote_type == 'none': quote_type = 'EQUITY'
             elif 'warrant' in long_name or 'warrant' in short_name or 'warrant' in name:
                 asset_type = 'Warrant'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
+                if quote_type == 'unknown' or quote_type == '' or quote_type == 'none': quote_type = 'EQUITY'
             elif 'right' in long_name or 'right' in short_name or 'right' in name:
                 asset_type = 'Right'
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
+                if quote_type == 'unknown' or quote_type == '' or quote_type == 'none': quote_type = 'EQUITY'
             elif 'unit' in long_name or 'unit' in short_name or 'unit' in name:
                 asset_type = 'Unit'
                 if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
@@ -319,7 +204,7 @@ class AssetManager:
                 if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
             elif 'acquisition' in long_name or 'acquisition' in short_name or 'acquisition' in name:                
                 asset_type = 'SPAC'      # Special Purpose Acquisition Company
-                if quote_type == 'unknown' or quote_type == '': quote_type = 'EQUITY'
+                if quote_type == 'unknown' or quote_type == '' or quote_type == 'none': quote_type = 'EQUITY'
             elif 'subordinated debentures' in long_name or 'subordinated debentures' in short_name or 'subordinated debentures' in name:                
                 asset_type = 'bond'
                 if quote_type == 'unknown': quote_type = 'bond'

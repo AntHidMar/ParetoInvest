@@ -46,7 +46,6 @@ class MainWindow(QMainWindow):
 
         # Set up the UI
         ui_components.init_ui(self, self.log)
-    
 
     ### Functions linked to the buttons in the UI ###
 
@@ -325,7 +324,7 @@ class MainWindow(QMainWindow):
                 cont = 0
                 self.progress_bar.setValue(cont)
 
-                # Background process to download data without blocking the UI
+                # Background process to download data without blocking the UI                
                 self.worker_IB = IB_data_loader.HistoricalDataWorker(self.df_Assets, self.duration, self.end_pydate, self.frequency, self.log)
                 self.worker_IB.data_ready.connect(lambda data: ui_event_handlers.display_data(self, data) )
                 self.worker_IB.error_signal.connect(self.show_error)
@@ -361,7 +360,6 @@ class MainWindow(QMainWindow):
         else:
             self.show_sms("No asset list found to download.", "You must select the directory containing the asset list file.")
    
-
     ### Functions to handle operations ###
 
     # Function that extracts the result file after the execution of the evolutionary algorithm if it exists.

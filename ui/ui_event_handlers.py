@@ -23,7 +23,6 @@ def on_finished(self):
     # Re-enable the buttons
     self.activate_buttons()
 
-
 # Function to handle changes in the checkbox state for updating asset types
 def checkbox_types_changed(self, state):
     """
@@ -66,7 +65,6 @@ def hide_checkbox(self):
     self.checkbox_types_state = False
     self.checkbox_types.setChecked(self.checkbox_types_state)
     self.log.printAndLogger("Checkbox 'Update Types' hidden.")  
-
 
 # Function to display data in the text area after downloading
 def display_data(self, data):

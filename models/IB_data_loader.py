@@ -40,6 +40,7 @@ class HistoricalDataWorker(QThread):
             counter = 0  # Counter to track processed assets
 
             # Iterate over the assets
+            #for row_asset in self.df_asset_list[self.df_asset_list.symbol == 'LSBWF'].itertuples():    # Control
             for row_asset in self.df_asset_list.itertuples():
 
                 symbol = row_asset.symbol       # Extract symbol from row
@@ -52,6 +53,7 @@ class HistoricalDataWorker(QThread):
                 # List to store the fetched bar data as DataFrames
                 all_bars = []
 
+                useRTH = False
                 # Request historical bar data for the asset
                 bars = await ib.reqHistoricalDataAsync(
                     contract,
@@ -59,16 +61,15 @@ class HistoricalDataWorker(QThread):
                     durationStr=duration,
                     barSizeSetting=f'1 {frequency.lower()}',
                     whatToShow='TRADES',
-                    useRTH=False,       # Set to True to use only regular trading hours
+                    useRTH=useRTH,       # Set to True to use only regular trading hours
                     formatDate=2        # Use yyyyMMdd HH:mm:ss format
                 )
-
+                
                 # Convert fetched bars to a list of tuples (for optional UI transmission)
                 data = [(bar.date, bar.open, bar.high, bar.low, bar.close, bar.volume) for bar in bars]
-
+                df_new_data = None
                 if bars:
-                    logger.printAndLogger("control 1 - bars")
-
+                    
                     # Convert bars to DataFrame using ib_insync's utility function
                     df = util.df(bars)
                     all_bars.append(df)
@@ -82,12 +83,16 @@ class HistoricalDataWorker(QThread):
                         logger.printAndLogger(f"    Records read from broker: {len(df_new_data)}")
 
                 # If new data was fetched, continue with file merging and saving
-                if len(df_new_data) > 0:
+                if not df_new_data is None and len(df_new_data) > 0:
 
                     # Build output file path
                     csv_directory = "data/financial_data/"
                     #file_name = f"{csv_directory}IB_{frequency}/{frequency}_{exchange}_{symbol}_.csv"
-                    file_name = f"{csv_directory}IB_{frequency}/{frequency}_{symbol}_.csv"
+                    #file_name = f"{csv_directory}IB_{frequency}/{frequency}_{symbol}_{duration.replace(' ','_')}_.csv"
+                    if useRTH:
+                        file_name = f"{csv_directory}IB_{frequency}_useRTH_True/{frequency}_{symbol}_.csv"
+                    else:
+                        file_name = f"{csv_directory}IB_{frequency}_useRTH_False/{frequency}_{symbol}_.csv"
                     logger.printAndLogger(f"file_name: {file_name}")
 
                     # If file already exists, merge with existing data

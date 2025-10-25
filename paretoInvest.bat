@@ -55,7 +55,7 @@ echo OK Conda environment activated: %ENV_NAME%
 
 REM === Change to current directory ===
 echo > Changing to script directory: %~dp0
-cd /d "%~dp0"
+REM cd /d "%~dp0"
 
 REM === Run script ===
 echo > Running script: %SCRIPT_NAME%

@@ -110,7 +110,7 @@ def init_ui(self, log):
     # Create label and dropdown for frequency selection
     freq_label = QLabel("Frequencies")
     self.freq_combo = QComboBox()
-    self.freq_combo.addItems(["Year", "Month", "Day"])  # Granularity of data frequency
+    self.freq_combo.addItems(["Year", "Month", "Day", "Hour", "Minute", "Second"])  # Granularity of data frequency
     self.freq_combo.setCurrentText("Day")  # Default selection
     self.freq_combo.setFixedWidth(200)
     center_layout.addWidget(freq_label)

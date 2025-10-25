@@ -1,5 +1,5 @@
 import sys
-import os
+#import os
 from PyQt5.QtWidgets import QApplication
 from ui.main_window import MainWindow
 import libraries.Lib_Logger as lib_Logger
