@@ -30,7 +30,6 @@ build/
 *.log
 
 # 🔒 Project-specific folders that should not be uploaded
-LOG/
 financial_data/IB_Day/
 # File with the project structure
 /Project Structure.txt       
