@@ -37,6 +37,7 @@ jobs:
         run: |
           poetry run pip install pyinstaller PyQt5
           poetry run pyinstaller --noconfirm --onefile --windowed main.py
+
           
       - name: Run smoke tests
         run: poetry run pytest tests
