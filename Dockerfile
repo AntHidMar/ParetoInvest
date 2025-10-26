@@ -13,15 +13,11 @@ ENV PATH="/root/.local/bin:$PATH"
 # --- Crear directorio de trabajo ---
 WORKDIR /app
 
-# --- Copiar código Python y Java (.jar) ---
-COPY app_python/ ./app_python/
-COPY app_java/ ./app_java/
-
-# --- Copiar archivos de configuración de Poetry ---
-COPY pyproject.toml poetry.lock ./
+# --- Copiar proyecto completo ---
+COPY . .
 
 # --- Instalar dependencias Python con Poetry ---
 RUN poetry install --no-root --only main
 
-# --- Comando por defecto: ejecutar Python ---
-CMD ["poetry", "run", "python", "app_python/main.py"]
+# --- Comando por defecto: ejecutar main.py ---
+CMD ["poetry", "run", "python", "main.py"]
