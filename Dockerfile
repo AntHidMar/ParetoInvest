@@ -11,10 +11,12 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH="/root/.local/bin:$PATH"
 
 # --- Crear directorio de trabajo ---
-WORKDIR /app/ParetoInvest
+WORKDIR /app
 
 # --- Copiar proyecto completo ---
 COPY . ParetoInvest/
+
+WORKDIR /app/ParetoInvest
 
 # --- Instalar dependencias Python con Poetry ---
 RUN poetry install --no-root
