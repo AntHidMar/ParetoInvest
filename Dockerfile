@@ -1,8 +1,11 @@
 # --- Imagen base con Java y Python ---
 FROM openjdk:17-slim
 
-# --- Instalar Python, pip y curl para Poetry ---
-RUN apt-get update && apt-get install -y python3 python3-pip curl && rm -rf /var/lib/apt/lists/*
+# --- Instalar Python, pip, curl y librerías de PyQt5 ---
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip curl \
+    libgl1 libglib2.0-0 && \
+    rm -rf /var/lib/apt/lists/*
 
 # --- Instalar Poetry ---
 RUN curl -sSL https://install.python-poetry.org | python3 -
