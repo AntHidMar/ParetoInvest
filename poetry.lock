@@ -1722,7 +1722,7 @@ diagrams = ["jinja2", "railroad-diagrams"]
 name = "pyqt5"
 version = "5.15.11"
 description = "Python bindings for the Qt cross platform application toolkit"
-optional = true
+optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
@@ -1742,7 +1742,7 @@ PyQt5-sip = ">=12.15,<13"
 name = "pyqt5-qt5"
 version = "5.15.17"
 description = "The subset of a Qt installation needed by PyQt5."
-optional = true
+optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
@@ -1755,7 +1755,7 @@ files = [
 name = "pyqt5-sip"
 version = "12.17.0"
 description = "The sip module support for PyQt5"
-optional = true
+optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
@@ -2344,4 +2344,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "c439f0ec9d7307dd292ce3abcc9225db27e4c2db5511a189289bd11922b9e1e6"
+content-hash = "51772eeed216bdb735c736cf2872e64bf98b83b744084b95e34deb7100f1d0e0"
