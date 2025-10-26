@@ -25,8 +25,7 @@ jobs:
         run: poetry config virtualenvs.in-project true
 
       - name: Install dependencies with Poetry
-        run: |
-          run: poetry install --no-root
+        run: poetry install --no-root
 
       - name: Test main script
         run: poetry run python ui/test_gui.py
