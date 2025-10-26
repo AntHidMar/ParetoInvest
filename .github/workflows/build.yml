@@ -37,12 +37,9 @@ jobs:
         run: |
           poetry run pip install pyinstaller PyQt5
           poetry run pyinstaller --noconfirm --onefile --windowed main.py
+          
       - name: Run smoke tests
-        shell: pwsh
-        run: |
-          Write-Host "Activating Poetry virtual environment..."
-          $venvDir = poetry env info --path
-          & "$venvDir\Scripts\pytest.exe" tests
+        run: poetry run pytest tests
                 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
