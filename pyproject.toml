@@ -25,7 +25,5 @@ yfinance = "^0.2.66"
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[dependency-groups]
-dev = [
-    "pytest (>=8.4.2,<9.0.0)"
-]
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
