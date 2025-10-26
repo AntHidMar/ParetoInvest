@@ -14,10 +14,13 @@ ENV PATH="/root/.local/bin:$PATH"
 WORKDIR /app
 
 # --- Copiar proyecto completo ---
-COPY . .
+COPY ParetoInvest/ .
 
 # --- Instalar dependencias Python con Poetry ---
 RUN poetry install --no-root
+
+# --- Añadir la raíz al PYTHONPATH para que los imports funcionen ---
+ENV PYTHONPATH=/app
 
 # --- Comando por defecto: ejecutar main.py ---
 CMD ["poetry", "run", "python", "main.py"]
