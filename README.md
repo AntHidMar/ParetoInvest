@@ -117,56 +117,11 @@ To exit the virtual environment:
 exit
 ```
 
-Optional: export dependencies to a `requirements.txt` file (for legacy setups or Docker):
+Optional: export dependencies to a `requirements.txt` file (for legacy setups):
 
 ```bash
 poetry export -f requirements.txt --output requirements.txt --without-hashes
 ```
-
----
-
-## 🐳 Docker Support
-
-To facilitate installation and ensure a consistent environment across different systems, we have provided a **Docker setup** for ParetoInvest. This allows users to run the software without worrying about Python, library versions, or system dependencies.
-
-### Features
-
-- **Pre-configured environment**: Includes Python, all required packages, and Java (for jMetal integration).
-- **Isolation**: Runs in a container, avoiding conflicts with other software on your machine.
-- **Cross-platform**: Works on Windows without additional setup.
-- **Ease of use**: No need to manually install dependencies; the container provides everything required to run ParetoInvest.
-
-### Usage
-
-1. **Build the Docker image** (run this from the project root):
-    ```bash
-    docker build -t paretoinvest .
-    ```
-
-2. **Run the container**:
-    ```bash
-    docker run -it --rm -v $(pwd):/app paretoinvest
-    ```
-
-    - `-v $(pwd):/app` mounts the project directory into the container, so you can access your data and results outside the container.
-    - `--rm` removes the container after exit to keep your system clean.
-
-3. **Access the application**:
-    - Once inside the container, you can run ParetoInvest as usual:
-    ```bash
-    python main.py
-    ```
-
-### Notes
-
-- The Dockerfile is included in the root directory of the project.
-- Using Docker ensures that the software works with the exact versions of Python, libraries, and Java that were tested during development.
-- This setup is ideal for users who want a **quick, reliable, and reproducible installation** without modifying their local environment.
-
----
-
-We recommend using Docker if you are setting up ParetoInvest for the first time or want to avoid dependency conflicts.
-
 
 ---
 
@@ -337,7 +292,6 @@ paretoinvest/
 ├── README.md           # Project documentation
 ├── pyproject.toml      # Build system configuration for Python (PEP 518)
 ├── poetry.lock         # Exact versions of installed packages (Poetry)
-├── Dockerfile          # File to install App completely.
 └── .gitignore          # Excluded files
 ```
 
