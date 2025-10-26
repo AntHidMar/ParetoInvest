@@ -4,12 +4,13 @@ FROM openjdk:17-slim
 # --- Instalar Python, pip, curl y librerías de PyQt5 ---
 RUN apt-get update && apt-get install -y \
     python3 python3-pip curl \
-    libgl1 libglib2.0-0 && \
+    libgl1 libglib2.0-0 libx11-6 libxext6 libxrender1 libxcb1 libxkbcommon-x11-0 && \
     rm -rf /var/lib/apt/lists/*
 
 # --- Instalar Poetry ---
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
+ENV QT_QPA_PLATFORM=offscreen
 # --- Añadir Poetry al PATH ---
 ENV PATH="/root/.local/bin:$PATH"
 
