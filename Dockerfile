@@ -17,7 +17,7 @@ WORKDIR /app
 COPY . .
 
 # --- Instalar dependencias Python con Poetry ---
-RUN poetry install --no-root --only main
+RUN poetry install --no-root
 
 # --- Comando por defecto: ejecutar main.py ---
 CMD ["poetry", "run", "python", "main.py"]
