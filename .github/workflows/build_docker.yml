@@ -1,0 +1,44 @@
+name: Build PyQt5 App with Docker
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Docker se usa mejor en Linux runners
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # (Opcional) Log in to GitHub Container Registry si quieres subir la imagen
+      # - name: Login to GitHub Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build -t pyqt5app:test .
+
+      - name: Run tests inside Docker
+        run: docker run --rm pyqt5app:test poetry run pytest tests
+
+      - name: Run GUI smoke test
+        run: docker run --rm pyqt5app:test poetry run python ui/test_gui.py
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Build executable inside Docker
+        run: |
+          docker run --rm -v "${{ github.workspace }}/dist:/app/dist" pyqt5app:test \
+            poetry run pyinstaller --noconfirm --onefile --windowed main.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PyQt5App
+          path: dist/main.exe
