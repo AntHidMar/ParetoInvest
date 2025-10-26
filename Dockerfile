@@ -14,7 +14,7 @@ ENV PATH="/root/.local/bin:$PATH"
 WORKDIR /app
 
 # --- Copiar proyecto completo ---
-COPY ParetoInvest/ .
+COPY . .
 
 # --- Instalar dependencias Python con Poetry ---
 RUN poetry install --no-root
