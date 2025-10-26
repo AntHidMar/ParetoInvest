@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies with Poetry
         run: |
-          poetry install --no-root
+          poetry install --with dev --no-root
           poetry run pip install PyQt5
       - name: Test main script
         run: poetry run python ui/test_gui.py
