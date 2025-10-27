@@ -20,15 +20,6 @@ def test_import_main():
     except Exception as e:
         pytest.fail(f"Unexpected import error: {e}")
 
-"""def test_main_entrypoint():
-    try:
-        from ParetoInvest import main
-        # Solo comprobar que la función main es callable, no se ejecuta
-        assert callable(main.main)
-    except Exception as e:
-        assert False, f"Main entry point is not callable: {e}" """
-
-
 def test_main_entrypoint():
     try:
         from ParetoInvest import main
