@@ -1,9 +1,9 @@
 import os, sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from PyQt5.QtWidgets import QApplication
 from ui.main_window import MainWindow
 import libraries.Lib_Logger as lib_Logger
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 def main(log):
     """
