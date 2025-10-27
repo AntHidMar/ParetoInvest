@@ -32,6 +32,9 @@ class Logger:
             self._logger.removeHandler(handler)
             handler.close()
 
+        # Crear directorio si no existe
+        os.makedirs(os.path.dirname(log_file), exist_ok=True)
+
         # Create and configure the new file handler
         self._file_handler = logging.FileHandler(log_file)
         self._file_handler.setLevel(logging.DEBUG)
