@@ -9,7 +9,16 @@ def test_import_package():
     import ParetoInvest  # usar el nombre real de la carpeta
 
 def test_import_main():
-    from ParetoInvest import main
+    try:
+        from ParetoInvest import main
+    except ModuleNotFoundError as e:
+        # Si falta PyQt5, saltamos test (GitHub Actions no tiene GUI)
+        if "PyQt5" in str(e):
+            pytest.skip("Skipping GUI-related import test: PyQt5 not available")
+        else:
+            raise
+    except Exception as e:
+        pytest.fail(f"Unexpected import error: {e}")
 
 """def test_main_entrypoint():
     try:
