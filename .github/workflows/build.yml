@@ -35,10 +35,10 @@ jobs:
 
       - name: Package app with PyInstaller
         run: |
-          poetry run pip install pyinstaller PyQt5
+          poetry run pip install pyinstaller
           poetry run pyinstaller --noconfirm --onefile --windowed main.py
 
-          
+
       - name: Run smoke tests
         run: poetry run pytest tests
                 
@@ -47,3 +47,5 @@ jobs:
         with:
           name: PyQt5App
           path: dist/main.exe
+
+
