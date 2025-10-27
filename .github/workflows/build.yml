@@ -38,7 +38,7 @@ jobs:
 
       - name: Build executable
         run: |
-          poetry run pip install pyinstaller PyQt5 pandas numpy
+          poetry run pip install pyinstaller PyQt5 pandas numpy yfinance 
           poetry run pyinstaller --noconfirm --onefile --windowed main.py --add-data "ui;ui" --add-data "models;models" --add-data "resources;resources" --add-data "libraries;libraries" --hidden-import pandas --hidden-import numpy --hidden-import dateutil --hidden-import pytz --hidden-import requests --hidden-import yfinance --hidden-import ib_insync --hidden-import asyncio --additional-hooks-dir=pyinstaller_hooks
  
       - name: Upload artifact
