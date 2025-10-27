@@ -39,7 +39,7 @@ jobs:
       - name: Build executable
         run: |
           poetry run pip install pyinstaller PyQt5 pandas numpy
-          poetry run pyinstaller --noconfirm --onefile --windowed main.py --add-data "ui;ui" --add-data "models;models" --add-data "resources;resources"  --hidden-import pandas --hidden-import numpy --hidden-import dateutil --hidden-import pytz
+          poetry run pyinstaller --noconfirm --onefile --windowed main.py --add-data "ui;ui" --add-data "models;models" --add-data "resources;resources" --add-data "libraries;libraries" --hidden-import pandas --hidden-import numpy --hidden-import dateutil --hidden-import pytz
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
