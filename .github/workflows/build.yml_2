@@ -24,26 +24,28 @@ jobs:
       - name: Configure Poetry to create virtualenv inside project
         run: poetry config virtualenvs.in-project true
 
-      - name: Install dependencies
+      - name: Install dependencies with Poetry
         run: |
-          poetry install --no-interaction --no-root
-          # Instala pytest si no está en el pyproject.toml
-          poetry run pip install pytest
-
-      # Opcional: ejecutar tests unitarios sin GUI
-      - name: Run tests (without GUI)
-        run: poetry run pytest tests -v
+          poetry install --with dev --no-root
+          poetry run pip install PyQt5
+      - name: Test main script
+        run: poetry run python ui/test_gui.py
         env:
           PYTHONUNBUFFERED: 1
 
-      # Solo instala PyQt5 y genera el ejecutable
       - name: Package app with PyInstaller
         run: |
-          poetry run pip install pyinstaller PyQt5
+          poetry run pip install pyinstaller
           poetry run pyinstaller --noconfirm --onefile --windowed main.py
 
+
+      - name: Run smoke tests
+        run: poetry run pytest tests
+                
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: PyQt5App
           path: dist/main.exe
+
+
