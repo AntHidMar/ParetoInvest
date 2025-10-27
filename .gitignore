@@ -20,7 +20,6 @@ __pycache__/
 .DS_Store
 
 # 📦 Distribution files (if packaging the project)
-dist/
 build/
 
 # 📊 Generated result and log files
