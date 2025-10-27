@@ -38,7 +38,7 @@ jobs:
 
       - name: Build executable
         run: |
-          poetry run pip install pyinstaller PyQt5
+          poetry run pip install pyinstaller PyQt5 pandas numpy
           poetry run pyinstaller --noconfirm --onefile --windowed main.py --add-data "ui;ui" --add-data "models;models" --add-data "resources;resources"
 
       - name: Upload artifact
