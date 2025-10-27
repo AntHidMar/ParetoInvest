@@ -125,6 +125,45 @@ poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 ---
 
+## 🧪 Continuous Validation with GitHub Actions
+
+This project includes a **Continuous Integration (CI)** workflow powered by **GitHub Actions**, ensuring that the application can be **installed, executed, and packaged successfully** in a clean Windows environment.
+
+Every time a *commit* or *pull request* is made to the main branches (`main` or `master`), the workflow defined in  
+`.github/workflows/build.yml` is automatically triggered. It performs the following checks:
+
+- Sets up a fresh environment with **Python 3.11** and **Poetry**.  
+- Installs all required dependencies.  
+- Runs a **smoke test** to verify that the application launches correctly without critical errors.  
+- Builds the final executable using **PyInstaller** and uploads it as a downloadable artifact.
+
+This process serves as an **automated installation and execution validation**, confirming that the project remains buildable and functional after each update.
+
+> 🧠 *Smoke tests* don’t deeply test the business logic — instead, they ensure that the installation, dependencies, and packaging process remain stable across versions.
+
+The resulting executable (`main.exe`) can be downloaded from  
+**Actions → Run details → Artifacts** in the GitHub interface.
+
+---
+
+### 🧰 Local installation and testing with Poetry
+
+To reproduce the same process locally, you can run the following commands:
+
+```bash
+# 1. Install dependencies
+poetry install
+poetry run pip install PyQt5 pyinstaller pytest
+
+# 2. Run tests
+poetry run pytest tests -v
+
+# 3. Build the executable
+poetry run pyinstaller --noconfirm --onefile --windowed main.py
+
+
+---
+
 ### 🛠️ Configuration
 
 The application includes a `config/` folder with the file `config.json`, used to define the runtime environment when launching the application from the provided batch script (`ParetoInvest.bat` on Windows).
