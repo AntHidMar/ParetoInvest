@@ -144,7 +144,7 @@ This process serves as an **automated installation and execution validation**, c
 The resulting executable (`main.exe`) can be downloaded from  
 **Actions → Run details → Artifacts** in the GitHub interface.
 
-[text](https://github.com/AntHidMar/ParetoInvest/actions/runs/18847191238)
+[workflow deploy](https://github.com/AntHidMar/ParetoInvest/actions/runs/18847191238)
 
 ---
 
