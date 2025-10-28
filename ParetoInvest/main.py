@@ -1,8 +1,24 @@
 import os, sys
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+# --- Detectin if executing from .exe or from Python ---
+if getattr(sys, 'frozen', False):
+    # exe (PyInstaller)
+    base_path = sys._MEIPASS
+    project_root = os.path.dirname(sys.executable)    
+else:
+    # Developing
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(base_path)
+
+# Añadimos el paquete principal y raíz del proyecto al sys.path
+if base_path not in sys.path:
+    sys.path.append(base_path)
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
 from PyQt5.QtWidgets import QApplication
-from ui.main_window import MainWindow
-import libraries.Lib_Logger as lib_Logger
+from ParetoInvest.ui.main_window import MainWindow
+import ParetoInvest.libraries.Lib_Logger as lib_Logger
 
 
 def main(log):

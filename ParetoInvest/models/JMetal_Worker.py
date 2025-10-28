@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QThread, pyqtSignal
-from datetime import datetime
+#from datetime import datetime
 
 
 class JMetalWorker(QThread):

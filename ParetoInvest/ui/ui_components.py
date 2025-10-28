@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLa
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QKeySequence
 
-import ui.ui_event_handlers as ui_event_handlers
+import ParetoInvest.ui.ui_event_handlers as ui_event_handlers
 
 # Definition UI components
 def init_ui(self, log):

@@ -4,18 +4,18 @@ from PyQt5.QtWidgets import (
     QTextEdit, QMessageBox, QCheckBox
 )
 from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer, QDate
-import models.Assets as Assets
-import models.IB_data_loader as IB_data_loader
-import models.GenerarArchivosEstadisticos_JMetal as genArch_JMetal
-import models.JMetal_Worker as JMetalWorker
-import ui.ui_components as ui_components
-import libraries.Lib_Logger as lib_Logger
 from datetime import datetime, date
 import pandas as pd
 import sys
 import os
 import glob
-import ui.ui_event_handlers as ui_event_handlers
+import ParetoInvest.models.Assets as Assets
+import ParetoInvest.models.IB_data_loader as IB_data_loader
+import ParetoInvest.models.GenerarArchivosEstadisticos_JMetal as genArch_JMetal
+import ParetoInvest.models.JMetal_Worker as JMetalWorker
+import ParetoInvest.ui.ui_event_handlers as ui_event_handlers
+import ParetoInvest.ui.ui_components as ui_components
+import ParetoInvest.libraries.Lib_Logger as lib_Logger
 
 
 # MainWindow class for the ParetoInvest application

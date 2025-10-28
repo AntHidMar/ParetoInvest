@@ -1,5 +1,5 @@
 import os
-import sys
+#import sys
 import asyncio
 from PyQt5.QtCore import QThread, pyqtSignal
 from ib_insync import IB, Stock, util

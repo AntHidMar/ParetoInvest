@@ -3,12 +3,10 @@ import pandas as pd  # For DataFrame operations
 from datetime import datetime  # To handle date/time
 import logging  # For logging actions
 import shutil  # For file copying
-from libraries.Lib_Alpaca import Alpaca  # Custom library for Alpaca broker
+from ParetoInvest.libraries.Lib_Alpaca import Alpaca  # Custom library for Alpaca broker
 import yfinance as yf
 import time
 import gc  # For garbage collection
-import requests # For HTTP requests (if needed, not used in the provided code)
-import re
 
 # AssetManager class to manage asset data
 # This class handles fetching, saving, and loading asset data from Alpaca and CSV files.
@@ -20,7 +18,7 @@ class AssetManager:
         # Default directory for asset files
         self._dir_asset_file = dir_asset if dir_asset else "data\\Assets\\"
         # Default directory for config files
-        self._dir_config_file = dir_config if dir_config else "data\\Config\\"
+        #self._dir_config_file = dir_config if dir_config else "data\\Config\\"
         # Log file path based on current date
         self._log_filename = f'LOG\\Assets_{self._now.strftime("%Y%m%d")}.log'
 
@@ -48,13 +46,13 @@ class AssetManager:
     def dir_asset_file(self, value):
         self._dir_asset_file = value
 
-    @property
+    """@property
     def dir_config_file(self):
         return self._dir_config_file
 
     @dir_config_file.setter
     def dir_config_file(self, value):
-        self._dir_config_file = value
+        self._dir_config_file = value"""
 
     @property
     def logger(self):

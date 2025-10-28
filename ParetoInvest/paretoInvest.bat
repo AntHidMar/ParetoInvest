@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 REM === Default config values ===
 set "ANACONDA_ROOT=C:\Path\To\Anaconda3"
 set "ENV_NAME=ParetoInvest"
-set "SCRIPT_NAME=main.py"
+set "SCRIPT_NAME=ParetoInvest/main.py"
 
 REM === Try to load personal config if exists ===
 if exist "config\personal_config.json" (
@@ -56,6 +56,9 @@ echo OK Conda environment activated: %ENV_NAME%
 REM === Change to current directory ===
 echo > Changing to script directory: %~dp0
 REM cd /d "%~dp0"
+REM === Change to parent directory ===
+echo Changing to parent directory of script: %~dp0
+cd /d "%~dp0.."
 
 REM === Run script ===
 echo > Running script: %SCRIPT_NAME%
