@@ -1,9 +1,9 @@
 # ui_components.py
-from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QLineEdit, 
+from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QLineEdit, 
                              QComboBox, QPushButton, QCheckBox, QDateEdit, QFrame, QTextEdit,
-                             QProgressBar, QShortcut)
-from PyQt5.QtCore import QDate
-from PyQt5.QtGui import QKeySequence
+                             QProgressBar)
+from PyQt6.QtCore import QDate
+from PyQt6.QtGui import QKeySequence, QShortcut
 
 import ParetoInvest.ui.ui_event_handlers as ui_event_handlers
 
@@ -22,7 +22,8 @@ def init_ui(self, log):
 
     # Create a panel (QFrame) for the top controls
     controls_panel = QFrame()
-    controls_panel.setFrameShape(QFrame.StyledPanel)
+    #controls_panel.setFrameShape(QFrame.StyledPanel)    
+    controls_panel.setFrameShape(QFrame.Shape.StyledPanel)
     controls_layout = QHBoxLayout(controls_panel)
 
     # ---- Layouts inside the panel ----
@@ -206,8 +207,9 @@ def init_ui(self, log):
 
     # ---- Horizontal Separator ----
     separator = QFrame()
-    separator.setFrameShape(QFrame.HLine)
-    separator.setFrameShadow(QFrame.Sunken)
+    #separator.setFrameShape(QFrame.HLine)
+    separator.setFrameShape(QFrame.Shape.HLine)
+    separator.setFrameShadow(QFrame.Shadow.Sunken)
     main_layout.addWidget(separator)
 
     # ---- Progress Bar ----

@@ -1,5 +1,7 @@
 import os, sys
 
+from PyQt6.QtWidgets import QApplication
+
 # --- Detectin if executing from .exe or from Python ---
 if getattr(sys, 'frozen', False):
     # exe (PyInstaller)
@@ -16,10 +18,8 @@ if base_path not in sys.path:
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from PyQt5.QtWidgets import QApplication
 from ParetoInvest.ui.main_window import MainWindow
 import ParetoInvest.libraries.Lib_Logger as lib_Logger
-
 
 def main(log):
     """
@@ -42,7 +42,7 @@ def main(log):
     main_window.show()
     
     # Run the application's main loop
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 if __name__ == "__main__":
     

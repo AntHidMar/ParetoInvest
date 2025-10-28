@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import (
+from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel,
     QLineEdit, QComboBox, QDateEdit, QPushButton, QWidget, QFrame, QProgressBar, QFileDialog,
     QTextEdit, QMessageBox, QCheckBox
 )
-from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer, QDate
+from PyQt6.QtCore import QThread, pyqtSignal, Qt, QTimer, QDate
 from datetime import datetime, date
 import pandas as pd
 import sys
@@ -499,8 +499,10 @@ class MainWindow(QMainWindow):
         msg_box = QMessageBox()
         msg_box.setWindowTitle("Error")
         msg_box.setText(error_msg + "\n Check Gateway IB is running and connected.")
-        msg_box.setIcon(QMessageBox.Information if "Correct" in error_msg else QMessageBox.Critical)
-        msg_box.exec_()
+        #msg_box.setIcon(QMessageBox.Information if "Correct" in error_msg else QMessageBox.Critical)
+        msg_box.setIcon(QMessageBox.Icon.Information if "Correct" in error_msg else QMessageBox.Icon.Critical)
+
+        msg_box.exec()
     
     # Re-enable the buttons
     def activate_buttons(self):
@@ -520,8 +522,9 @@ class MainWindow(QMainWindow):
         msg_box = QMessageBox()
         msg_box.setWindowTitle(titulo)
         msg_box.setText(mensaje)
-        msg_box.setIcon(QMessageBox.Information if "Process OK" in titulo else QMessageBox.Critical)
-        msg_box.exec_()
+        #msg_box.setIcon(QMessageBox.Information if "Process OK" in titulo else QMessageBox.Critical)
+        msg_box.setIcon(QMessageBox.Icon.Information if "Process OK" in mensaje else QMessageBox.Icon.Information)
+        msg_box.exec()
 
 #   Main function to run the application
 if __name__ == "__main__":
@@ -529,4 +532,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

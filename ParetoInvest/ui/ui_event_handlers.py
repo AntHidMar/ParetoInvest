@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QLineEdit, 
+from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QLineEdit, 
                              QComboBox, QPushButton, QCheckBox, QDateEdit, QFrame, QTextEdit,
-                             QProgressBar, QShortcut)
-from PyQt5.QtCore import QDate
-from PyQt5.QtGui import QKeySequence
-from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer, QDate
+                             QProgressBar)
+from PyQt6.QtCore import QDate
+from PyQt6.QtGui import QKeySequence, QShortcut
+from PyQt6.QtCore import QThread, pyqtSignal, Qt, QTimer, QDate
 ### Events ###
 
 
