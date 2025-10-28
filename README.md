@@ -135,16 +135,18 @@ Every time a *commit* or *pull request* is made to the main branches (`main` or 
 - Sets up a fresh environment with **Python 3.11** and **Poetry**.  
 - Installs all required dependencies.  
 - Runs a **smoke test** to verify that the application launches correctly without critical errors.  
+- Uploads the `.exe` as a GitHub artifact to demonstrate that the application runs.
 - Builds the final executable using **PyInstaller** and uploads it as a downloadable artifact.
 
 This process serves as an **automated installation and execution validation**, confirming that the project remains buildable and functional after each update.
 
 > 🧠 *Smoke tests* don’t deeply test the business logic — instead, they ensure that the installation, dependencies, and packaging process remain stable across versions.
+> **Note:** The current workflow generates the executable, but for full functionality, you need to ensure that the **configuration and resources directories** (such as `config/`, `resources/`) are present in the root directory next to the executable, because the app relies on them at runtime.
 
 The resulting executable (`main.exe`) can be downloaded from  
 **Actions → Run details → Artifacts** in the GitHub interface.
 
-[workflow deploy](https://github.com/AntHidMar/ParetoInvest/actions/runs/18847191238)
+[workflow deploy](https://github.com/AntHidMar/ParetoInvest/actions)
 
 ---
 
