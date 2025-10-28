@@ -24,18 +24,19 @@ jobs:
       - name: Configure Poetry to create virtualenv inside project
         run: poetry config virtualenvs.in-project true
       
-      #- name: Preinstall PyQt5 wheel to avoid build from source
-      #  run: |
-      #    pip install --only-binary=:all: PyQt5==5.15.11 PyQt5-sip
-      
       - name: Install Poetry and dependencies
         run: |
           pip install poetry
           poetry config virtualenvs.in-project true
           poetry install --no-interaction --no-root
 
+      - name: Install Qt dependencies
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1-mesa-dev
+          
       - name: Run tests (without GUI)
-        run: poetry run pytest ParetoInvest/tests -v
+        run: |
+          export QT_QPA_PLATFORM=offscreen          
+          poetry run pytest ParetoInvest/tests -v
         env:
           PYTHONUNBUFFERED: 1
 
