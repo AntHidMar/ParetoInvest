@@ -28,16 +28,16 @@ jobs:
       - name: Configure Poetry to create virtualenv inside project
         run: poetry config virtualenvs.in-project true
       
-      # 👇 Instalar PyQt5 directamente (antes de Poetry)
-      - name: Preinstall PyQt5 wheel to avoid compilation
-        run: | 
-          pip install PyQt5==5.15.11 --only-binary=:all:
-
-      - name: Install dependencies
+      # 👇 Instalar PyQt5 directamente (antes de Poetry)      
+      - name: Preinstall PyQt5 wheel to avoid build from source
         run: |
+          pip install --only-binary=:all: PyQt5==5.15.11 PyQt5-sip
+      
+      - name: Install Poetry and dependencies
+        run: |
+          pip install poetry
+          poetry config virtualenvs.in-project true
           poetry install --no-interaction --no-root
-          # Instala pytest si no está en el pyproject.toml
-          poetry run pip install pytest
 
       # Opcional: ejecutar tests unitarios sin GUI
       - name: Run tests (without GUI)
