@@ -29,11 +29,6 @@ jobs:
           poetry config virtualenvs.in-project true
           poetry config virtualenvs.create true
 
-      # ⚙️ Instalar PyQt5 binario antes de poetry install
-      - name: Preinstall PyQt5 wheels
-        run: |
-          pip install --only-binary=:all: PyQt5==5.15.11 PyQt5-sip==12.15.0
-
       # ⚙️ Instalar dependencias del proyecto sin recompilar PyQt5
       - name: Install dependencies
         run: |
@@ -51,7 +46,7 @@ jobs:
       # 🧱 Crear ejecutable
       - name: Build executable
         run: |
-          poetry run pip install pyinstaller pandas numpy yfinance ib_insync asyncio
+          poetry run pip install pyinstaller pandas numpy yfinance ib_insync asyncio PyQt5
           poetry run pyinstaller --clean --onedir --noconfirm --windowed ParetoInvest/main.py \
             --add-data "ParetoInvest/ui:ParetoInvest/ui" \
             --add-data "ParetoInvest/models:ParetoInvest/models" \
