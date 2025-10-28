@@ -30,6 +30,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install PyQt5==5.15.11 --only-binary :all:
           poetry install --no-interaction --no-root
           # Instala pytest si no está en el pyproject.toml
           poetry run pip install pytest
@@ -50,3 +51,4 @@ jobs:
         with:
           name: PyQt5App
           path: dist/main.exe
+          
