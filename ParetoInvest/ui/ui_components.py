@@ -93,20 +93,44 @@ def init_ui(self, log):
     log.printAndLogger("Setting up dropdowns")
 
     # Create label and dropdown for algorithm selection
-    alg_label = QLabel("Algorithms")
+    self.alg_label = QLabel("Algorithms")
+    self.alg_layout = QHBoxLayout()
     self.alg_combo = QComboBox()
     self.alg_combo.addItems(["MOEAD", "MOEADDE", "NSGAII", "SMPSO", "SMSEMOA"])  # Available optimization algorithms
     self.alg_combo.setFixedWidth(200)  # Set fixed width for consistency in UI
-    center_layout.addWidget(alg_label)  # Add label to layout
-    center_layout.addWidget(self.alg_combo)  # Add combo box to layout
+    self.alg_layout.addWidget(self.alg_label)
+    self.alg_layout.addWidget(self.alg_combo)
+    center_layout.addLayout(self.alg_layout)
 
     # Create label and dropdown for market selection
     markets_label = QLabel("Markets")
+    self.mar_layout = QHBoxLayout()
     self.markets_combo = QComboBox()
     self.markets_combo.addItems(["ALL", "AMEX", "ARCA", "BATS", "NASDAQ", "NYSE", "OTC"])  # List of market sources
     self.markets_combo.setFixedWidth(200)
-    center_layout.addWidget(markets_label)
-    center_layout.addWidget(self.markets_combo)
+    self.mar_layout.addWidget(markets_label)
+    self.mar_layout.addWidget(self.markets_combo)
+    center_layout.addLayout(self.mar_layout)
+
+    # Asset Type
+    type_label = QLabel("type")
+    self.type_combo = QComboBox()
+    self.type_combo.addItems(["Stock", "ETF", "BOND"])  
+    self.type_combo.setFixedWidth(200)
+    self.type_layout = QHBoxLayout()
+    self.type_layout.addWidget(type_label)
+    self.type_layout.addWidget(self.type_combo)
+    center_layout.addLayout(self.type_layout)
+    
+    # Asset sector
+    sector_label = QLabel("sector")
+    self.sector_combo = QComboBox()
+    self.sector_combo.addItems(["Health", "...", "..."])  
+    self.sector_combo.setFixedWidth(200)
+    self.sector_layout = QHBoxLayout()
+    self.sector_layout.addWidget(sector_label)
+    self.sector_layout.addWidget(self.sector_combo)
+    center_layout.addLayout(self.sector_layout)
 
     # Create label and dropdown for frequency selection
     freq_label = QLabel("Frequencies")
@@ -114,17 +138,20 @@ def init_ui(self, log):
     self.freq_combo.addItems(["Year", "Month", "Day", "Hour", "Minute", "Second"])  # Granularity of data frequency
     self.freq_combo.setCurrentText("Day")  # Default selection
     self.freq_combo.setFixedWidth(200)
-    center_layout.addWidget(freq_label)
-    center_layout.addWidget(self.freq_combo)
+    self.freq_layout = QHBoxLayout()
+    self.freq_layout.addWidget(freq_label)
+    self.freq_layout.addWidget(self.freq_combo)
+    center_layout.addLayout(self.freq_layout)
 
     # Create label and dropdown for window selection
-    window_label = QLabel("window")
+    window_label = QLabel("windows")
     self.window_combo = QComboBox()
     self.window_combo.addItems(["Year", "Month", "Day"])  # Time window for analysis
     self.window_combo.setFixedWidth(200)
-    center_layout.addWidget(window_label)
-    center_layout.addWidget(self.window_combo)
-    # ---- Right Panel: Date pickers and Control Buttons ----
+    self.window_layout = QHBoxLayout()
+    self.window_layout.addWidget(window_label)
+    self.window_layout.addWidget(self.window_combo)
+    center_layout.addLayout(self.window_layout)
 
     log.printAndLogger("Configuring date pickers and control buttons")
     current_date = QDate.currentDate()
