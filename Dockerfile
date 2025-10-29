@@ -13,6 +13,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.11 python3.11-venv python3.11-dev python3-pip \
     build-essential curl git \
+    fontconfig libfreetype6 libxft2 \
     libgl1 libegl1 libglib2.0-0 libx11-6 libxext6 libxrender1 \
     libxcb1 libxkbcommon-x11-0 libdbus-1-3 \
     libssl-dev zlib1g-dev libglu1-mesa-dev \
