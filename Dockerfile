@@ -43,4 +43,4 @@ RUN poetry install --no-root --no-interaction
 COPY . .
 
 # --- Comando por defecto para test o ejecución ---
-CMD ["poetry", "run", "python", "ParetoInvest/main.py", "--help"]
+CMD ["poetry", "run", "python", "ParetoInvest/main.py"]

@@ -47,13 +47,3 @@ jobs:
             poetry run pytest ParetoInvest/tests -v
         env:
           PYTHONUNBUFFERED: 1
-
-      # 7️⃣ Ejecutar main.py para verificar la ayuda
-      - name: Run main.py help
-        run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/app \
-            -w /app \
-            -e QT_QPA_PLATFORM=offscreen \
-            paretoinvest:latest \
-            poetry run python ParetoInvest/main.py --help

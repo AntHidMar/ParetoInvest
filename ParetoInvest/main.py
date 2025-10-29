@@ -21,10 +21,10 @@ if project_root not in sys.path:
 from ParetoInvest.ui.main_window import MainWindow
 import ParetoInvest.libraries.Lib_Logger as lib_Logger
 
-def main(log):
-    """
-    Main entry point for the application.
-    """
+"""def main(log):
+    
+    # Main entry point for the application.
+    
     log.printAndLogger(" main - Main entry point for the application.")
 
     # Si estamos en CI (GitHub Actions, Docker, etc.), desactivar GUI
@@ -48,7 +48,35 @@ def main(log):
         main_window.show()
         sys.exit(app.exec())
     else:
+        print("Running in CI environment — GUI not executed.")"""
+
+def main(log):
+    """
+    Main entry point for the application.
+    """
+    log.printAndLogger(" main - Main entry point for the application.")
+
+    is_ci = os.environ.get("CI", "").lower() in ["true", "1"] or \
+            os.environ.get("GITHUB_ACTIONS", "").lower() in ["true", "1"]
+
+    if is_ci:
+        os.environ["QT_QPA_PLATFORM"] = "offscreen"
         print("Running in CI environment — GUI not executed.")
+        return  # 👈 Salir aquí, sin crear QApplication ni MainWindow
+
+    # --- Solo se ejecuta fuera de CI ---
+    app = QApplication(sys.argv)
+
+    try:
+        with open("resources/styles.qss", "r") as style_file:
+            app.setStyleSheet(style_file.read())
+    except FileNotFoundError:
+        log.printAndLogger("Style file not found. Using default styles.")
+
+    main_window = MainWindow(log)
+    main_window.show()
+    sys.exit(app.exec())
+
 
 if __name__ == "__main__":
     
