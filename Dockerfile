@@ -30,7 +30,7 @@ WORKDIR /app/ParetoInvest
 
 # --- Instalar dependencias con Poetry ---
 # Se usa --no-interaction y --no-ansi para entornos CI/CD
-RUN poetry install --no-interaction --no-ansi --no-root
+RUN poetry install --no-interaction --no-ansi
 
 # --- Añadir la raíz al PYTHONPATH (para imports relativos) ---
 ENV PYTHONPATH=/app
