@@ -27,6 +27,10 @@ def main(log):
     """
     log.printAndLogger(" main - Main entry point for the application.")
 
+    # Si estamos en CI (GitHub Actions, Docker, etc.), desactivar GUI
+    if os.environ.get("CI", "").lower() in ["true", "1"] or os.environ.get("GITHUB_ACTIONS", "").lower() in ["true", "1"]:
+        os.environ["QT_QPA_PLATFORM"] = "offscreen"
+    
     # Create an instance of QApplication
     app = QApplication(sys.argv)
     
