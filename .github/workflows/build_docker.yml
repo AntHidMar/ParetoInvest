@@ -29,7 +29,8 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Build Docker image
-        run: docker build -t paretoinvest:latest .
+        run: docker build --platform linux/amd64 -t paretoinvest:latest .
 
       - name: Run smoke test
-        run: docker run --rm paretoinvest:latest poetry run python ParetoInvest/main.py --help || true
+        run: docker run --rm -v ${{ github.workspace }}:/app -w /app paretoinvest:latest poetry run python ParetoInvest/main.py --help
+

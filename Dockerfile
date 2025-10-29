@@ -1,5 +1,5 @@
-# --- Imagen base con Python 3.11 slim ---
-FROM python:3.11-slim
+# --- Imagen base con Java y Python ---
+FROM openjdk:17-jdk-slim
 
 # --- Variables de entorno ---
 ENV DEBIAN_FRONTEND=noninteractive
@@ -7,41 +7,30 @@ ENV QT_QPA_PLATFORM=offscreen
 ENV PYTHONUNBUFFERED=1
 ENV PATH="/root/.local/bin:$PATH"
 
-# --- Instalar JDK17 y librerías necesarias ---
+# --- Instalar dependencias del sistema ---
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    openjdk-17-jdk \
-    build-essential curl git \
-    libgl1 libglib2.0-0 libx11-6 libxext6 libxrender1 libxcb1 libxkbcommon-x11-0 libdbus-1-3 \
-    libssl-dev zlib1g-dev libglu1-mesa-dev \
+    python3 python3-pip python3-dev build-essential curl git \
+    libgl1 libglib2.0-0 libx11-6 libxext6 libxrender1 libxcb1 \
+    libxkbcommon-x11-0 libdbus-1-3 libssl-dev zlib1g-dev libglu1-mesa-dev \
+    libegl1 libgl1-mesa-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# --- Actualizar pip y setuptools ---
+# --- Actualizar pip y herramientas de construcción ---
 RUN python3 -m pip install --upgrade pip setuptools wheel
-
-# --- Instalar PyQt6 directamente desde pip (wheel precompilada) ---
-RUN python3 -m pip install PyQt6==6.10.0
 
 # --- Instalar Poetry ---
 RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN poetry config virtualenvs.in-project true
 
 # --- Crear directorio de trabajo ---
 WORKDIR /app
 
-# --- Copiar proyecto ---
+# --- Copiar proyecto completo ---
 COPY . /app/ParetoInvest
-
-# --- Entrar en la carpeta del proyecto ---
 WORKDIR /app/ParetoInvest
 
-# --- Opcional: inspección del entorno ---
-RUN poetry env info || true
-RUN poetry check || true
-
 # --- Instalar dependencias con Poetry ---
-RUN poetry install --no-interaction --no-ansi -vvv
+RUN poetry install --no-interaction --no-root
 
-# --- Añadir la raíz al PYTHONPATH (para imports relativos) ---
-ENV PYTHONPATH=/app
-
-# --- Comando por defecto ---
-CMD ["poetry", "run", "python", "ParetoInvest/main.py"]
+# --- Comando por defecto para testear o ejecutar ---
+CMD ["bash"]
