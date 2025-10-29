@@ -41,12 +41,14 @@ def main(log):
     except FileNotFoundError:
         log.printAndLogger("Style file not found. Using default styles.")
     
-    # Create and show the main window
-    main_window = MainWindow(log)
-    main_window.show()
-    
-    # Run the application's main loop
-    sys.exit(app.exec())
+    ## Mostrar la ventana solo si no estamos en CI
+    if not (os.environ.get("CI", "").lower() in ["true", "1"] or os.environ.get("GITHUB_ACTIONS", "").lower() in ["true", "1"]):        
+        # Create and show the main window
+        main_window = MainWindow(log)
+        main_window.show()
+        sys.exit(app.exec())
+    else:
+        print("Running in CI environment — GUI not executed.")
 
 if __name__ == "__main__":
     
