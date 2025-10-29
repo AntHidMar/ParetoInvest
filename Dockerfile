@@ -14,6 +14,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    qt6-base-dev libxcb-xinerama0 libx11-xcb-dev libglu1-mesa-dev build-essential \
+    python3-dev
+
 # --- Instalar Poetry ---
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
