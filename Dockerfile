@@ -1,13 +1,15 @@
+# --- Imagen base ---
 FROM ubuntu:22.04
 
+# --- Variables de entorno ---
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     QT_QPA_PLATFORM=offscreen \
     POETRY_HOME="/opt/poetry" \
-    POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_VIRTUALENVS_PATH="/opt/.venvs" \
     POETRY_NO_INTERACTION=1
 
-# --- Dependencias básicas del sistema y soporte Qt ---
+# --- Dependencias del sistema y soporte Qt ---
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.11 python3.11-venv python3.11-dev python3-pip \
     build-essential curl git \
@@ -24,18 +26,20 @@ RUN ln -sf /usr/bin/python3.11 /usr/bin/python3 && \
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
     ln -s /opt/poetry/bin/poetry /usr/local/bin/poetry
 
+# --- Instalar PyQt6 globalmente (opcional pero seguro) ---
 RUN pip install pyqt6==6.10.0
 
+# --- Directorio de trabajo ---
 WORKDIR /app
 
 # --- Copiar archivos de dependencias primero (para caching) ---
 COPY pyproject.toml poetry.lock* ./
 
-# --- Instalar dependencias de Python ---
-RUN poetry install --no-interaction --no-root
+# --- Instalar dependencias de Python via Poetry ---
+RUN poetry install --no-root --no-interaction
 
-# --- Copiar todo el código ---
+# --- Copiar el resto de la aplicación ---
 COPY . .
 
-# --- Comando por defecto ---
+# --- Comando por defecto para test o ejecución ---
 CMD ["poetry", "run", "python", "ParetoInvest/main.py", "--help"]
