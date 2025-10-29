@@ -6,9 +6,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV QT_QPA_PLATFORM=offscreen
 ENV PYTHONUNBUFFERED=1
 
-# --- Instalar Python, pip, curl y librerías necesarias para PyQt6 ---
+# --- Instalar Python, pip, curl, build-essential y librerías para PyQt6 ---
 RUN apt-get update && apt-get install -y \
-    python3 python3-pip curl \
+    python3 python3-pip python3-dev build-essential curl \
     libgl1 libglib2.0-0 libx11-6 libxext6 libxrender1 libxcb1 libxkbcommon-x11-0 libdbus-1-3 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -29,7 +29,7 @@ COPY . /app/ParetoInvest
 WORKDIR /app/ParetoInvest
 
 # --- Instalar dependencias con Poetry ---
-# Se usa --no-interaction y --no-ansi para entornos CI/CD
+# Instalamos el entorno completo (paquete + dependencias)
 RUN poetry install --no-interaction --no-ansi
 
 # --- Añadir la raíz al PYTHONPATH (para imports relativos) ---
