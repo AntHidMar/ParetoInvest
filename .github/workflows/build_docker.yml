@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Configurar QEMU para multi-arch (opcional, útil si planeas ARM)
+      # 2️⃣ Configurar QEMU (multi-arch)
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -23,7 +23,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # 4️⃣ Cache de capas de Docker para acelerar builds
+      # 4️⃣ Cache de capas de Docker
       - name: Cache Docker layers
         uses: actions/cache@v4
         with:
@@ -37,10 +37,10 @@ jobs:
         run: docker build -t paretoinvest:latest .
 
       # 6️⃣ Ejecutar tests de smoke dentro del contenedor
-      - name: Run smoke test
+      - name: Run tests
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}/ParetoInvest:/app \
+            -v ${{ github.workspace }}:/app \
             -w /app \
             -e QT_QPA_PLATFORM=offscreen \
             paretoinvest:latest \
@@ -48,7 +48,7 @@ jobs:
         env:
           PYTHONUNBUFFERED: 1
 
-      # 7️⃣ (Opcional) Ejecutar la aplicación para verificar ayuda
+      # 7️⃣ Ejecutar main.py para verificar la ayuda
       - name: Run main.py help
         run: |
           docker run --rm \
@@ -57,4 +57,3 @@ jobs:
             -e QT_QPA_PLATFORM=offscreen \
             paretoinvest:latest \
             poetry run python ParetoInvest/main.py --help
-
