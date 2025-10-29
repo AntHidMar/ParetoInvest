@@ -14,9 +14,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    qt6-base-dev libxcb-xinerama0 libx11-xcb-dev libglu1-mesa-dev build-essential \
-    python3-dev
+# --- Actualizar pip y preinstalar PyQt6 para evitar compilación ---
+RUN python3 -m pip install --upgrade pip setuptools wheel
+RUN pip install PyQt6==6.10.0
 
 # --- Instalar Poetry ---
 RUN curl -sSL https://install.python-poetry.org | python3 -
@@ -33,6 +33,7 @@ COPY . /app/ParetoInvest
 # --- Entrar en la carpeta del proyecto ---
 WORKDIR /app/ParetoInvest
 
+# --- Opcional: inspección del entorno ---
 RUN poetry env info && poetry check
 
 # --- Instalar dependencias con Poetry ---
