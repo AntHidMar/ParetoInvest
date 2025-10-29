@@ -1,5 +1,5 @@
 # --- Imagen base con Java y Python ---
-FROM openjdk:17-slim
+FROM openjdk:17-jdk
 
 # --- Variables de entorno ---
 ENV DEBIAN_FRONTEND=noninteractive
