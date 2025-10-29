@@ -1,38 +1,47 @@
-FROM openjdk:17-jdk-slim
+# --- Imagen base con Python 3.11 slim ---
+FROM python:3.11-slim
 
+# --- Variables de entorno ---
 ENV DEBIAN_FRONTEND=noninteractive
 ENV QT_QPA_PLATFORM=offscreen
 ENV PYTHONUNBUFFERED=1
+ENV PATH="/root/.local/bin:$PATH"
 
-# --- Instalar Python, librerías de compilación y Qt necesarias para PyQt6 ---
-RUN apt-get update && apt-get install -y \
-    python3 python3-pip python3-dev build-essential curl \
-    libgl1 libglib2.0-0 libx11-6 libx11-dev libxext6 libxext-dev libxrender1 libxrender-dev \
-    libxcb1 libxcb1-dev libxkbcommon-x11-0 libxkbcommon-x11-dev libdbus-1-3 \
-    libglu1-mesa-dev libssl-dev zlib1g-dev \
-    qt6-base-dev qt6-qmake qt6-base-dev-tools libxcb-xinerama0 libx11-xcb-dev \
+# --- Instalar JDK17 y librerías necesarias ---
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openjdk-17-jdk \
+    build-essential curl git \
+    libgl1 libglib2.0-0 libx11-6 libxext6 libxrender1 libxcb1 libxkbcommon-x11-0 libdbus-1-3 \
+    libssl-dev zlib1g-dev libglu1-mesa-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# --- Actualizar pip y setuptools, wheel ---
+# --- Actualizar pip y setuptools ---
 RUN python3 -m pip install --upgrade pip setuptools wheel
 
-# --- Instalar PyQt6 ---
+# --- Instalar PyQt6 directamente desde pip (wheel precompilada) ---
 RUN python3 -m pip install PyQt6==6.10.0
 
 # --- Instalar Poetry ---
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="/root/.local/bin:$PATH"
 
+# --- Crear directorio de trabajo ---
 WORKDIR /app
+
+# --- Copiar proyecto ---
 COPY . /app/ParetoInvest
+
+# --- Entrar en la carpeta del proyecto ---
 WORKDIR /app/ParetoInvest
 
-# --- Verificación opcional ---
-RUN poetry env info && poetry check
+# --- Opcional: inspección del entorno ---
+RUN poetry env info || true
+RUN poetry check || true
 
 # --- Instalar dependencias con Poetry ---
 RUN poetry install --no-interaction --no-ansi -vvv
 
+# --- Añadir la raíz al PYTHONPATH (para imports relativos) ---
 ENV PYTHONPATH=/app
 
+# --- Comando por defecto ---
 CMD ["poetry", "run", "python", "ParetoInvest/main.py"]
