@@ -31,10 +31,13 @@ WORKDIR /app
 # Copy dependency files first for better caching
 COPY pyproject.toml poetry.lock* ./
 
-# Install dependencies
+# Install dependencies INCLUDING the root package
 RUN poetry install --no-interaction --no-root
 
 # Now copy the rest of the application
 COPY . .
+
+# Install the actual package with dependencies
+RUN poetry install --no-interaction
 
 CMD ["poetry", "run", "python", "ParetoInvest/main.py", "--help"]
