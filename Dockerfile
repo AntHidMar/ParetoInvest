@@ -24,6 +24,8 @@ RUN ln -sf /usr/bin/python3.11 /usr/bin/python3 && \
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
     ln -s /opt/poetry/bin/poetry /usr/local/bin/poetry
 
+RUN pip install pyqt6==6.10.0
+
 WORKDIR /app
 
 # --- Copiar archivos de dependencias primero (para caching) ---
