@@ -7,19 +7,23 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout del código
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Configurar QEMU para multi-arch (opcional, útil si planeas ARM)
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
+      # 3️⃣ Configurar Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # 4️⃣ Cache de capas de Docker para acelerar builds
       - name: Cache Docker layers
         uses: actions/cache@v4
         with:
@@ -28,9 +32,28 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
+      # 5️⃣ Build de la imagen Docker
       - name: Build Docker image
-        run: docker build --platform linux/amd64 -t paretoinvest:latest .
+        run: docker build -t paretoinvest:latest .
 
+      # 6️⃣ Ejecutar tests de smoke dentro del contenedor
       - name: Run smoke test
-        run: docker run --rm -v ${{ github.workspace }}:/app -w /app paretoinvest:latest poetry run python ParetoInvest/main.py --help
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/ParetoInvest:/app \
+            -w /app \
+            -e QT_QPA_PLATFORM=offscreen \
+            paretoinvest:latest \
+            poetry run pytest ParetoInvest/tests -v
+        env:
+          PYTHONUNBUFFERED: 1
 
+      # 7️⃣ (Opcional) Ejecutar la aplicación para verificar ayuda
+      - name: Run main.py help
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/ParetoInvest:/app \
+            -w /app \
+            -e QT_QPA_PLATFORM=offscreen \
+            paretoinvest:latest \
+            poetry run python ParetoInvest/main.py --help
