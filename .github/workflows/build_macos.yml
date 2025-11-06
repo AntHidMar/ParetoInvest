@@ -1,0 +1,62 @@
+name: Build ParetoInvest App (macOS)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip wheel setuptools
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Configure Poetry
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry config virtualenvs.create true
+
+      - name: Install dependencies
+        run: |
+          poetry install --no-interaction --no-root
+        env:
+          PIP_ONLY_BINARY: ":all:"
+
+      # ✅ Uni Tests (offscreen)
+      - name: Run tests
+        run: poetry run pytest ParetoInvest/tests -v
+        env:
+          QT_QPA_PLATFORM: offscreen
+          PYTHONUNBUFFERED: 1
+
+      # 🧱 Crear ejecutable
+      - name: Build executable
+        run: |
+          poetry run pip install pyinstaller pandas numpy yfinance ib_insync asyncio PyQt6
+          poetry run pyinstaller --clean --onedir --noconfirm --windowed ParetoInvest/main.py \
+            --add-data "ParetoInvest/ui:ParetoInvest/ui" \
+            --add-data "ParetoInvest/models:ParetoInvest/models" \
+            --add-data "ParetoInvest/libraries:ParetoInvest/libraries" \
+            --hidden-import pandas --hidden-import numpy --hidden-import dateutil \
+            --hidden-import pytz --hidden-import requests --hidden-import yfinance \
+            --hidden-import ib_insync --hidden-import asyncio --hidden-import timeit \
+            --additional-hooks-dir=pyinstaller_hooks
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ParetoInvest_App_MacOS-${{ matrix.os }}
+          path: dist/

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>ParetoInvest.ui.ui_components API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ParetoInvest.ui.ui_components</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="ParetoInvest.ui.ui_components.init_ui"><code class="name flex">
+<span>def <span class="ident">init_ui</span></span>(<span>self, log)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_ui(self, log):
+
+    log.printAndLogger(&#34;Initializing UI components&#34;)
+
+    # Create a central widget
+    central_widget = QWidget(self)
+    self.setCentralWidget(central_widget)
+
+    # Create a main layout
+    main_layout = QVBoxLayout()
+    central_widget.setLayout(main_layout)
+
+    # Create a panel (QFrame) for the top controls
+    controls_panel = QFrame()
+    #controls_panel.setFrameShape(QFrame.StyledPanel)    
+    controls_panel.setFrameShape(QFrame.Shape.StyledPanel)
+    controls_layout = QHBoxLayout(controls_panel)
+
+    # ---- Layouts inside the panel ----
+    log.printAndLogger(&#34;Creating internal layouts&#34;)
+    left_grid = QGridLayout()
+    left_layout = QVBoxLayout()
+    left2_layout = QVBoxLayout()
+    center_layout = QVBoxLayout()
+    right_layout = QVBoxLayout()
+
+    # ---- Left: TextBoxes ----
+    log.printAndLogger(&#34;Initializing left panel textboxes&#34;)
+    labels_textboxes = [
+        ([&#34;Population Size&#34;, 100], &#34;population_size&#34;),
+        ([&#34;NumEvals&#34;, 5000], &#34;Num_Evaluations&#34;),
+        ([&#34;Studied&#34;, 5], &#34;num_studied&#34;),
+        ([&#34;Total&#34;, 10], &#34;total_num&#34;),
+        ([&#34;increase&#34;, 1], &#34;increase&#34;),
+        #([&#34;window&#34;, 1], &#34;window&#34;),
+        ([&#34;Duration&#34;, &#34;1 Y&#34;], &#34;duration&#34;),
+        
+    ]
+
+    self.textboxes = {}
+    row1 = 0
+    for label_text, key in labels_textboxes:
+        label = QLabel(label_text[0])
+        textbox = QLineEdit(str(label_text[1]))
+        textbox.setFixedWidth(100)
+        left_grid.addWidget(label, row1, 0)
+        left_grid.addWidget(textbox, row1, 1)
+        self.textboxes[key] = textbox
+        row1 += 1
+
+    labels_textboxes2 = [
+        ([&#34;cr&#34;, 1], &#34;cr&#34;),
+        ([&#34;f&#34;, 0.5], &#34;f&#34;),            
+        ([&#34;Crossover Probability&#34;, 0.9], &#34;crossoverProbability&#34;),
+        ([&#34;Crossover Distribution Index&#34;, 20], &#34;crossoverDistributionIndex&#34;),
+        ([&#34;Mutation Distribution Index&#34;, 20], &#34;mutationDistributionIndex&#34;),
+        ([&#34;Seed&#34;, 0], &#34;seed&#34;),
+    ]
+
+    row2 = 0
+    for label_text, key in labels_textboxes2:
+        label = QLabel(label_text[0])
+        textbox = QLineEdit(str(label_text[1]))
+        textbox.setFixedWidth(100)
+        left_grid.addWidget(label, row2, 2)
+        left_grid.addWidget(textbox, row2, 3)
+        self.textboxes[key] = textbox
+        row2 += 1
+
+    # ---- Select directory ----
+    &#34;&#34;&#34;log.printAndLogger(&#34;Setting up directory selector&#34;)
+    dir_layout = QHBoxLayout()
+    dir_label = QLabel(&#34;Download File Directory&#34;)
+    self.dir_textbox = QLineEdit()
+    dir_button = QPushButton(&#34;Select...&#34;)
+    dir_button.clicked.connect(self.select_directory)
+    dir_layout.addWidget(self.dir_textbox)
+    dir_layout.addWidget(dir_button)
+    left_grid.addWidget(dir_label, row1, 0)
+    left_grid.addLayout(dir_layout, row1, 1)&#34;&#34;&#34;
+
+    # ---- Centro: Combos ----
+    # Logging the initialization of dropdown elements
+    log.printAndLogger(&#34;Setting up dropdowns&#34;)
+
+    # Create label and dropdown for algorithm selection
+    self.alg_label = QLabel(&#34;Algorithms&#34;)
+    self.alg_layout = QHBoxLayout()
+    self.alg_combo = QComboBox()
+    self.alg_combo.addItems([&#34;MOEAD&#34;, &#34;MOEADDE&#34;, &#34;NSGAII&#34;, &#34;SMPSO&#34;, &#34;SMSEMOA&#34;])  # Available optimization algorithms
+    self.alg_combo.setFixedWidth(200)  # Set fixed width for consistency in UI
+    self.alg_layout.addWidget(self.alg_label)
+    self.alg_layout.addWidget(self.alg_combo)
+    center_layout.addLayout(self.alg_layout)
+
+    # Create label and dropdown for market selection
+    markets_label = QLabel(&#34;Markets&#34;)
+    self.mar_layout = QHBoxLayout()
+    self.markets_combo = QComboBox()
+    if (self.df_Assets is not None and not self.df_Assets.empty and &#34;exchange&#34; in self.df_Assets.columns and self.df_Assets[&#34;exchange&#34;].notna().any()):
+        mercados = sorted(self.df_Assets[&#34;exchange&#34;].dropna().unique().tolist())
+        self.markets_combo.addItems([&#34;ALL&#34;] + mercados)
+    else:
+        self.markets_combo.addItems([&#34;ALL&#34;])
+    #self.markets_combo.addItems([&#34;ALL&#34;] + list(self.df_Assets.exchange.unique()))  # List of market sources
+    self.markets_combo.setFixedWidth(200)
+    self.mar_layout.addWidget(markets_label)
+    self.mar_layout.addWidget(self.markets_combo)
+    center_layout.addLayout(self.mar_layout)
+
+    # Asset Type
+    type_label = QLabel(&#34;type&#34;)
+    self.type_combo = QComboBox()
+    if (self.df_Assets is not None and not self.df_Assets.empty and &#34;asset_type&#34; in self.df_Assets.columns and self.df_Assets[&#34;asset_type&#34;].notna().any()):
+        types = sorted(self.df_Assets[&#34;asset_type&#34;].dropna().unique().tolist())
+        self.type_combo.addItems([&#34;ALL&#34;] + types)
+    else:
+        self.type_combo.addItems([&#34;ALL&#34;])
+    #self.type_combo.addItems([&#34;ALL&#34;] +  list(self.df_Assets.asset_type.unique()))
+    self.type_combo.setFixedWidth(200)
+    self.type_layout = QHBoxLayout()
+    self.type_layout.addWidget(type_label)
+    self.type_layout.addWidget(self.type_combo)
+    center_layout.addLayout(self.type_layout)
+    
+    # Asset sector
+    sector_label = QLabel(&#34;sector&#34;)
+    self.sector_combo = QComboBox()
+    if (self.df_Assets is not None and not self.df_Assets.empty and &#34;FMP_sector&#34; in self.df_Assets.columns and self.df_Assets[&#34;FMP_sector&#34;].notna().any()):
+        sectores = sorted(self.df_Assets[&#34;FMP_sector&#34;].dropna().unique().tolist())        
+        self.sector_combo.addItems([&#34;ALL&#34;] + sectores)
+    else:
+        self.sector_combo.addItems([&#34;ALL&#34;])    
+    self.sector_combo.setFixedWidth(200)
+    self.sector_layout = QHBoxLayout()
+    self.sector_layout.addWidget(sector_label)
+    self.sector_layout.addWidget(self.sector_combo)
+    center_layout.addLayout(self.sector_layout)
+
+    # Create label and dropdown for frequency selection
+    freq_label = QLabel(&#34;Frequencies&#34;)
+    self.freq_combo = QComboBox()
+    self.freq_combo.addItems([&#34;Year&#34;, &#34;Month&#34;, &#34;Day&#34;, &#34;Hour&#34;, &#34;Minute&#34;, &#34;Second&#34;])  # Granularity of data frequency
+    self.freq_combo.setCurrentText(&#34;Day&#34;)  # Default selection
+    self.freq_combo.setFixedWidth(200)
+    self.freq_layout = QHBoxLayout()
+    self.freq_layout.addWidget(freq_label)
+    self.freq_layout.addWidget(self.freq_combo)
+    center_layout.addLayout(self.freq_layout)
+
+    # Create label and dropdown for window selection
+    window_label = QLabel(&#34;windows&#34;)
+    self.window_combo = QComboBox()
+    self.window_combo.addItems([&#34;Year&#34;, &#34;Month&#34;, &#34;Day&#34;])  # Time window for analysis
+    self.window_combo.setFixedWidth(200)
+    self.window_layout = QHBoxLayout()
+    self.window_layout.addWidget(window_label)
+    self.window_layout.addWidget(self.window_combo)
+    center_layout.addLayout(self.window_layout)
+
+    log.printAndLogger(&#34;Configuring date pickers and control buttons&#34;)
+    current_date = QDate.currentDate()
+
+    # Label and date picker for the start date
+    start_date_label = QLabel(&#34;Start&#34;)
+    self.start_date = QDateEdit()
+    self.start_date.setCalendarPopup(True)  # Enables calendar widget
+    self.start_date.setFixedWidth(200)
+    self.start_date.dateChanged.connect(lambda: ui_event_handlers.on_date_start_changed(self))  # Connects change signal to handler
+    self.start_date.setDate(current_date.addYears(-1))  # Default start date = one year ago
+    self.start_pydate = self.start_date.date().toPyDate()  # Store as Python date
+
+    # Label and date picker for the end date
+    end_date_label = QLabel(&#34;End&#34;)
+    self.end_date = QDateEdit()
+    self.end_date.setCalendarPopup(True)
+    self.end_date.setFixedWidth(200)
+    self.end_date.setDate(current_date)  # Default end date = today
+    self.end_pydate = self.end_date.date().toPyDate()
+    self.end_date.dateChanged.connect(lambda: ui_event_handlers.on_date_end_changed(self))  # Connect change signal
+
+    # Button to update the list of assets
+    self.assets_button = QPushButton(&#34;Update Assets List&#34;)
+    self.assets_button.setFixedWidth(200)
+    self.assets_button.setFixedHeight(40)
+
+    # Button to download financial data
+    self.download_button = QPushButton(&#34;Download Data&#34;)
+    self.download_button.setFixedWidth(200)
+    self.download_button.setFixedHeight(40)
+
+    # Button to generate configuration files for JMetal algorithms
+    self.JMetal_files_button = QPushButton(&#34;Generate JMetal Files&#34;)
+    self.JMetal_files_button.setFixedWidth(200)
+    self.JMetal_files_button.setFixedHeight(40)
+
+    # Button to execute the selected optimization algorithm
+    self.execAlg_button = QPushButton(&#34;Execute Algorithm&#34;)
+    self.execAlg_button.setFixedWidth(200)
+    self.execAlg_button.setFixedHeight(40)
+
+    # Generate checkboxes for allow user to update assets types
+    self.checkbox_types_state = False
+    self.checkbox_types = QCheckBox(&#34;Update Types&#34;)
+    self.checkbox_types.stateChanged.connect(lambda state: ui_event_handlers.checkbox_types_changed(self, state))    
+    self.checkbox_types.setChecked(self.checkbox_types_state)  # Set initial state of checkbox
+    self.checkbox_types.setVisible(False)
+
+    # shortcut: Ctrl+S+F to show/hide the checkbox
+    self.shortcut_show_cb = QShortcut(QKeySequence(&#34;Ctrl+S&#34;), self)
+    self.shortcut_show_cb.activated.connect(lambda: ui_event_handlers.show_checkbox(self))
+    
+    # shortcut: Ctrl+S+H to hide the checkbox
+    self.shortcut_hide_cb = QShortcut(QKeySequence(&#34;Ctrl+H&#34;), self)
+    self.shortcut_hide_cb.activated.connect(lambda: ui_event_handlers.hide_checkbox(self))
+
+    # Add all right-side widgets to the layout
+    right_layout.addWidget(start_date_label)
+    right_layout.addWidget(self.start_date)
+    right_layout.addWidget(end_date_label)
+    right_layout.addWidget(self.end_date)
+    right_layout.addWidget(self.assets_button)
+    right_layout.addWidget(self.checkbox_types)  # Add checkbox for updating asset types
+    right_layout.addWidget(self.download_button)        
+    right_layout.addWidget(self.JMetal_files_button)
+    right_layout.addWidget(self.execAlg_button)
+
+    # ---- Add All Sub-Layouts to the Main Layout ----
+    log.printAndLogger(&#34;Finalizing layout&#34;)
+    controls_layout.addLayout(left_grid)
+    controls_layout.addLayout(center_layout)
+    controls_layout.addLayout(right_layout)
+    main_layout.addWidget(controls_panel, stretch=1)
+
+    # ---- Output Text Area ----
+    self.text_area = QTextEdit(self)
+    self.text_area.setReadOnly(True)  # Read-only log console
+    main_layout.addWidget(self.text_area, stretch=7)
+
+    # ---- Horizontal Separator ----
+    separator = QFrame()
+    #separator.setFrameShape(QFrame.HLine)
+    separator.setFrameShape(QFrame.Shape.HLine)
+    separator.setFrameShadow(QFrame.Shadow.Sunken)
+    main_layout.addWidget(separator)
+
+    # ---- Progress Bar ----
+    self.progress_bar = QProgressBar(self)
+    self.progress_bar.setValue(0)
+    self.progress_bar.setTextVisible(True)
+    self.progress_bar.setFixedHeight(25)
+    self.progress_bar.setHidden(True)
+    self.progress_bar.setFormat(&#34;%v/%m&#34;)
+    main_layout.addWidget(self.progress_bar)
+
+    # ---- Initialization of Default Values and Signal Connections ----
+    self.total_num = int(self.textboxes[&#39;total_num&#39;].text())  # Total number of assets to process
+    self.frequency = self.freq_combo.currentText()  # Selected data frequency
+    self.window = self.window_combo.currentText()  # Window type (e.g., day, month)
+    self.duration = self.textboxes[&#39;duration&#39;].text()  # Paquete de datos descargados en cada consulta a través de IB
+    self.default_download_dir = f&#34;data\\financial_data\\IB_{self.frequency}&#34;
+    #self.dir_textbox.setText(self.default_download_dir)  # Show default path
+
+    # Connect buttons to their respective handlers
+    self.download_button.clicked.connect(self.download_data)
+    self.assets_button.clicked.connect(self.update_assets)
+    self.JMetal_files_button.clicked.connect(self.generate_JMetal_files)        
+    self.execAlg_button.clicked.connect(self.execute_algorithm)
+
+    log.printAndLogger(&#34;UI components initialized successfully&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ParetoInvest.ui" href="index.html">ParetoInvest.ui</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="ParetoInvest.ui.ui_components.init_ui" href="#ParetoInvest.ui.ui_components.init_ui">init_ui</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>ParetoInvest.models.Assets API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ParetoInvest.models.Assets</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ParetoInvest.models.Assets.AssetManager"><code class="flex name class">
+<span>class <span class="ident">AssetManager</span></span>
+<span>(</span><span>dir_asset='', dir_config='')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AssetManager:
+
+    def __init__(self, dir_asset=&#34;&#34;, dir_config=&#34;&#34;):
+        self._DEBUG = False  # Debug flag
+        self._now = datetime.now()  # Current timestamp
+        # Default directory for asset files
+        self._dir_asset_file = dir_asset if dir_asset else &#34;data\\Assets\\&#34;
+        # Default directory for config files
+        #self._dir_config_file = dir_config if dir_config else &#34;data\\Config\\&#34;
+        # Log file path based on current date
+        self._log_filename = f&#39;LOG\\Assets_{self._now.strftime(&#34;%Y%m%d&#34;)}.log&#39;
+
+        # Set up logging configuration
+        logging.basicConfig(
+            format=&#39;[%(asctime)-15s][%(funcName)s:%(lineno)d] %(message)s&#39;,
+            filename=self._log_filename,
+            level=logging.DEBUG if self._DEBUG else logging.INFO
+        )
+        self._logger = logging.getLogger(&#34;jsonSocket&#34;)  # Logger instance
+
+    @property
+    def DEBUG(self):
+        return self._DEBUG
+
+    @DEBUG.setter
+    def DEBUG(self, value):
+        self._DEBUG = value
+
+    @property
+    def dir_asset_file(self):
+        return self._dir_asset_file
+
+    @dir_asset_file.setter
+    def dir_asset_file(self, value):
+        self._dir_asset_file = value
+
+    &#34;&#34;&#34;@property
+    def dir_config_file(self):
+        return self._dir_config_file
+
+    @dir_config_file.setter
+    def dir_config_file(self, value):
+        self._dir_config_file = value&#34;&#34;&#34;
+
+    @property
+    def logger(self):
+        return self._logger
+
+    def save_assets_to_csv(self):
+    
+        # Start logging the process
+        self._logger.info(&#34;Starting to fetch active assets from Alpaca and save to CSV.&#34;)
+
+        alpaca_broker = Alpaca()  # Initialize Alpaca broker
+
+        #try:
+        # Fetch active assets
+        active_assets = alpaca_broker.get_assets(status=&#39;active&#39;, asset_class=&#39;us_equity&#39;)
+        self._logger.info(f&#34;Getting {len(active_assets)} active assets from Alpaca.&#34;)
+
+        df = pd.DataFrame(active_assets)  # Convert list to DataFrame
+
+        # Add sector to Assets.
+        file_name_sector = os.path.join(self.dir_asset_file, &#34;Assets_Sector.csv&#34;)  
+        if os.path.exists(file_name_sector):                
+            df_sector = pd.read_csv(file_name_sector, index_col=0, header=0, encoding=&#39;utf-8&#39;)
+            df_sector[&#39;FMP_sector&#39;] = df_sector[&#39;FMP_sector&#39;].fillna(&#39;Unknown&#39;)
+            df_sector[&#34;asset_type&#34;] = df_sector[&#34;asset_type&#34;].astype(str).str.upper()
+            df_sector[&#34;asset_type&#34;] = df_sector[&#34;asset_type&#34;].replace([&#34;NONE&#34;, &#34;NAN&#34;], &#34;UNKNOWN&#34;, regex=False)
+            #df1 = df1[[&#39;symbol&#39;, &#39;FMP_Sector&#39;, &#39;type&#39;]]
+            df = df.merge(df_sector[[&#39;symbol&#39;, &#39;FMP_sector&#39;, &#39;asset_type&#39;, &#39;refined_asset_type&#39;]], on=&#39;symbol&#39;, how=&#39;left&#39;)
+
+        &#34;&#34;&#34;except Exception as e:
+            # Log any errors during fetch
+            self._logger.error(f&#34;Error getting active assets from Alpaca: {e}&#34;)
+            return False, None&#34;&#34;&#34;
+
+
+        if not df.empty:
+            # Remove slash from symbol names
+            df[&#39;symbolR&#39;] = df[&#39;symbol&#39;].str.replace(&#34;/&#34;, &#34;&#34;, regex=False)
+            # Ensure columns exist or initialize
+            if &#39;min_order_size&#39; not in df.columns:
+                df[&#39;min_order_size&#39;] = 0
+            if &#39;min_trade_increment&#39; not in df.columns:
+                df[&#39;min_trade_increment&#39;] = 0
+            if &#39;price_increment&#39; not in df.columns:
+                df[&#39;price_increment&#39;] = 0
+
+        # Sort by symbol
+        df = df.sort_values(by=&#39;symbol&#39;, ascending=True)
+        file_name = os.path.join(self.dir_asset_file, &#34;Assets.csv&#34;)  # Path to save CSV
+
+        if os.path.exists(file_name):
+            # Create a backup copy if file exists
+            current_date_str = datetime.now().strftime(&#34;%Y_%m_%d&#34;)
+            backup_file = file_name.replace(&#34;.csv&#34;, f&#34;_{current_date_str}.csv&#34;)
+            shutil.copy(file_name, backup_file)
+
+        try:
+            # Save DataFrame to CSV
+            df.to_csv(file_name, index=False, encoding=&#39;utf-8&#39;)
+            self._logger.info(f&#34;Save file {file_name} successfully.&#34;)
+        except Exception as e:
+            # Log any errors while saving
+            self._logger.error(f&#34;Error saving CSV file: {e}&#34;)
+            return False, None
+
+        return True, df  # Return success flag and DataFrame
+
+    def load_assets_from_csv(self):
+
+        file_name = os.path.join(self.dir_asset_file, &#34;Assets.csv&#34;)  # Path to load CSV
+
+        if os.path.exists(file_name):
+            # Load CSV into DataFrame and return
+            return pd.read_csv(file_name, index_col=0, header=0, encoding=&#39;utf-8&#39;)
+        return None  # Return None if file doesn&#39;t exist
+
+    def classify_asset_type(self, df):
+
+        refined_types = []
+        types = []
+        #df = df[:10]
+        for row in  df.itertuples():
+
+            symbol = getattr(row, &#39;symbol&#39;)
+            name = getattr(row, &#39;name&#39;).lower()
+            print(f&#34;symbol: {symbol}&#34;)
+            asset_type = &#39;unknown&#39;
+            quote_type = &#39;unknown&#39;
+            long_name = &#39;&#39;
+            short_name = &#39;&#39;
+
+            try:
+                #url = f&#34;https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=quoteType&#34;
+                #response = requests.get(url)
+                #data = response.json()
+                #quote_type = data[&#39;quoteSummary&#39;][&#39;result&#39;][0][&#39;quoteType&#39;].lower() if &#39;result&#39; in data[&#39;quoteSummary&#39;] and len(data[&#39;quoteSummary&#39;][&#39;result&#39;]) &gt; 0 else &#39;unknown&#39;
+                #long_name = data[&#39;quoteSummary&#39;][&#39;result&#39;][0].get(&#39;longName&#39;, &#39;&#39;).lower() if &#39;result&#39; in data[&#39;quoteSummary&#39;] and len(data[&#39;quoteSummary&#39;][&#39;result&#39;]) &gt; 0 else &#39;&#39;
+                #short_name = data[&#39;quoteSummary&#39;][&#39;result&#39;][0].get(&#39;shortName&#39;, &#39;&#39;).lower() if &#39;result&#39; in data[&#39;quoteSummary&#39;] and len(data[&#39;quoteSummary&#39;][&#39;result&#39;]) &gt; 0 else &#39;&#39;
+
+                &#34;&#34;&#34;ticker = yf.Ticker(symbol)
+                summary = ticker.get_info()  # mismo que .info pero menos problemático
+                quote_type = summary.get(&#34;quoteType&#34;) or &#34;unknown&#34;
+                long_name = summary.get(&#34;longName&#34;) or &#39;&#39;
+                short_name = summary.get(&#34;shortName&#34;) or &#39;&#39;&#34;&#34;&#34;
+
+                ticker = yf.Ticker(symbol)
+                info = ticker.info
+                quote_type = info.get(&#39;quoteType&#39;, &#39;&#39;).lower()
+                long_name = info.get(&#39;longName&#39;, &#39;&#39;).lower()
+                short_name = info.get(&#39;shortName&#39;, &#39;&#39;).lower()
+
+            except Exception as e:
+                print(f&#34;Error processing {symbol}: {e}&#34;)
+                asset_type = &#39;unknown&#39;
+                quote_type = &#39;unknown&#39;
+                long_name = &#39;&#39;
+                short_name = &#39;&#39;
+            finally:
+                gc.collect()  # Forzar limpieza
+                info = None  # Clear info to free memory
+
+            print(f&#34;    quote_type: {quote_type}&#34;)
+            print(f&#34;    long_name: {long_name}&#34;)
+            print(f&#34;    short_name: {short_name}&#34;)
+            print(f&#34;    asset_type: {asset_type}&#34;)
+            print(f&#34;    Alpaca name: {name}&#34;)
+            
+            # Refined classification based on keywords
+            if &#39;etf&#39; in quote_type or &#39;etf&#39; in long_name or &#39;etf&#39; in short_name or &#39;etf&#39; in name:
+                asset_type = &#39;ETF&#39;
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;ETF&#39;
+            elif (&#39;common stock&#39; in long_name or &#39;common stock&#39; in short_name or &#39;common stock&#39; in name
+                or &#39;voting&#39; in long_name or &#39;voting&#39; in short_name or &#39;voting&#39; in name):
+                asset_type = &#39;Stock&#39;    
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+            elif &#39;warrant&#39; in long_name or &#39;warrant&#39; in short_name or &#39;warrant&#39; in name:
+                asset_type = &#39;Warrant&#39;
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+            elif &#39;right&#39; in long_name or &#39;right&#39; in short_name or &#39;right&#39; in name:
+                asset_type = &#39;Right&#39;
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+            elif &#39;unit&#39; in long_name or &#39;unit&#39; in short_name or &#39;unit&#39; in name:
+                asset_type = &#39;Unit&#39;
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+            elif &#39;reit&#39; in long_name or &#39;reit&#39; in short_name or &#39;reit&#39; in name:
+                asset_type = &#39;REIT&#39;     # Real Estate Investment Trust
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+            elif (&#39;preferred&#39; in long_name or &#39;preferred&#39; in short_name or &#39;preferred&#39; in name
+                or &#39;.PR&#39; in symbol.upper()):
+                asset_type = &#39;Preferred stock&#39;      # Special Purpose Acquisition Company
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+            elif (&#39;adr&#39; in long_name or &#39;adr&#39; in short_name or &#39;adr&#39; in name
+                or &#39;sponsored&#39; in long_name or &#39;sponsored&#39; in short_name or &#39;sponsored&#39; in name
+                or &#39;depositary&#39; in long_name or &#39;depositary&#39; in short_name or &#39;depositary&#39; in name
+                or &#39;depository&#39; in long_name or &#39;depository&#39; in short_name or &#39;depository&#39; in name
+                ):                    
+                asset_type = &#39;ADR&#39;      # American Depositary Receipt
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+            elif &#39;acquisition&#39; in long_name or &#39;acquisition&#39; in short_name or &#39;acquisition&#39; in name:                
+                asset_type = &#39;SPAC&#39;      # Special Purpose Acquisition Company
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+            elif &#39;subordinated debentures&#39; in long_name or &#39;subordinated debentures&#39; in short_name or &#39;subordinated debentures&#39; in name:                
+                asset_type = &#39;bond&#39;
+                if quote_type == &#39;unknown&#39;: quote_type = &#39;bond&#39;
+            elif quote_type == &#39;equity&#39;:
+                asset_type = &#39;Stock&#39;
+            elif quote_type != &#39;&#39;:
+                asset_type = quote_type.capitalize()
+            elif symbol.upper().endswith(&#39;.A&#39;):
+                asset_type = &#39;Stock&#39;    
+                if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+            else:
+                asset_type = &#39;Stock 1&#39;
+                
+
+
+            refined_types.append(asset_type)
+            types.append(quote_type)
+            time.sleep(0.5)  # Prevent rate-limiting by Yahoo
+
+        df[&#39;asset_type&#39;] = types
+        df[&#39;refined_asset_type&#39;] = refined_types
+        
+        # ReWrite Assets.csv
+        file_name = os.path.join(self.dir_asset_file, &#34;Assets.csv&#34;)  # Path to save CSV
+
+        # Save new file with asset type
+        df.to_csv(file_name, index=False, encoding=&#39;utf-8&#39;)
+
+        return df</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="ParetoInvest.models.Assets.AssetManager.DEBUG"><code class="name">prop <span class="ident">DEBUG</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def DEBUG(self):
+    return self._DEBUG</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.models.Assets.AssetManager.dir_asset_file"><code class="name">prop <span class="ident">dir_asset_file</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def dir_asset_file(self):
+    return self._dir_asset_file</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.models.Assets.AssetManager.logger"><code class="name">prop <span class="ident">logger</span></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def logger(self):
+    return self._logger</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="ParetoInvest.models.Assets.AssetManager.classify_asset_type"><code class="name flex">
+<span>def <span class="ident">classify_asset_type</span></span>(<span>self, df)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def classify_asset_type(self, df):
+
+    refined_types = []
+    types = []
+    #df = df[:10]
+    for row in  df.itertuples():
+
+        symbol = getattr(row, &#39;symbol&#39;)
+        name = getattr(row, &#39;name&#39;).lower()
+        print(f&#34;symbol: {symbol}&#34;)
+        asset_type = &#39;unknown&#39;
+        quote_type = &#39;unknown&#39;
+        long_name = &#39;&#39;
+        short_name = &#39;&#39;
+
+        try:
+            #url = f&#34;https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=quoteType&#34;
+            #response = requests.get(url)
+            #data = response.json()
+            #quote_type = data[&#39;quoteSummary&#39;][&#39;result&#39;][0][&#39;quoteType&#39;].lower() if &#39;result&#39; in data[&#39;quoteSummary&#39;] and len(data[&#39;quoteSummary&#39;][&#39;result&#39;]) &gt; 0 else &#39;unknown&#39;
+            #long_name = data[&#39;quoteSummary&#39;][&#39;result&#39;][0].get(&#39;longName&#39;, &#39;&#39;).lower() if &#39;result&#39; in data[&#39;quoteSummary&#39;] and len(data[&#39;quoteSummary&#39;][&#39;result&#39;]) &gt; 0 else &#39;&#39;
+            #short_name = data[&#39;quoteSummary&#39;][&#39;result&#39;][0].get(&#39;shortName&#39;, &#39;&#39;).lower() if &#39;result&#39; in data[&#39;quoteSummary&#39;] and len(data[&#39;quoteSummary&#39;][&#39;result&#39;]) &gt; 0 else &#39;&#39;
+
+            &#34;&#34;&#34;ticker = yf.Ticker(symbol)
+            summary = ticker.get_info()  # mismo que .info pero menos problemático
+            quote_type = summary.get(&#34;quoteType&#34;) or &#34;unknown&#34;
+            long_name = summary.get(&#34;longName&#34;) or &#39;&#39;
+            short_name = summary.get(&#34;shortName&#34;) or &#39;&#39;&#34;&#34;&#34;
+
+            ticker = yf.Ticker(symbol)
+            info = ticker.info
+            quote_type = info.get(&#39;quoteType&#39;, &#39;&#39;).lower()
+            long_name = info.get(&#39;longName&#39;, &#39;&#39;).lower()
+            short_name = info.get(&#39;shortName&#39;, &#39;&#39;).lower()
+
+        except Exception as e:
+            print(f&#34;Error processing {symbol}: {e}&#34;)
+            asset_type = &#39;unknown&#39;
+            quote_type = &#39;unknown&#39;
+            long_name = &#39;&#39;
+            short_name = &#39;&#39;
+        finally:
+            gc.collect()  # Forzar limpieza
+            info = None  # Clear info to free memory
+
+        print(f&#34;    quote_type: {quote_type}&#34;)
+        print(f&#34;    long_name: {long_name}&#34;)
+        print(f&#34;    short_name: {short_name}&#34;)
+        print(f&#34;    asset_type: {asset_type}&#34;)
+        print(f&#34;    Alpaca name: {name}&#34;)
+        
+        # Refined classification based on keywords
+        if &#39;etf&#39; in quote_type or &#39;etf&#39; in long_name or &#39;etf&#39; in short_name or &#39;etf&#39; in name:
+            asset_type = &#39;ETF&#39;
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;ETF&#39;
+        elif (&#39;common stock&#39; in long_name or &#39;common stock&#39; in short_name or &#39;common stock&#39; in name
+            or &#39;voting&#39; in long_name or &#39;voting&#39; in short_name or &#39;voting&#39; in name):
+            asset_type = &#39;Stock&#39;    
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+        elif &#39;warrant&#39; in long_name or &#39;warrant&#39; in short_name or &#39;warrant&#39; in name:
+            asset_type = &#39;Warrant&#39;
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+        elif &#39;right&#39; in long_name or &#39;right&#39; in short_name or &#39;right&#39; in name:
+            asset_type = &#39;Right&#39;
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+        elif &#39;unit&#39; in long_name or &#39;unit&#39; in short_name or &#39;unit&#39; in name:
+            asset_type = &#39;Unit&#39;
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+        elif &#39;reit&#39; in long_name or &#39;reit&#39; in short_name or &#39;reit&#39; in name:
+            asset_type = &#39;REIT&#39;     # Real Estate Investment Trust
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+        elif (&#39;preferred&#39; in long_name or &#39;preferred&#39; in short_name or &#39;preferred&#39; in name
+            or &#39;.PR&#39; in symbol.upper()):
+            asset_type = &#39;Preferred stock&#39;      # Special Purpose Acquisition Company
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+        elif (&#39;adr&#39; in long_name or &#39;adr&#39; in short_name or &#39;adr&#39; in name
+            or &#39;sponsored&#39; in long_name or &#39;sponsored&#39; in short_name or &#39;sponsored&#39; in name
+            or &#39;depositary&#39; in long_name or &#39;depositary&#39; in short_name or &#39;depositary&#39; in name
+            or &#39;depository&#39; in long_name or &#39;depository&#39; in short_name or &#39;depository&#39; in name
+            ):                    
+            asset_type = &#39;ADR&#39;      # American Depositary Receipt
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+        elif &#39;acquisition&#39; in long_name or &#39;acquisition&#39; in short_name or &#39;acquisition&#39; in name:                
+            asset_type = &#39;SPAC&#39;      # Special Purpose Acquisition Company
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39; or quote_type == &#39;none&#39;: quote_type = &#39;EQUITY&#39;
+        elif &#39;subordinated debentures&#39; in long_name or &#39;subordinated debentures&#39; in short_name or &#39;subordinated debentures&#39; in name:                
+            asset_type = &#39;bond&#39;
+            if quote_type == &#39;unknown&#39;: quote_type = &#39;bond&#39;
+        elif quote_type == &#39;equity&#39;:
+            asset_type = &#39;Stock&#39;
+        elif quote_type != &#39;&#39;:
+            asset_type = quote_type.capitalize()
+        elif symbol.upper().endswith(&#39;.A&#39;):
+            asset_type = &#39;Stock&#39;    
+            if quote_type == &#39;unknown&#39; or quote_type == &#39;&#39;: quote_type = &#39;EQUITY&#39;
+        else:
+            asset_type = &#39;Stock 1&#39;
+            
+
+
+        refined_types.append(asset_type)
+        types.append(quote_type)
+        time.sleep(0.5)  # Prevent rate-limiting by Yahoo
+
+    df[&#39;asset_type&#39;] = types
+    df[&#39;refined_asset_type&#39;] = refined_types
+    
+    # ReWrite Assets.csv
+    file_name = os.path.join(self.dir_asset_file, &#34;Assets.csv&#34;)  # Path to save CSV
+
+    # Save new file with asset type
+    df.to_csv(file_name, index=False, encoding=&#39;utf-8&#39;)
+
+    return df</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.models.Assets.AssetManager.load_assets_from_csv"><code class="name flex">
+<span>def <span class="ident">load_assets_from_csv</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_assets_from_csv(self):
+
+    file_name = os.path.join(self.dir_asset_file, &#34;Assets.csv&#34;)  # Path to load CSV
+
+    if os.path.exists(file_name):
+        # Load CSV into DataFrame and return
+        return pd.read_csv(file_name, index_col=0, header=0, encoding=&#39;utf-8&#39;)
+    return None  # Return None if file doesn&#39;t exist</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.models.Assets.AssetManager.save_assets_to_csv"><code class="name flex">
+<span>def <span class="ident">save_assets_to_csv</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_assets_to_csv(self):
+
+    # Start logging the process
+    self._logger.info(&#34;Starting to fetch active assets from Alpaca and save to CSV.&#34;)
+
+    alpaca_broker = Alpaca()  # Initialize Alpaca broker
+
+    #try:
+    # Fetch active assets
+    active_assets = alpaca_broker.get_assets(status=&#39;active&#39;, asset_class=&#39;us_equity&#39;)
+    self._logger.info(f&#34;Getting {len(active_assets)} active assets from Alpaca.&#34;)
+
+    df = pd.DataFrame(active_assets)  # Convert list to DataFrame
+
+    # Add sector to Assets.
+    file_name_sector = os.path.join(self.dir_asset_file, &#34;Assets_Sector.csv&#34;)  
+    if os.path.exists(file_name_sector):                
+        df_sector = pd.read_csv(file_name_sector, index_col=0, header=0, encoding=&#39;utf-8&#39;)
+        df_sector[&#39;FMP_sector&#39;] = df_sector[&#39;FMP_sector&#39;].fillna(&#39;Unknown&#39;)
+        df_sector[&#34;asset_type&#34;] = df_sector[&#34;asset_type&#34;].astype(str).str.upper()
+        df_sector[&#34;asset_type&#34;] = df_sector[&#34;asset_type&#34;].replace([&#34;NONE&#34;, &#34;NAN&#34;], &#34;UNKNOWN&#34;, regex=False)
+        #df1 = df1[[&#39;symbol&#39;, &#39;FMP_Sector&#39;, &#39;type&#39;]]
+        df = df.merge(df_sector[[&#39;symbol&#39;, &#39;FMP_sector&#39;, &#39;asset_type&#39;, &#39;refined_asset_type&#39;]], on=&#39;symbol&#39;, how=&#39;left&#39;)
+
+    &#34;&#34;&#34;except Exception as e:
+        # Log any errors during fetch
+        self._logger.error(f&#34;Error getting active assets from Alpaca: {e}&#34;)
+        return False, None&#34;&#34;&#34;
+
+
+    if not df.empty:
+        # Remove slash from symbol names
+        df[&#39;symbolR&#39;] = df[&#39;symbol&#39;].str.replace(&#34;/&#34;, &#34;&#34;, regex=False)
+        # Ensure columns exist or initialize
+        if &#39;min_order_size&#39; not in df.columns:
+            df[&#39;min_order_size&#39;] = 0
+        if &#39;min_trade_increment&#39; not in df.columns:
+            df[&#39;min_trade_increment&#39;] = 0
+        if &#39;price_increment&#39; not in df.columns:
+            df[&#39;price_increment&#39;] = 0
+
+    # Sort by symbol
+    df = df.sort_values(by=&#39;symbol&#39;, ascending=True)
+    file_name = os.path.join(self.dir_asset_file, &#34;Assets.csv&#34;)  # Path to save CSV
+
+    if os.path.exists(file_name):
+        # Create a backup copy if file exists
+        current_date_str = datetime.now().strftime(&#34;%Y_%m_%d&#34;)
+        backup_file = file_name.replace(&#34;.csv&#34;, f&#34;_{current_date_str}.csv&#34;)
+        shutil.copy(file_name, backup_file)
+
+    try:
+        # Save DataFrame to CSV
+        df.to_csv(file_name, index=False, encoding=&#39;utf-8&#39;)
+        self._logger.info(f&#34;Save file {file_name} successfully.&#34;)
+    except Exception as e:
+        # Log any errors while saving
+        self._logger.error(f&#34;Error saving CSV file: {e}&#34;)
+        return False, None
+
+    return True, df  # Return success flag and DataFrame</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ParetoInvest.models" href="index.html">ParetoInvest.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ParetoInvest.models.Assets.AssetManager" href="#ParetoInvest.models.Assets.AssetManager">AssetManager</a></code></h4>
+<ul class="">
+<li><code><a title="ParetoInvest.models.Assets.AssetManager.DEBUG" href="#ParetoInvest.models.Assets.AssetManager.DEBUG">DEBUG</a></code></li>
+<li><code><a title="ParetoInvest.models.Assets.AssetManager.classify_asset_type" href="#ParetoInvest.models.Assets.AssetManager.classify_asset_type">classify_asset_type</a></code></li>
+<li><code><a title="ParetoInvest.models.Assets.AssetManager.dir_asset_file" href="#ParetoInvest.models.Assets.AssetManager.dir_asset_file">dir_asset_file</a></code></li>
+<li><code><a title="ParetoInvest.models.Assets.AssetManager.load_assets_from_csv" href="#ParetoInvest.models.Assets.AssetManager.load_assets_from_csv">load_assets_from_csv</a></code></li>
+<li><code><a title="ParetoInvest.models.Assets.AssetManager.logger" href="#ParetoInvest.models.Assets.AssetManager.logger">logger</a></code></li>
+<li><code><a title="ParetoInvest.models.Assets.AssetManager.save_assets_to_csv" href="#ParetoInvest.models.Assets.AssetManager.save_assets_to_csv">save_assets_to_csv</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+name: Build and Test Docker Image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup QEMU (multi-arch)
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # 3️⃣ Setup Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 4️⃣ Cache Docker layers
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      # 5️⃣ Build Docker image
+      - name: Build Docker image
+        run: docker build -t paretoinvest:latest .
+
+      # 6️⃣ Execute smoke tests inside env
+      - name: Run tests
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/app \
+            -w /app \
+            -e QT_QPA_PLATFORM=offscreen \
+            paretoinvest:latest \
+            poetry run pytest ParetoInvest/tests -v
+        env:
+          PYTHONUNBUFFERED: 1

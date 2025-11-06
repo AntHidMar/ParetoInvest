@@ -1,0 +1,47 @@
+name: Build ParetoInvest App (Windows)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Configure Poetry to create virtualenv inside project
+        run: poetry config virtualenvs.in-project true
+
+      - name: Install dependencies
+        run: |
+          poetry install --no-interaction --no-root
+          # Instala pytest si no está en el pyproject.toml
+          poetry run pip install pytest
+
+      - name: Run tests (without GUI)
+        run: poetry run pytest ParetoInvest/tests -v
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Build executable
+        run: |
+          poetry run pip install pyinstaller PyQt6 pandas numpy yfinance ib_insync asyncio
+          poetry run pyinstaller --clean --onefile --noconfirm --windowed ParetoInvest/main.py --add-data "ParetoInvest/ui;ParetoInvest/ui" --add-data "ParetoInvest/models;ParetoInvest/models" --add-data "ParetoInvest/libraries;ParetoInvest/libraries" --hidden-import pandas --hidden-import numpy --hidden-import dateutil --hidden-import pytz --hidden-import requests --hidden-import yfinance --hidden-import ib_insync --hidden-import asyncio --hidden-import timeit --additional-hooks-dir=pyinstaller_hooks
+ 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ParetoInvest_App_Windows
+          path: dist/main.exe

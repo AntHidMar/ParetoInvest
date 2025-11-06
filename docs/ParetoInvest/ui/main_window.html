@@ -1,0 +1,1237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>ParetoInvest.ui.main_window API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ParetoInvest.ui.main_window</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ParetoInvest.ui.main_window.MainWindow"><code class="flex name class">
+<span>class <span class="ident">MainWindow</span></span>
+<span>(</span><span>log)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MainWindow(QMainWindow):
+    
+    # Constructor for the MainWindow class
+    def __init__(self, log):
+
+        # Initialize the parent class
+        super().__init__()
+        
+        self.dir_data = &#34;data\\Assets\\&#34;
+        self.df_Assets = None
+        self.end_pydate = None
+
+        # Initialize the logger
+        self.assets_manager = Assets.AssetManager()
+
+        self.df_Assets = self.assets_manager.load_assets_from_csv()
+        
+        # Logger
+        self.log = log
+        
+        # Log the constructor call
+        self.log.printAndLogger(&#34; MainWindow constructor called&#34;)
+
+        # Initial configuration
+        self.setWindowTitle(&#34;ParetoInvest&#34;)
+        self.setGeometry(100, 100, 800, 600)
+
+
+        # Set up the UI
+        ui_components.init_ui(self, self.log)
+
+    ### Functions linked to the buttons in the UI ###
+
+    # -- button execute algorithm --
+    # Asociated function to the event of executing the evolutionary algorithm. execAlg_button
+    def execute_algorithm(self):
+
+        # Disable buttons and set styles button execute algorithm to orange
+        self.JMetal_files_button.setEnabled(False)
+        self.JMetal_files_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.execAlg_button.setEnabled(False)
+        self.execAlg_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+        self.assets_button.setEnabled(False)
+        self.assets_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.download_button.setEnabled(False)
+        self.download_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        QApplication.processEvents()  # Asegura que la UI se actualice
+
+        &#34;&#34;&#34;
+        Execute the selected evolutionary algorithm with the specified parameters.
+        This function constructs the command to run the algorithm using Java and the specified JAR file.
+        &#34;&#34;&#34;
+        
+        import subprocess
+        start__date = datetime.now()
+
+        # Path to the .jar file
+        jar_path = &#34;.\jar\portfolio-6.2.3-SNAPSHOT-jar-with-dependencies.jar&#34;
+
+        # Load the contents of the UI components into the variables to execute.
+        population_size = self.textboxes[&#39;population_size&#39;].text()
+        num_studied = self.textboxes[&#39;num_studied&#39;].text()
+        total_num = self.textboxes[&#39;total_num&#39;].text()
+        frequency = self.freq_combo.currentText()
+        markets_combo = self.markets_combo.currentText()
+        increase = self.textboxes[&#39;increase&#39;].text()
+        #window = self.textboxes[&#39;window&#39;].text()
+        NumEvals = self.textboxes[&#39;Num_Evaluations&#39;].text()
+        cr = self.textboxes[&#39;cr&#39;].text()
+        f = self.textboxes[&#39;f&#39;].text()
+        alg_combo = self.alg_combo.currentText()
+        
+        # Main class and parameters
+        main_class = f&#34;org.uma.jmetal.portfolio.algorithm.{alg_combo}Example&#34;
+        dir_JMetal = &#34;resources/JMetal_Files/&#34;
+        dir_Results = &#34;Results/Individuals/&#34;
+        
+        str_start_date_value = self.start_date.date().toString(&#34;yyyyMMdd&#34;)
+        str_end_date_value = self.end_date.date().toString(&#34;yyyyMMdd&#34;)
+        name_cov_file = f&#34;_cov_hist_return_{markets_combo}_{num_studied}_{total_num}_{str_start_date_value}_{str_end_date_value}_.csv&#34;
+        self.log.printAndLogger(&#34;name_cov_file&#34;, name_cov_file)
+        name_mean_file = f&#34;_mean_hist_return_{markets_combo}_{num_studied}_{total_num}_{str_start_date_value}_{str_end_date_value}_.csv&#34;
+        self.log.printAndLogger(&#34;name_mean_file&#34;, name_mean_file)
+
+        crossoverProbability = self.textboxes[&#39;crossoverProbability&#39;].text()
+        self.log.printAndLogger(&#34;crossoverProbability&#34;, crossoverProbability)
+        crossoverDistributionIndex = self.textboxes[&#39;crossoverDistributionIndex&#39;].text()
+        self.log.printAndLogger(&#34;crossoverDistributionIndex&#34;, crossoverDistributionIndex)
+        mutationDistributionIndex = self.textboxes[&#39;mutationDistributionIndex&#39;].text()
+        self.log.printAndLogger(&#34;mutationDistributionIndex&#34;, mutationDistributionIndex)
+        seed = self.textboxes[&#39;seed&#39;].text()
+        self.log.printAndLogger(&#34;seed&#34;, seed)
+        
+        if alg_combo == &#34;MOEADDE&#34;:
+            params = [
+                dir_JMetal, population_size, markets_combo, num_studied, total_num, 
+                &#34;100&#34;, NumEvals, dir_Results, name_mean_file, name_cov_file,
+                cr, f, mutationDistributionIndex, seed
+            ]
+        elif alg_combo == &#34;SMPSO&#34;:
+            params = [
+                dir_JMetal, population_size, markets_combo, num_studied, total_num, 
+                &#34;100&#34;, NumEvals, dir_Results, name_mean_file, name_cov_file, seed
+            ]
+        else:
+            params = [
+                dir_JMetal, population_size, markets_combo, num_studied, total_num, 
+                &#34;100&#34;, NumEvals, dir_Results, name_mean_file, name_cov_file,
+                crossoverProbability, crossoverDistributionIndex, mutationDistributionIndex, seed
+            ]
+
+        # Construct the command
+        cmd = [&#34;java&#34;, &#34;-cp&#34;, jar_path, main_class] + params
+        
+        self.log.printAndLogger(&#34;Executing command:&#34;)
+        self.log.printAndLogger(cmd)
+
+        # Execute
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        # Display output and errors
+        self.log.printAndLogger(&#34;STDOUT:\n&#34;, result.stdout)
+        self.log.printAndLogger(&#34;STDERR:\n&#34;, result.stderr)
+
+        end_date = datetime.now()
+        file_directory = f&#34;{dir_JMetal}Results/Individuals/{alg_combo}_{markets_combo}_{num_studied}_{total_num}&#34;
+        self.log.printAndLogger(&#34;File Directory&#34;, file_directory)
+        result_file = self.existeArchivoResultado(file_directory, start__date, end_date)
+        
+        # Clear the text area
+        self.text_area.clear()
+
+        if result_file is not None:
+            self.log.printAndLogger(f&#34;File found: {result_file}&#34;)
+            
+            # Display the file content in the text area
+            with open(result_file, &#39;r&#39;, encoding=&#39;utf-8&#39;) as file:
+                content = file.read()
+                self.text_area.setPlainText(content)
+        else:
+            # Display an error message if the file was not found
+            self.text_area.setPlainText(&#34;Error finding the result file in the specified directory.&#34;)
+            # Append the error message
+            self.text_area.append(result.stderr)
+        
+        # Re-enable the buttons
+        self.activate_buttons()
+
+    # -- button update assets --
+    # Function to update the list of assets
+    def update_assets(self):
+
+        &#34;&#34;&#34;
+            Update the list of assets by saving it to a CSV file, througt broker connection.
+        &#34;&#34;&#34;
+
+        try:
+
+            # Disable buttons and set styles button JMetal to orange
+            self.JMetal_files_button.setEnabled(False)
+            self.JMetal_files_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+            self.execAlg_button.setEnabled(False)
+            self.execAlg_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+            self.assets_button.setEnabled(False)
+            self.assets_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+            self.download_button.setEnabled(False)
+            self.download_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+            QApplication.processEvents()  # Asegura que la UI se actualice
+
+            # Update the assets list
+            control, self.df_assets = self.assets_manager.save_assets_to_csv()        
+
+            # Filter the DataFrame for assets containing &#34;str&#34; in the symbol
+            df_tmp = self.df_assets[self.df_assets[&#34;symbol&#34;].str.contains(&#34;&#34;, na=False)].copy()
+
+            # Log the number of assets found
+            if self.checkbox_types_state:
+                
+                # Log the call to classify_asset_type
+                df_tmp = self.assets_manager.classify_asset_type(df_tmp)
+                
+
+        except Exception as e:
+            # Show a message box indicating an error
+            self.show_sms(&#34;Error&#34;, f&#34;¡Error updating assets list! {str(e)}. \n Check {self.dir_data}Lib_Alpaca.json file is correctly configured.&#34;)
+        finally:
+            # Re-enable the buttons
+            self.activate_buttons()
+            #ui_event_handlers.activate_buttons(self)
+            # Clear the text area
+            self.text_area.clear()
+            # Show a message box indicating the process is complete
+            self.show_sms(&#34;Process OK&#34;, &#34;Assets list updated successfully.&#34;)
+            # Log the completion of the update
+            self.log.printAndLogger(&#34;Assets list updated successfully.&#34;)
+    
+    # -- button generate JMetal files --
+    # Function that connects to the JMetal Library and generates the JMetal files in a separate thread
+    def generate_JMetal_files(self):
+
+        # Disable buttons and set styles button JMetal to orange
+        self.JMetal_files_button.setEnabled(False)
+        self.JMetal_files_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+        self.execAlg_button.setEnabled(False)
+        self.execAlg_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.assets_button.setEnabled(False)
+        self.assets_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.download_button.setEnabled(False)
+        self.download_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        QApplication.processEvents()  # Asegura que la UI se actualice
+
+        # Start the JMetal worker
+        self.worker_JMetal = JMetalWorker.JMetalWorker(self)
+        # Connect the show_sms signal to the show_sms method
+        self.worker_JMetal.show_sms.connect(self.show_sms)
+        # Connect finished signal to the on_finished method
+        self.worker_JMetal.finished.connect(lambda: ui_event_handlers.on_finished(self))        
+        # Start the worker thread
+        self.worker_JMetal.start()
+
+    # Function that connects to the JMetal Library and generates the JMetal files
+    def run_jmetal_logic(self):
+
+        if not self.dir_data is None or self.dir_data != &#34;&#34;:
+            self.df_Assets = self.assets_manager.load_assets_from_csv()
+
+        if len(self.df_Assets) &gt; 0:
+            
+            self.selectAssets(considerSizes=True)
+
+            population_size = int(self.textboxes[&#39;population_size&#39;].text())
+            num_studied = int(self.textboxes[&#39;num_studied&#39;].text())
+            total_num = int(self.textboxes[&#39;total_num&#39;].text())
+            frequency = self.freq_combo.currentText()
+            markets_combo = self.markets_combo.currentText()
+            increase = int(self.textboxes[&#39;increase&#39;].text())
+            
+            self.log.printAndLogger(f&#34;population_size: {population_size}&#34;)
+            self.log.printAndLogger(f&#34;num_studied: {num_studied}&#34;)
+            self.log.printAndLogger(f&#34;total_num: {total_num}&#34;)
+            self.log.printAndLogger(f&#34;frequency: {frequency}&#34;)
+            self.log.printAndLogger(f&#34;markets_combo: {markets_combo}&#34;)
+            self.log.printAndLogger(f&#34;increase: {increase}&#34;)
+
+            fechaInicio_dt = datetime(self.start_pydate.year, self.start_pydate.month, self.start_pydate.day, 0, 0, 0)
+            fechaFin_dt = datetime(self.end_pydate.year, self.end_pydate.month, self.end_pydate.day, 0, 0, 0)
+            
+            jmetal = genArch_JMetal.GenerateStatisticalFilesJMetal(
+                population_size=population_size,
+                num_est=num_studied,
+                num_tot=total_num,
+                directory=self.default_download_dir,
+                start_date=fechaInicio_dt,
+                end_date=fechaFin_dt,
+                class_assets=&#34;&#34;,
+                exchange=markets_combo,
+                increase_freq=&#34;year&#34;,
+                increase=increase,
+                window_freq=&#34;year&#34;,
+                window=1,
+                frequency=frequency,
+                df_assets=self.df_Assets
+            )
+            
+        else:
+            
+            self.activate_buttons()
+            #ui_event_handlers.activate_buttons(self)
+    
+    # -- button download data --
+    # Function to download data from the broker
+    def download_data(self):
+        
+        &#34;&#34;&#34;
+        Function that connects to the broker and downloads financial data for the asset list.
+        &#34;&#34;&#34;
+
+        # Disable buttons and set styles button download to orange
+        self.JMetal_files_button.setEnabled(False)
+        self.JMetal_files_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.execAlg_button.setEnabled(False)
+        self.execAlg_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.assets_button.setEnabled(False)
+        self.assets_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.download_button.setEnabled(False)
+        self.download_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+
+
+        # Check if the directory is set
+        if not self.dir_data is None or self.dir_data != &#34;&#34;:
+            # Load the asset list from the CSV file
+            self.df_Assets = self.assets_manager.load_assets_from_csv()
+
+        # Check if the asset list is loaded and has data
+        if not self.df_Assets is None and len(self.df_Assets) &gt; 0:
+
+            # Select assets based on the current configuration
+            self.selectAssets()
+
+            # If there are assets to process
+            if len(self.df_Assets) &gt; 0:
+
+                # Set maximum value for progress bar
+                self.progress_bar.setMaximum(len(self.df_Assets))
+                # Make progress bar visible
+                self.progress_bar.setHidden(False)
+
+                cont = 0
+                self.progress_bar.setValue(cont)
+
+                # Background process to download data without blocking the UI                
+                self.worker_IB = IB_data_loader.HistoricalDataWorker(self.df_Assets, self.duration, self.end_pydate, self.frequency, self.log)
+                self.worker_IB.data_ready.connect(lambda data: ui_event_handlers.display_data(self, data) )
+                self.worker_IB.error_signal.connect(self.show_error)
+                self.worker_IB.update_progress.connect(lambda: ui_event_handlers.update_progress(self))
+                self.worker_IB.finished.connect(lambda: ui_event_handlers.on_finished(self))
+                self.worker_IB.start()
+
+                cont += 1
+
+            # Capture values from QLineEdit
+            textbox_values = {key: textbox.text() for key, textbox in self.textboxes.items()}
+
+            # Capture selected dates from QDateEdit
+            start_date_value = self.start_date.date().toString(&#34;yyyy-MM-dd&#34;)
+            end_date_value = self.end_date.date().toString(&#34;yyyy-MM-dd&#34;)
+
+            # Show captured values in the console (or perform another action with them)
+            self.log.printAndLogger(&#34;Selected values:&#34;)
+            self.log.printAndLogger(f&#34; Market: {self.selected_market}&#34;)
+            self.log.printAndLogger(f&#34; Frequency: {self.frequency}&#34;)
+            self.log.printAndLogger(f&#34; Window: {self.window}&#34;)
+            self.log.printAndLogger(f&#34; Dates: Start = {start_date_value}, End = {end_date_value}&#34;)
+            self.log.printAndLogger(f&#34; TextBox values:&#34;, textbox_values)
+            self.log.printAndLogger(f&#34; total_num: {self.total_num}&#34;)
+            self.log.printAndLogger(f&#34; duration: {self.duration}&#34;)
+
+            # Simulate long process using a QTimer (optional)
+            &#34;&#34;&#34;
+            self.timer = QTimer(self)
+            self.timer.timeout.connect(self.update_progress)
+            self.timer.start(100)  # Call every 100 ms
+            &#34;&#34;&#34;
+        else:
+            self.show_sms(&#34;No asset list found to download.&#34;, &#34;You must select the directory containing the asset list file.&#34;)
+   
+    ### Functions to handle operations ###
+
+    # Function that extracts the result file after the execution of the evolutionary algorithm if it exists.
+    def existeArchivoResultado(self, directorio, start__date, fecha_fin):
+
+        # Buscar archivos con prefijo &#39;result&#39;
+        archivos = glob.glob(os.path.join(directorio, &#39;results_*&#39;))
+        # Comprobación
+        encontrado = False
+        for archivo in archivos:
+            nombre = os.path.basename(archivo)
+            
+            # Obtener el timestamp de creación
+            timestamp = os.path.getctime(archivo)
+
+            # Convertir a formato legible
+            fecha_archivo = datetime.fromtimestamp(timestamp)
+
+            if start__date &lt;= fecha_archivo &lt;= fecha_fin:
+                
+                encontrado = True
+                return archivo                
+                break
+            
+        if not encontrado:
+            self.log.printAndLogger(&#34;File not found in the specified date range.&#34;)
+        return None
+
+    # Function to handle date changes in the start date picker
+    def select_directory(self):
+        &#34;&#34;&#34;
+        Open a dialog to select a directory and set the text in the directory textbox.
+        This function allows the user to choose a directory for downloading files.
+        &#34;&#34;&#34;
+        directory = QFileDialog.getExistingDirectory(self, &#34;Select Download Directory&#34;)
+        if directory:
+            self.dir_textbox.setText(directory)
+        
+    # Select the assets to be studied.
+    def selectAssets(self, considerSizes=False):
+        
+        self.log.printAndLogger(&#34;selectAssets  --  considerSizes:&#34;, considerSizes)
+        
+        #self.df_Assets = self.df_Assets[self.df_Assets[&#39;class&#39;] == &#39;us_equity&#39;]
+        #self.df_Assets = self.df_Assets[self.df_Assets[&#39;fractionable&#39;] == True]
+        self.df_Assets = self.df_Assets[self.df_Assets[&#39;status&#39;] == &#39;active&#39;]
+        
+        # Seleccionamos el mercado a estudiar.
+        self.selected_market = self.markets_combo.currentText()
+        if self.selected_market.upper() != &#34;ALL&#34;:
+            self.df_Assets = self.df_Assets[self.df_Assets.exchange == self.selected_market]    
+
+        self.selected_type = self.type_combo.currentText()
+        if self.selected_type.upper() != &#34;ALL&#34;:
+            self.df_Assets = self.df_Assets[self.df_Assets.asset_type == self.selected_type]    
+
+        self.selected_sector = self.sector_combo.currentText()
+        if self.selected_sector.upper() != &#34;ALL&#34;:
+            self.df_Assets = self.df_Assets[self.df_Assets.FMP_sector == self.selected_sector]    
+
+        # Número total de activos a evaluar.
+        self.total_num = int(self.textboxes[&#39;total_num&#39;].text())
+        self.frequency = self.freq_combo.currentText()
+        self.window = self.window_combo.currentText()
+        self.duration = self.textboxes[&#39;duration&#39;].text()
+        
+        # Convertir QDate a datetime
+        fechaInicio_dt = datetime(self.start_pydate.year, self.start_pydate.month, self.start_pydate.day, 0, 0, 0)
+        fechaFin_dt = datetime(self.end_pydate.year, self.end_pydate.month, self.end_pydate.day, 0, 0, 0)
+        
+        if considerSizes:
+            self.df_Assets = self.get_top_files(self.default_download_dir, self.df_Assets, fechaInicio_dt, fechaFin_dt, self.total_num)
+        else:
+            self.df_Assets = self.df_Assets[:self.total_num]   
+
+    # Function to handle date changes in the start date picker
+    def get_top_files(self, default_download_dir, df_Assets, fechaInicio, fechaFin, n):
+        
+        top_files = []
+
+        # frequency: get the frequency selected by the user in the combo box.
+        frequency = self.freq_combo.currentText()        # File_Name: Generate the filename to search for each asset.
+        df_Assets[&#39;Nombre_Archivo&#39;] = df_Assets[&#39;symbol&#39;].astype(str).apply(lambda x: f&#34;{frequency}_{x}_.csv&#34;)
+        
+        # Filter assets that don&#39;t have the expected filename
+        files = list(self.get_path_files(df_Assets, &#39;Nombre_Archivo&#39;, default_download_dir).values())
+
+        num_records_max = 0
+        
+        for file in files:
+            try:
+                self.log.printAndLogger(f&#34; File {file}&#34;)
+                df = pd.read_csv(file, header=0, encoding=&#39;utf-8&#39;, parse_dates=[0], index_col=[0], date_parser=lambda x: pd.to_datetime(x.rpartition(&#39;+&#39;)[0]))
+                df.index = pd.to_datetime(df.index)  # Convert to datetime index
+                df = df.loc[~df.index.duplicated()]  # Remove duplicated indices
+                df_filtrado = df[(df.index &gt;= fechaInicio) &amp; (df.index &lt;= fechaFin)]
+                num_records = len(df_filtrado)
+                
+                if num_records &gt; num_records_max:
+                    num_records_max = num_records
+                # Insert in sorted order if it&#39;s better than some existing or list is not full
+                if len(top_files) &lt; n:
+                    self.log.printAndLogger(&#34;   Adding to top files&#34;)
+                    top_files.append((file, num_records))
+                    top_files.sort(key=lambda x: x[1], reverse=True)
+                elif num_records &gt; top_files[-1][1]:
+                    self.log.printAndLogger(&#34;   Replacing top file&#34;)
+                    top_files[-1] = (file, num_records)
+                    top_files.sort(key=lambda x: x[1], reverse=True)
+
+                # Early stopping condition if all top n files have high record count
+                if len(top_files) == n and all(f[1] &gt;= num_records_max - (num_records_max * 0.1) for f in top_files):
+                    self.log.printAndLogger(&#34;Early stopping condition reached.&#34;)
+                    break
+                
+            except Exception as e:
+                self.log.printAndLogger(f&#34;Error processing {file}: {e}&#34;)
+                continue
+
+        elementos = [os.path.basename(f[0]) for f in top_files]
+        df_Assets = df_Assets[df_Assets[&#39;Nombre_Archivo&#39;].isin(elementos)]
+        
+        return df_Assets
+
+    # Function to get the full paths of files based on names in a DataFrame column
+    def get_path_files(self, df, columna_archivo, carpeta):
+        &#34;&#34;&#34;
+        Searches for files in the specified folder according to names in a DataFrame column.
+
+        :param df: DataFrame with file names
+        :param columna_archivo: Column name that contains the filenames
+        :param carpeta: Path to the folder where files should be located
+        :return: Dictionary {filename: full_path} if file exists
+        &#34;&#34;&#34;
+        rutas = {}
+        for nombre_archivo in df[columna_archivo].dropna().unique():  # Remove NaNs and duplicates
+            ruta_completa = os.path.join(carpeta, nombre_archivo)
+            if os.path.isfile(ruta_completa):
+                rutas[nombre_archivo] = ruta_completa
+        return rutas
+         
+    # Function to show error messages in a message box
+    def show_error(self, error_msg):
+        self.log.printAndLogger(error_msg)
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle(&#34;Error&#34;)
+        msg_box.setText(error_msg + &#34;\n Check Gateway IB is running and connected.&#34;)
+        #msg_box.setIcon(QMessageBox.Information if &#34;Correct&#34; in error_msg else QMessageBox.Critical)
+        msg_box.setIcon(QMessageBox.Icon.Information if &#34;Correct&#34; in error_msg else QMessageBox.Icon.Critical)
+
+        msg_box.exec()
+    
+    # Re-enable the buttons
+    def activate_buttons(self):
+        # Re-enable the buttons
+        self.JMetal_files_button.setEnabled(True)
+        self.JMetal_files_button.setStyleSheet(&#34;&#34;)  # This clears the style and returns to the default system appearance
+        self.execAlg_button.setEnabled(True)
+        self.execAlg_button.setStyleSheet(&#34;&#34;)       # This clears the style and returns to the default system appearance
+        self.assets_button.setEnabled(True)
+        self.assets_button.setStyleSheet(&#34;&#34;)        # This clears the style and returns to the default system appearance
+        self.download_button.setEnabled(True)
+        self.download_button.setStyleSheet(&#34;&#34;)      # This clears the style and returns to the default system appearance
+
+    # Function to show messages in a message box
+    def show_sms(self, titulo, mensaje):
+
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle(titulo)
+        msg_box.setText(mensaje)
+        #msg_box.setIcon(QMessageBox.Information if &#34;Process OK&#34; in titulo else QMessageBox.Critical)
+        msg_box.setIcon(QMessageBox.Icon.Information if &#34;Process OK&#34; in mensaje else QMessageBox.Icon.Information)
+        msg_box.exec()</code></pre>
+</details>
+<div class="desc"><p>QMainWindow(parent: Optional[QWidget] = None, flags: Qt.WindowType = Qt.WindowFlags())</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtWidgets.QMainWindow</li>
+<li>PyQt6.QtWidgets.QWidget</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.QtGui.QPaintDevice</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ParetoInvest.ui.main_window.MainWindow.activate_buttons"><code class="name flex">
+<span>def <span class="ident">activate_buttons</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activate_buttons(self):
+    # Re-enable the buttons
+    self.JMetal_files_button.setEnabled(True)
+    self.JMetal_files_button.setStyleSheet(&#34;&#34;)  # This clears the style and returns to the default system appearance
+    self.execAlg_button.setEnabled(True)
+    self.execAlg_button.setStyleSheet(&#34;&#34;)       # This clears the style and returns to the default system appearance
+    self.assets_button.setEnabled(True)
+    self.assets_button.setStyleSheet(&#34;&#34;)        # This clears the style and returns to the default system appearance
+    self.download_button.setEnabled(True)
+    self.download_button.setStyleSheet(&#34;&#34;)      # This clears the style and returns to the default system appearance</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.download_data"><code class="name flex">
+<span>def <span class="ident">download_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download_data(self):
+    
+    &#34;&#34;&#34;
+    Function that connects to the broker and downloads financial data for the asset list.
+    &#34;&#34;&#34;
+
+    # Disable buttons and set styles button download to orange
+    self.JMetal_files_button.setEnabled(False)
+    self.JMetal_files_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.execAlg_button.setEnabled(False)
+    self.execAlg_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.assets_button.setEnabled(False)
+    self.assets_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.download_button.setEnabled(False)
+    self.download_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+
+
+    # Check if the directory is set
+    if not self.dir_data is None or self.dir_data != &#34;&#34;:
+        # Load the asset list from the CSV file
+        self.df_Assets = self.assets_manager.load_assets_from_csv()
+
+    # Check if the asset list is loaded and has data
+    if not self.df_Assets is None and len(self.df_Assets) &gt; 0:
+
+        # Select assets based on the current configuration
+        self.selectAssets()
+
+        # If there are assets to process
+        if len(self.df_Assets) &gt; 0:
+
+            # Set maximum value for progress bar
+            self.progress_bar.setMaximum(len(self.df_Assets))
+            # Make progress bar visible
+            self.progress_bar.setHidden(False)
+
+            cont = 0
+            self.progress_bar.setValue(cont)
+
+            # Background process to download data without blocking the UI                
+            self.worker_IB = IB_data_loader.HistoricalDataWorker(self.df_Assets, self.duration, self.end_pydate, self.frequency, self.log)
+            self.worker_IB.data_ready.connect(lambda data: ui_event_handlers.display_data(self, data) )
+            self.worker_IB.error_signal.connect(self.show_error)
+            self.worker_IB.update_progress.connect(lambda: ui_event_handlers.update_progress(self))
+            self.worker_IB.finished.connect(lambda: ui_event_handlers.on_finished(self))
+            self.worker_IB.start()
+
+            cont += 1
+
+        # Capture values from QLineEdit
+        textbox_values = {key: textbox.text() for key, textbox in self.textboxes.items()}
+
+        # Capture selected dates from QDateEdit
+        start_date_value = self.start_date.date().toString(&#34;yyyy-MM-dd&#34;)
+        end_date_value = self.end_date.date().toString(&#34;yyyy-MM-dd&#34;)
+
+        # Show captured values in the console (or perform another action with them)
+        self.log.printAndLogger(&#34;Selected values:&#34;)
+        self.log.printAndLogger(f&#34; Market: {self.selected_market}&#34;)
+        self.log.printAndLogger(f&#34; Frequency: {self.frequency}&#34;)
+        self.log.printAndLogger(f&#34; Window: {self.window}&#34;)
+        self.log.printAndLogger(f&#34; Dates: Start = {start_date_value}, End = {end_date_value}&#34;)
+        self.log.printAndLogger(f&#34; TextBox values:&#34;, textbox_values)
+        self.log.printAndLogger(f&#34; total_num: {self.total_num}&#34;)
+        self.log.printAndLogger(f&#34; duration: {self.duration}&#34;)
+
+        # Simulate long process using a QTimer (optional)
+        &#34;&#34;&#34;
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_progress)
+        self.timer.start(100)  # Call every 100 ms
+        &#34;&#34;&#34;
+    else:
+        self.show_sms(&#34;No asset list found to download.&#34;, &#34;You must select the directory containing the asset list file.&#34;)</code></pre>
+</details>
+<div class="desc"><p>Function that connects to the broker and downloads financial data for the asset list.</p></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.execute_algorithm"><code class="name flex">
+<span>def <span class="ident">execute_algorithm</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute_algorithm(self):
+
+    # Disable buttons and set styles button execute algorithm to orange
+    self.JMetal_files_button.setEnabled(False)
+    self.JMetal_files_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.execAlg_button.setEnabled(False)
+    self.execAlg_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+    self.assets_button.setEnabled(False)
+    self.assets_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.download_button.setEnabled(False)
+    self.download_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    QApplication.processEvents()  # Asegura que la UI se actualice
+
+    &#34;&#34;&#34;
+    Execute the selected evolutionary algorithm with the specified parameters.
+    This function constructs the command to run the algorithm using Java and the specified JAR file.
+    &#34;&#34;&#34;
+    
+    import subprocess
+    start__date = datetime.now()
+
+    # Path to the .jar file
+    jar_path = &#34;.\jar\portfolio-6.2.3-SNAPSHOT-jar-with-dependencies.jar&#34;
+
+    # Load the contents of the UI components into the variables to execute.
+    population_size = self.textboxes[&#39;population_size&#39;].text()
+    num_studied = self.textboxes[&#39;num_studied&#39;].text()
+    total_num = self.textboxes[&#39;total_num&#39;].text()
+    frequency = self.freq_combo.currentText()
+    markets_combo = self.markets_combo.currentText()
+    increase = self.textboxes[&#39;increase&#39;].text()
+    #window = self.textboxes[&#39;window&#39;].text()
+    NumEvals = self.textboxes[&#39;Num_Evaluations&#39;].text()
+    cr = self.textboxes[&#39;cr&#39;].text()
+    f = self.textboxes[&#39;f&#39;].text()
+    alg_combo = self.alg_combo.currentText()
+    
+    # Main class and parameters
+    main_class = f&#34;org.uma.jmetal.portfolio.algorithm.{alg_combo}Example&#34;
+    dir_JMetal = &#34;resources/JMetal_Files/&#34;
+    dir_Results = &#34;Results/Individuals/&#34;
+    
+    str_start_date_value = self.start_date.date().toString(&#34;yyyyMMdd&#34;)
+    str_end_date_value = self.end_date.date().toString(&#34;yyyyMMdd&#34;)
+    name_cov_file = f&#34;_cov_hist_return_{markets_combo}_{num_studied}_{total_num}_{str_start_date_value}_{str_end_date_value}_.csv&#34;
+    self.log.printAndLogger(&#34;name_cov_file&#34;, name_cov_file)
+    name_mean_file = f&#34;_mean_hist_return_{markets_combo}_{num_studied}_{total_num}_{str_start_date_value}_{str_end_date_value}_.csv&#34;
+    self.log.printAndLogger(&#34;name_mean_file&#34;, name_mean_file)
+
+    crossoverProbability = self.textboxes[&#39;crossoverProbability&#39;].text()
+    self.log.printAndLogger(&#34;crossoverProbability&#34;, crossoverProbability)
+    crossoverDistributionIndex = self.textboxes[&#39;crossoverDistributionIndex&#39;].text()
+    self.log.printAndLogger(&#34;crossoverDistributionIndex&#34;, crossoverDistributionIndex)
+    mutationDistributionIndex = self.textboxes[&#39;mutationDistributionIndex&#39;].text()
+    self.log.printAndLogger(&#34;mutationDistributionIndex&#34;, mutationDistributionIndex)
+    seed = self.textboxes[&#39;seed&#39;].text()
+    self.log.printAndLogger(&#34;seed&#34;, seed)
+    
+    if alg_combo == &#34;MOEADDE&#34;:
+        params = [
+            dir_JMetal, population_size, markets_combo, num_studied, total_num, 
+            &#34;100&#34;, NumEvals, dir_Results, name_mean_file, name_cov_file,
+            cr, f, mutationDistributionIndex, seed
+        ]
+    elif alg_combo == &#34;SMPSO&#34;:
+        params = [
+            dir_JMetal, population_size, markets_combo, num_studied, total_num, 
+            &#34;100&#34;, NumEvals, dir_Results, name_mean_file, name_cov_file, seed
+        ]
+    else:
+        params = [
+            dir_JMetal, population_size, markets_combo, num_studied, total_num, 
+            &#34;100&#34;, NumEvals, dir_Results, name_mean_file, name_cov_file,
+            crossoverProbability, crossoverDistributionIndex, mutationDistributionIndex, seed
+        ]
+
+    # Construct the command
+    cmd = [&#34;java&#34;, &#34;-cp&#34;, jar_path, main_class] + params
+    
+    self.log.printAndLogger(&#34;Executing command:&#34;)
+    self.log.printAndLogger(cmd)
+
+    # Execute
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    # Display output and errors
+    self.log.printAndLogger(&#34;STDOUT:\n&#34;, result.stdout)
+    self.log.printAndLogger(&#34;STDERR:\n&#34;, result.stderr)
+
+    end_date = datetime.now()
+    file_directory = f&#34;{dir_JMetal}Results/Individuals/{alg_combo}_{markets_combo}_{num_studied}_{total_num}&#34;
+    self.log.printAndLogger(&#34;File Directory&#34;, file_directory)
+    result_file = self.existeArchivoResultado(file_directory, start__date, end_date)
+    
+    # Clear the text area
+    self.text_area.clear()
+
+    if result_file is not None:
+        self.log.printAndLogger(f&#34;File found: {result_file}&#34;)
+        
+        # Display the file content in the text area
+        with open(result_file, &#39;r&#39;, encoding=&#39;utf-8&#39;) as file:
+            content = file.read()
+            self.text_area.setPlainText(content)
+    else:
+        # Display an error message if the file was not found
+        self.text_area.setPlainText(&#34;Error finding the result file in the specified directory.&#34;)
+        # Append the error message
+        self.text_area.append(result.stderr)
+    
+    # Re-enable the buttons
+    self.activate_buttons()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.existeArchivoResultado"><code class="name flex">
+<span>def <span class="ident">existeArchivoResultado</span></span>(<span>self, directorio, start__date, fecha_fin)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def existeArchivoResultado(self, directorio, start__date, fecha_fin):
+
+    # Buscar archivos con prefijo &#39;result&#39;
+    archivos = glob.glob(os.path.join(directorio, &#39;results_*&#39;))
+    # Comprobación
+    encontrado = False
+    for archivo in archivos:
+        nombre = os.path.basename(archivo)
+        
+        # Obtener el timestamp de creación
+        timestamp = os.path.getctime(archivo)
+
+        # Convertir a formato legible
+        fecha_archivo = datetime.fromtimestamp(timestamp)
+
+        if start__date &lt;= fecha_archivo &lt;= fecha_fin:
+            
+            encontrado = True
+            return archivo                
+            break
+        
+    if not encontrado:
+        self.log.printAndLogger(&#34;File not found in the specified date range.&#34;)
+    return None</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.generate_JMetal_files"><code class="name flex">
+<span>def <span class="ident">generate_JMetal_files</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_JMetal_files(self):
+
+    # Disable buttons and set styles button JMetal to orange
+    self.JMetal_files_button.setEnabled(False)
+    self.JMetal_files_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+    self.execAlg_button.setEnabled(False)
+    self.execAlg_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.assets_button.setEnabled(False)
+    self.assets_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    self.download_button.setEnabled(False)
+    self.download_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+    QApplication.processEvents()  # Asegura que la UI se actualice
+
+    # Start the JMetal worker
+    self.worker_JMetal = JMetalWorker.JMetalWorker(self)
+    # Connect the show_sms signal to the show_sms method
+    self.worker_JMetal.show_sms.connect(self.show_sms)
+    # Connect finished signal to the on_finished method
+    self.worker_JMetal.finished.connect(lambda: ui_event_handlers.on_finished(self))        
+    # Start the worker thread
+    self.worker_JMetal.start()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.get_path_files"><code class="name flex">
+<span>def <span class="ident">get_path_files</span></span>(<span>self, df, columna_archivo, carpeta)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_path_files(self, df, columna_archivo, carpeta):
+    &#34;&#34;&#34;
+    Searches for files in the specified folder according to names in a DataFrame column.
+
+    :param df: DataFrame with file names
+    :param columna_archivo: Column name that contains the filenames
+    :param carpeta: Path to the folder where files should be located
+    :return: Dictionary {filename: full_path} if file exists
+    &#34;&#34;&#34;
+    rutas = {}
+    for nombre_archivo in df[columna_archivo].dropna().unique():  # Remove NaNs and duplicates
+        ruta_completa = os.path.join(carpeta, nombre_archivo)
+        if os.path.isfile(ruta_completa):
+            rutas[nombre_archivo] = ruta_completa
+    return rutas</code></pre>
+</details>
+<div class="desc"><p>Searches for files in the specified folder according to names in a DataFrame column.</p>
+<p>:param df: DataFrame with file names
+:param columna_archivo: Column name that contains the filenames
+:param carpeta: Path to the folder where files should be located
+:return: Dictionary {filename: full_path} if file exists</p></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.get_top_files"><code class="name flex">
+<span>def <span class="ident">get_top_files</span></span>(<span>self, default_download_dir, df_Assets, fechaInicio, fechaFin, n)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_top_files(self, default_download_dir, df_Assets, fechaInicio, fechaFin, n):
+    
+    top_files = []
+
+    # frequency: get the frequency selected by the user in the combo box.
+    frequency = self.freq_combo.currentText()        # File_Name: Generate the filename to search for each asset.
+    df_Assets[&#39;Nombre_Archivo&#39;] = df_Assets[&#39;symbol&#39;].astype(str).apply(lambda x: f&#34;{frequency}_{x}_.csv&#34;)
+    
+    # Filter assets that don&#39;t have the expected filename
+    files = list(self.get_path_files(df_Assets, &#39;Nombre_Archivo&#39;, default_download_dir).values())
+
+    num_records_max = 0
+    
+    for file in files:
+        try:
+            self.log.printAndLogger(f&#34; File {file}&#34;)
+            df = pd.read_csv(file, header=0, encoding=&#39;utf-8&#39;, parse_dates=[0], index_col=[0], date_parser=lambda x: pd.to_datetime(x.rpartition(&#39;+&#39;)[0]))
+            df.index = pd.to_datetime(df.index)  # Convert to datetime index
+            df = df.loc[~df.index.duplicated()]  # Remove duplicated indices
+            df_filtrado = df[(df.index &gt;= fechaInicio) &amp; (df.index &lt;= fechaFin)]
+            num_records = len(df_filtrado)
+            
+            if num_records &gt; num_records_max:
+                num_records_max = num_records
+            # Insert in sorted order if it&#39;s better than some existing or list is not full
+            if len(top_files) &lt; n:
+                self.log.printAndLogger(&#34;   Adding to top files&#34;)
+                top_files.append((file, num_records))
+                top_files.sort(key=lambda x: x[1], reverse=True)
+            elif num_records &gt; top_files[-1][1]:
+                self.log.printAndLogger(&#34;   Replacing top file&#34;)
+                top_files[-1] = (file, num_records)
+                top_files.sort(key=lambda x: x[1], reverse=True)
+
+            # Early stopping condition if all top n files have high record count
+            if len(top_files) == n and all(f[1] &gt;= num_records_max - (num_records_max * 0.1) for f in top_files):
+                self.log.printAndLogger(&#34;Early stopping condition reached.&#34;)
+                break
+            
+        except Exception as e:
+            self.log.printAndLogger(f&#34;Error processing {file}: {e}&#34;)
+            continue
+
+    elementos = [os.path.basename(f[0]) for f in top_files]
+    df_Assets = df_Assets[df_Assets[&#39;Nombre_Archivo&#39;].isin(elementos)]
+    
+    return df_Assets</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.run_jmetal_logic"><code class="name flex">
+<span>def <span class="ident">run_jmetal_logic</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run_jmetal_logic(self):
+
+    if not self.dir_data is None or self.dir_data != &#34;&#34;:
+        self.df_Assets = self.assets_manager.load_assets_from_csv()
+
+    if len(self.df_Assets) &gt; 0:
+        
+        self.selectAssets(considerSizes=True)
+
+        population_size = int(self.textboxes[&#39;population_size&#39;].text())
+        num_studied = int(self.textboxes[&#39;num_studied&#39;].text())
+        total_num = int(self.textboxes[&#39;total_num&#39;].text())
+        frequency = self.freq_combo.currentText()
+        markets_combo = self.markets_combo.currentText()
+        increase = int(self.textboxes[&#39;increase&#39;].text())
+        
+        self.log.printAndLogger(f&#34;population_size: {population_size}&#34;)
+        self.log.printAndLogger(f&#34;num_studied: {num_studied}&#34;)
+        self.log.printAndLogger(f&#34;total_num: {total_num}&#34;)
+        self.log.printAndLogger(f&#34;frequency: {frequency}&#34;)
+        self.log.printAndLogger(f&#34;markets_combo: {markets_combo}&#34;)
+        self.log.printAndLogger(f&#34;increase: {increase}&#34;)
+
+        fechaInicio_dt = datetime(self.start_pydate.year, self.start_pydate.month, self.start_pydate.day, 0, 0, 0)
+        fechaFin_dt = datetime(self.end_pydate.year, self.end_pydate.month, self.end_pydate.day, 0, 0, 0)
+        
+        jmetal = genArch_JMetal.GenerateStatisticalFilesJMetal(
+            population_size=population_size,
+            num_est=num_studied,
+            num_tot=total_num,
+            directory=self.default_download_dir,
+            start_date=fechaInicio_dt,
+            end_date=fechaFin_dt,
+            class_assets=&#34;&#34;,
+            exchange=markets_combo,
+            increase_freq=&#34;year&#34;,
+            increase=increase,
+            window_freq=&#34;year&#34;,
+            window=1,
+            frequency=frequency,
+            df_assets=self.df_Assets
+        )
+        
+    else:
+        
+        self.activate_buttons()
+        #ui_event_handlers.activate_buttons(self)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.selectAssets"><code class="name flex">
+<span>def <span class="ident">selectAssets</span></span>(<span>self, considerSizes=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def selectAssets(self, considerSizes=False):
+    
+    self.log.printAndLogger(&#34;selectAssets  --  considerSizes:&#34;, considerSizes)
+    
+    #self.df_Assets = self.df_Assets[self.df_Assets[&#39;class&#39;] == &#39;us_equity&#39;]
+    #self.df_Assets = self.df_Assets[self.df_Assets[&#39;fractionable&#39;] == True]
+    self.df_Assets = self.df_Assets[self.df_Assets[&#39;status&#39;] == &#39;active&#39;]
+    
+    # Seleccionamos el mercado a estudiar.
+    self.selected_market = self.markets_combo.currentText()
+    if self.selected_market.upper() != &#34;ALL&#34;:
+        self.df_Assets = self.df_Assets[self.df_Assets.exchange == self.selected_market]    
+
+    self.selected_type = self.type_combo.currentText()
+    if self.selected_type.upper() != &#34;ALL&#34;:
+        self.df_Assets = self.df_Assets[self.df_Assets.asset_type == self.selected_type]    
+
+    self.selected_sector = self.sector_combo.currentText()
+    if self.selected_sector.upper() != &#34;ALL&#34;:
+        self.df_Assets = self.df_Assets[self.df_Assets.FMP_sector == self.selected_sector]    
+
+    # Número total de activos a evaluar.
+    self.total_num = int(self.textboxes[&#39;total_num&#39;].text())
+    self.frequency = self.freq_combo.currentText()
+    self.window = self.window_combo.currentText()
+    self.duration = self.textboxes[&#39;duration&#39;].text()
+    
+    # Convertir QDate a datetime
+    fechaInicio_dt = datetime(self.start_pydate.year, self.start_pydate.month, self.start_pydate.day, 0, 0, 0)
+    fechaFin_dt = datetime(self.end_pydate.year, self.end_pydate.month, self.end_pydate.day, 0, 0, 0)
+    
+    if considerSizes:
+        self.df_Assets = self.get_top_files(self.default_download_dir, self.df_Assets, fechaInicio_dt, fechaFin_dt, self.total_num)
+    else:
+        self.df_Assets = self.df_Assets[:self.total_num]   </code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.select_directory"><code class="name flex">
+<span>def <span class="ident">select_directory</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def select_directory(self):
+    &#34;&#34;&#34;
+    Open a dialog to select a directory and set the text in the directory textbox.
+    This function allows the user to choose a directory for downloading files.
+    &#34;&#34;&#34;
+    directory = QFileDialog.getExistingDirectory(self, &#34;Select Download Directory&#34;)
+    if directory:
+        self.dir_textbox.setText(directory)</code></pre>
+</details>
+<div class="desc"><p>Open a dialog to select a directory and set the text in the directory textbox.
+This function allows the user to choose a directory for downloading files.</p></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.show_error"><code class="name flex">
+<span>def <span class="ident">show_error</span></span>(<span>self, error_msg)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show_error(self, error_msg):
+    self.log.printAndLogger(error_msg)
+    msg_box = QMessageBox()
+    msg_box.setWindowTitle(&#34;Error&#34;)
+    msg_box.setText(error_msg + &#34;\n Check Gateway IB is running and connected.&#34;)
+    #msg_box.setIcon(QMessageBox.Information if &#34;Correct&#34; in error_msg else QMessageBox.Critical)
+    msg_box.setIcon(QMessageBox.Icon.Information if &#34;Correct&#34; in error_msg else QMessageBox.Icon.Critical)
+
+    msg_box.exec()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.show_sms"><code class="name flex">
+<span>def <span class="ident">show_sms</span></span>(<span>self, titulo, mensaje)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show_sms(self, titulo, mensaje):
+
+    msg_box = QMessageBox()
+    msg_box.setWindowTitle(titulo)
+    msg_box.setText(mensaje)
+    #msg_box.setIcon(QMessageBox.Information if &#34;Process OK&#34; in titulo else QMessageBox.Critical)
+    msg_box.setIcon(QMessageBox.Icon.Information if &#34;Process OK&#34; in mensaje else QMessageBox.Icon.Information)
+    msg_box.exec()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.ui.main_window.MainWindow.update_assets"><code class="name flex">
+<span>def <span class="ident">update_assets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_assets(self):
+
+    &#34;&#34;&#34;
+        Update the list of assets by saving it to a CSV file, througt broker connection.
+    &#34;&#34;&#34;
+
+    try:
+
+        # Disable buttons and set styles button JMetal to orange
+        self.JMetal_files_button.setEnabled(False)
+        self.JMetal_files_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.execAlg_button.setEnabled(False)
+        self.execAlg_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        self.assets_button.setEnabled(False)
+        self.assets_button.setStyleSheet(&#34;background-color: orange; color: white; font-weight: bold;&#34;)
+        self.download_button.setEnabled(False)
+        self.download_button.setStyleSheet(&#34;background-color: silver; color: black; font-weight: bold;&#34;)
+        QApplication.processEvents()  # Asegura que la UI se actualice
+
+        # Update the assets list
+        control, self.df_assets = self.assets_manager.save_assets_to_csv()        
+
+        # Filter the DataFrame for assets containing &#34;str&#34; in the symbol
+        df_tmp = self.df_assets[self.df_assets[&#34;symbol&#34;].str.contains(&#34;&#34;, na=False)].copy()
+
+        # Log the number of assets found
+        if self.checkbox_types_state:
+            
+            # Log the call to classify_asset_type
+            df_tmp = self.assets_manager.classify_asset_type(df_tmp)
+            
+
+    except Exception as e:
+        # Show a message box indicating an error
+        self.show_sms(&#34;Error&#34;, f&#34;¡Error updating assets list! {str(e)}. \n Check {self.dir_data}Lib_Alpaca.json file is correctly configured.&#34;)
+    finally:
+        # Re-enable the buttons
+        self.activate_buttons()
+        #ui_event_handlers.activate_buttons(self)
+        # Clear the text area
+        self.text_area.clear()
+        # Show a message box indicating the process is complete
+        self.show_sms(&#34;Process OK&#34;, &#34;Assets list updated successfully.&#34;)
+        # Log the completion of the update
+        self.log.printAndLogger(&#34;Assets list updated successfully.&#34;)</code></pre>
+</details>
+<div class="desc"><p>Update the list of assets by saving it to a CSV file, througt broker connection.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ParetoInvest.ui" href="index.html">ParetoInvest.ui</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ParetoInvest.ui.main_window.MainWindow" href="#ParetoInvest.ui.main_window.MainWindow">MainWindow</a></code></h4>
+<ul class="">
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.activate_buttons" href="#ParetoInvest.ui.main_window.MainWindow.activate_buttons">activate_buttons</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.download_data" href="#ParetoInvest.ui.main_window.MainWindow.download_data">download_data</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.execute_algorithm" href="#ParetoInvest.ui.main_window.MainWindow.execute_algorithm">execute_algorithm</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.existeArchivoResultado" href="#ParetoInvest.ui.main_window.MainWindow.existeArchivoResultado">existeArchivoResultado</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.generate_JMetal_files" href="#ParetoInvest.ui.main_window.MainWindow.generate_JMetal_files">generate_JMetal_files</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.get_path_files" href="#ParetoInvest.ui.main_window.MainWindow.get_path_files">get_path_files</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.get_top_files" href="#ParetoInvest.ui.main_window.MainWindow.get_top_files">get_top_files</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.run_jmetal_logic" href="#ParetoInvest.ui.main_window.MainWindow.run_jmetal_logic">run_jmetal_logic</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.selectAssets" href="#ParetoInvest.ui.main_window.MainWindow.selectAssets">selectAssets</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.select_directory" href="#ParetoInvest.ui.main_window.MainWindow.select_directory">select_directory</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.show_error" href="#ParetoInvest.ui.main_window.MainWindow.show_error">show_error</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.show_sms" href="#ParetoInvest.ui.main_window.MainWindow.show_sms">show_sms</a></code></li>
+<li><code><a title="ParetoInvest.ui.main_window.MainWindow.update_assets" href="#ParetoInvest.ui.main_window.MainWindow.update_assets">update_assets</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

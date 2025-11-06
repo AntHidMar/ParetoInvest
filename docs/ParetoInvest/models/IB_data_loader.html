@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>ParetoInvest.models.IB_data_loader API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ParetoInvest.models.IB_data_loader</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ParetoInvest.models.IB_data_loader.HistoricalDataWorker"><code class="flex name class">
+<span>class <span class="ident">HistoricalDataWorker</span></span>
+<span>(</span><span>df_asset_list, duration, end_date, frequency, logger, parent=None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HistoricalDataWorker(QThread):
+
+    # Signal emitted when data is ready to be sent to the UI
+    data_ready = pyqtSignal(list)
+    # Signal emitted when an error occurs
+    error_signal = pyqtSignal(str)
+    # Signal emitted to update progress (e.g., progress bar)
+    update_progress = pyqtSignal()
+
+    # Constructor to initialize the worker thread with required parameters
+    def __init__(self, df_asset_list, duration, end_date, frequency, logger, parent=None):
+        super().__init__(parent)
+        self.df_asset_list = df_asset_list  # List of assets to fetch data for
+        self.duration = duration            # Duration string (e.g., &#39;1 M&#39;, &#39;2 D&#39;)
+        self.end_date = end_date            # End date/time for historical data
+        self.frequency = frequency          # Frequency of data (e.g., &#39;day&#39;, &#39;min&#39;)
+        self.logger = logger                # Logger object for logging messages
+
+    # This method runs in a separate thread and launches the asyncio event loop
+    def run(self):
+        asyncio.run(self.fetch_data(self.duration, self.end_date, self.frequency, self.logger))
+
+    # Coroutine that connects to IB and fetches historical data
+    async def fetch_data(self, duration, end_date, frequency, logger):
+
+        ib = IB()  # Create an instance of IB API client
+
+        try:
+            # Connect asynchronously to IB Gateway or TWS
+            await ib.connectAsync(&#39;127.0.0.1&#39;, 4001, clientId=1)
+
+            counter = 0  # Counter to track processed assets
+
+            # Iterate over the assets
+            #for row_asset in self.df_asset_list[self.df_asset_list.symbol == &#39;LSBWF&#39;].itertuples():    # Control
+            for row_asset in self.df_asset_list.itertuples():
+
+                symbol = row_asset.symbol       # Extract symbol from row
+                #exchange = row_asset.exchange 
+                self.logger.printAndLogger(f&#34; {symbol}&#34;)
+
+                # Define the contract for the asset
+                contract = Stock(symbol, &#39;SMART&#39;, &#39;USD&#39;)
+
+                # List to store the fetched bar data as DataFrames
+                all_bars = []
+
+                useRTH = False
+                # Request historical bar data for the asset
+                bars = await ib.reqHistoricalDataAsync(
+                    contract,
+                    endDateTime=end_date,
+                    durationStr=duration,
+                    barSizeSetting=f&#39;1 {frequency.lower()}&#39;,
+                    whatToShow=&#39;TRADES&#39;,
+                    useRTH=useRTH,       # Set to True to use only regular trading hours
+                    formatDate=2        # Use yyyyMMdd HH:mm:ss format
+                )
+                
+                # Convert fetched bars to a list of tuples (for optional UI transmission)
+                data = [(bar.date, bar.open, bar.high, bar.low, bar.close, bar.volume) for bar in bars]
+                df_new_data = None
+                if bars:
+                    
+                    # Convert bars to DataFrame using ib_insync&#39;s utility function
+                    df = util.df(bars)
+                    all_bars.append(df)
+
+                    # Concatenate all dataframes if any
+                    if len(all_bars) &gt; 0:
+                        df_new_data = pd.concat(all_bars, ignore_index=True)
+
+                        # Convert date column to datetime with UTC
+                        df_new_data[&#39;date&#39;] = pd.to_datetime(df_new_data[&#39;date&#39;], utc=True)
+                        logger.printAndLogger(f&#34;    Records read from broker: {len(df_new_data)}&#34;)
+
+                # If new data was fetched, continue with file merging and saving
+                if not df_new_data is None and len(df_new_data) &gt; 0:
+
+                    # Build output file path
+                    csv_directory = &#34;data/financial_data/&#34;
+                    #file_name = f&#34;{csv_directory}IB_{frequency}/{frequency}_{exchange}_{symbol}_.csv&#34;
+                    #file_name = f&#34;{csv_directory}IB_{frequency}/{frequency}_{symbol}_{duration.replace(&#39; &#39;,&#39;_&#39;)}_.csv&#34;
+                    if useRTH:
+                        file_name = f&#34;{csv_directory}IB_{frequency}_useRTH_True/{frequency}_{symbol}_.csv&#34;
+                    else:
+                        file_name = f&#34;{csv_directory}IB_{frequency}_useRTH_False/{frequency}_{symbol}_.csv&#34;
+                    logger.printAndLogger(f&#34;file_name: {file_name}&#34;)
+
+                    # If file already exists, merge with existing data
+                    if os.path.exists(file_name):
+
+                        # Read existing data from CSV file
+                        df_existing = pd.read_csv(file_name)
+                        logger.printAndLogger(f&#34;    Records read from file: {len(df_existing)}&#34;)
+
+                        # Convert date column to datetime with UTC
+                        df_existing[&#39;date&#39;] = pd.to_datetime(df_existing[&#39;date&#39;], utc=True)
+
+                        # Merge existing and new data, removing duplicates by &#39;date&#39;
+                        if len(df_new_data) &gt; 0:
+                            df_combined = pd.concat([df_existing, df_new_data], ignore_index=True)
+                            logger.printAndLogger(f&#34;     Combined records: {len(df_combined)}&#34;)
+
+                            df_combined = df_combined.drop_duplicates(subset=[&#39;date&#39;])
+                            logger.printAndLogger(f&#34;     Records after removing duplicates: {len(df_combined)}&#34;)
+
+                            df_new_data = df_combined.copy()
+                        else:
+                            df_new_data = df_existing
+
+                    # Sort final data by date and save to CSV
+                    df_new_data[&#39;date&#39;] = pd.to_datetime(df_new_data[&#39;date&#39;], utc=True)
+                    df_new_data = df_new_data.sort_values(by=&#39;date&#39;)
+
+                    # Extract path directory
+                    directory = os.path.dirname(file_name)
+
+                    # Create directory if not exists
+                    if directory and not os.path.exists(directory):
+                        os.makedirs(directory, exist_ok=True)
+                        
+                    df_new_data.to_csv(file_name, index=False)
+                    print(f&#34;    Concatenated data for {symbol} updated and saved to {file_name}&#34;)
+
+                else:
+                    logger.printAndLogger(&#34;0 records retrieved&#34;)
+
+                # Update UI or progress indicator
+                counter += 1
+                self.update_progress.emit()
+
+        except Exception as e:
+            print(e)
+            self.error_signal.emit(str(e))  # Emit error message to UI
+
+        finally:
+            print(&#34;disconnected IB&#34;)
+            ib.disconnect()  # Ensure IB is disconnected</code></pre>
+</details>
+<div class="desc"><p>QThread(parent: Optional[QObject] = None)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt6.QtCore.QThread</li>
+<li>PyQt6.QtCore.QObject</li>
+<li>PyQt6.sip.wrapper</li>
+<li>PyQt6.sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.data_ready"><code class="name flex">
+<span>def <span class="ident">data_ready</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>pyqtSignal(*types, name: str = &hellip;, revision: int = &hellip;, arguments: Sequence = &hellip;) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.
+Each type is either a
+type object or a string that is the name of a C++ type.
+Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.
+If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal's arguments.</p></div>
+</dd>
+<dt id="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.error_signal"><code class="name flex">
+<span>def <span class="ident">error_signal</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>pyqtSignal(*types, name: str = &hellip;, revision: int = &hellip;, arguments: Sequence = &hellip;) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.
+Each type is either a
+type object or a string that is the name of a C++ type.
+Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.
+If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal's arguments.</p></div>
+</dd>
+<dt id="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.fetch_data"><code class="name flex">
+<span>async def <span class="ident">fetch_data</span></span>(<span>self, duration, end_date, frequency, logger)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def fetch_data(self, duration, end_date, frequency, logger):
+
+    ib = IB()  # Create an instance of IB API client
+
+    try:
+        # Connect asynchronously to IB Gateway or TWS
+        await ib.connectAsync(&#39;127.0.0.1&#39;, 4001, clientId=1)
+
+        counter = 0  # Counter to track processed assets
+
+        # Iterate over the assets
+        #for row_asset in self.df_asset_list[self.df_asset_list.symbol == &#39;LSBWF&#39;].itertuples():    # Control
+        for row_asset in self.df_asset_list.itertuples():
+
+            symbol = row_asset.symbol       # Extract symbol from row
+            #exchange = row_asset.exchange 
+            self.logger.printAndLogger(f&#34; {symbol}&#34;)
+
+            # Define the contract for the asset
+            contract = Stock(symbol, &#39;SMART&#39;, &#39;USD&#39;)
+
+            # List to store the fetched bar data as DataFrames
+            all_bars = []
+
+            useRTH = False
+            # Request historical bar data for the asset
+            bars = await ib.reqHistoricalDataAsync(
+                contract,
+                endDateTime=end_date,
+                durationStr=duration,
+                barSizeSetting=f&#39;1 {frequency.lower()}&#39;,
+                whatToShow=&#39;TRADES&#39;,
+                useRTH=useRTH,       # Set to True to use only regular trading hours
+                formatDate=2        # Use yyyyMMdd HH:mm:ss format
+            )
+            
+            # Convert fetched bars to a list of tuples (for optional UI transmission)
+            data = [(bar.date, bar.open, bar.high, bar.low, bar.close, bar.volume) for bar in bars]
+            df_new_data = None
+            if bars:
+                
+                # Convert bars to DataFrame using ib_insync&#39;s utility function
+                df = util.df(bars)
+                all_bars.append(df)
+
+                # Concatenate all dataframes if any
+                if len(all_bars) &gt; 0:
+                    df_new_data = pd.concat(all_bars, ignore_index=True)
+
+                    # Convert date column to datetime with UTC
+                    df_new_data[&#39;date&#39;] = pd.to_datetime(df_new_data[&#39;date&#39;], utc=True)
+                    logger.printAndLogger(f&#34;    Records read from broker: {len(df_new_data)}&#34;)
+
+            # If new data was fetched, continue with file merging and saving
+            if not df_new_data is None and len(df_new_data) &gt; 0:
+
+                # Build output file path
+                csv_directory = &#34;data/financial_data/&#34;
+                #file_name = f&#34;{csv_directory}IB_{frequency}/{frequency}_{exchange}_{symbol}_.csv&#34;
+                #file_name = f&#34;{csv_directory}IB_{frequency}/{frequency}_{symbol}_{duration.replace(&#39; &#39;,&#39;_&#39;)}_.csv&#34;
+                if useRTH:
+                    file_name = f&#34;{csv_directory}IB_{frequency}_useRTH_True/{frequency}_{symbol}_.csv&#34;
+                else:
+                    file_name = f&#34;{csv_directory}IB_{frequency}_useRTH_False/{frequency}_{symbol}_.csv&#34;
+                logger.printAndLogger(f&#34;file_name: {file_name}&#34;)
+
+                # If file already exists, merge with existing data
+                if os.path.exists(file_name):
+
+                    # Read existing data from CSV file
+                    df_existing = pd.read_csv(file_name)
+                    logger.printAndLogger(f&#34;    Records read from file: {len(df_existing)}&#34;)
+
+                    # Convert date column to datetime with UTC
+                    df_existing[&#39;date&#39;] = pd.to_datetime(df_existing[&#39;date&#39;], utc=True)
+
+                    # Merge existing and new data, removing duplicates by &#39;date&#39;
+                    if len(df_new_data) &gt; 0:
+                        df_combined = pd.concat([df_existing, df_new_data], ignore_index=True)
+                        logger.printAndLogger(f&#34;     Combined records: {len(df_combined)}&#34;)
+
+                        df_combined = df_combined.drop_duplicates(subset=[&#39;date&#39;])
+                        logger.printAndLogger(f&#34;     Records after removing duplicates: {len(df_combined)}&#34;)
+
+                        df_new_data = df_combined.copy()
+                    else:
+                        df_new_data = df_existing
+
+                # Sort final data by date and save to CSV
+                df_new_data[&#39;date&#39;] = pd.to_datetime(df_new_data[&#39;date&#39;], utc=True)
+                df_new_data = df_new_data.sort_values(by=&#39;date&#39;)
+
+                # Extract path directory
+                directory = os.path.dirname(file_name)
+
+                # Create directory if not exists
+                if directory and not os.path.exists(directory):
+                    os.makedirs(directory, exist_ok=True)
+                    
+                df_new_data.to_csv(file_name, index=False)
+                print(f&#34;    Concatenated data for {symbol} updated and saved to {file_name}&#34;)
+
+            else:
+                logger.printAndLogger(&#34;0 records retrieved&#34;)
+
+            # Update UI or progress indicator
+            counter += 1
+            self.update_progress.emit()
+
+    except Exception as e:
+        print(e)
+        self.error_signal.emit(str(e))  # Emit error message to UI
+
+    finally:
+        print(&#34;disconnected IB&#34;)
+        ib.disconnect()  # Ensure IB is disconnected</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self):
+    asyncio.run(self.fetch_data(self.duration, self.end_date, self.frequency, self.logger))</code></pre>
+</details>
+<div class="desc"><p>run(self)</p></div>
+</dd>
+<dt id="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.update_progress"><code class="name flex">
+<span>def <span class="ident">update_progress</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>pyqtSignal(*types, name: str = &hellip;, revision: int = &hellip;, arguments: Sequence = &hellip;) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.
+Each type is either a
+type object or a string that is the name of a C++ type.
+Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.
+If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal's arguments.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ParetoInvest.models" href="index.html">ParetoInvest.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ParetoInvest.models.IB_data_loader.HistoricalDataWorker" href="#ParetoInvest.models.IB_data_loader.HistoricalDataWorker">HistoricalDataWorker</a></code></h4>
+<ul class="">
+<li><code><a title="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.data_ready" href="#ParetoInvest.models.IB_data_loader.HistoricalDataWorker.data_ready">data_ready</a></code></li>
+<li><code><a title="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.error_signal" href="#ParetoInvest.models.IB_data_loader.HistoricalDataWorker.error_signal">error_signal</a></code></li>
+<li><code><a title="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.fetch_data" href="#ParetoInvest.models.IB_data_loader.HistoricalDataWorker.fetch_data">fetch_data</a></code></li>
+<li><code><a title="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.run" href="#ParetoInvest.models.IB_data_loader.HistoricalDataWorker.run">run</a></code></li>
+<li><code><a title="ParetoInvest.models.IB_data_loader.HistoricalDataWorker.update_progress" href="#ParetoInvest.models.IB_data_loader.HistoricalDataWorker.update_progress">update_progress</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "Paper":{
+    "API_KEY" : "",
+    "API_SECRET" : "",
+    "BASE_URL" : "https://paper-api.alpaca.markets",
+    "TIPO" : "Paper"
+  },
+  "Live":{
+    "API_KEY" : "",
+    "API_SECRET" : "",
+    "BASE_URL" : "https://api.alpaca.markets",
+    "TIPO" : "Live"
+  }
+}
+  
